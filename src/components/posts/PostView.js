@@ -26,17 +26,28 @@ const Wrapper = styled.div`
     .title {
       text-align: center;
       margin: 10px;
+      font-size: 1.4rem;
     }
     .content {
       flex: 1 1 auto;
       overflow: auto;
       padding: 20px 10px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      code {
+        background: lightblue;
+        padding: 2px;
+        border-radius:2px;
+        font-size: 1rem;
+      }
       pre {
         padding: 4px;
         border: 1px solid ${colors.strokeTwo};
-        line-height: 1.4rem;
+        border-radius: 2px;
+        font-size: 1rem;
         code {
-          font-size: 1.2rem;
+          font-size: 1rem;
+          background: none;
         }
       }
     }
@@ -49,6 +60,7 @@ const Wrapper = styled.div`
     left: 5px;
     z-index: 1;
     transition: 0.3s;
+    cursor:pointer;
     &:hover {
       /* color: ${colors.white}; */
       transform: scale(1.2);
@@ -87,6 +99,7 @@ const PostView = ({ history, match, post, getPostById }) => {
           </div> */}
         </MCard>
         <Icon
+          size={24}
           background={true}
           className="back-icon"
           onClick={() => history.push("/")}

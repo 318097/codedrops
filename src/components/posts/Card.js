@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   padding: 0px;
   .card {
     font-size: 1rem;
-    line-height: 1.6rem;
+    line-height: 1.2rem;
     height: 100%;
     width: 100%;
     &:hover {

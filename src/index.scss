@@ -18,6 +18,11 @@
   src: url("./assets/fonts/Comic_Neue/ComicNeue-Regular.ttf");
 }
 
+@font-face {
+  font-family: Font5;
+  src: url("./assets/fonts/Avenir/AvenirLTStd-Medium.otf");
+}
+
 html,
 body {
   height: 100vh;
@@ -25,7 +30,8 @@ body {
   font-size: 10px;
   margin: 0;
   padding: 0;
-  font-family: Font4;
+  font-family: Font5;
+  background: url("./assets/background/dot-grid.png");
   h1,
   h2,
   h3,
