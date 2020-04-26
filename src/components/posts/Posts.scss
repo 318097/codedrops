@@ -1,0 +1,29 @@
+section#posts {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+
+  & > div.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 512px) {
+      flex-direction: column;
+    }
+    h3 {
+      display: inline-block;
+      margin: 0 20px 0 0;
+    }
+  }
+  & > div.post-container {
+    flex-grow: 1;
+    overflow: auto;
+  }
+
+  .not-found {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+}
