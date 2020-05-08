@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bit/ml318097.mui.button": "^1.0.1",
-    "@bit/ml318097.mui.card": "^1.0.0",
-    "@bit/ml318097.mui.colors": "^1.0.0",
-    "@bit/ml318097.mui.icon": "^1.0.0",
     "@ml318097/react-ui": "^0.14.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

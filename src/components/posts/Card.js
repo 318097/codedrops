@@ -30,8 +30,8 @@ const Wrapper = styled.div`
     }
     .tagList {
       position: absolute;
-      bottom: 9px;
-      left: 3px;
+      bottom: 4px;
+      left: 2px;
       text-align: left;
       .tag {
         cursor: pointer;

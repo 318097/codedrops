@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import Button from "@bit/ml318097.mui.button";
+import { Button } from "@ml318097/react-ui";
 // import Filters from "./Filters";
 import { fetchPosts, setFilter, fetchTags } from "../../store/posts/actions";
 import Card from "./Card";
@@ -54,7 +54,6 @@ const Posts = ({
       {meta && page * 10 < meta.count && (
         <div className="flex center mt">
           <Button
-            type="danger"
             onClick={() => {
               setFilter({ page: page + 1 });
             }}

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "@bit/ml318097.mui.colors";
+import colors from "@ml318097/react-ui";
 
 const StyledHeader = styled.header`
   display: flex;
