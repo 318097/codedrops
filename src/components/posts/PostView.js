@@ -5,9 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { getPostById } from "../../store/posts/actions";
-import Icon from "@bit/ml318097.mui.icon";
-import MCard from "@bit/ml318097.mui.card";
-import colors from "@bit/ml318097.mui.colors";
+import colors, { Card, Tag, Icon } from "@ml318097/react-ui";
 
 const Wrapper = styled.div`
   margin-top: 20px;
@@ -20,7 +18,7 @@ const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   .card {
     height: 100%;
-    padding: 12px 0 12px 6px;
+    padding: 12px 0;
     display: flex;
     flex-direction: column;
     .title {
@@ -35,9 +33,10 @@ const Wrapper = styled.div`
       font-size: 1.2rem;
       line-height: 1.6;
       code {
-        background: lightblue;
+        background: ${colors.orchid};
+        color: ${colors.white};
         padding: 2px;
-        border-radius:2px;
+        border-radius: 2px;
         font-size: 1rem;
       }
       pre {
@@ -48,23 +47,25 @@ const Wrapper = styled.div`
         code {
           font-size: 1rem;
           background: none;
+          color: ${colors.bar};
         }
+      }
+    }
+    .tagList {
+      .tag {
+        cursor: pointer;
+        margin-right: 3px;
+        font-size: 1rem;
+        padding: 4px 8px;
+        color: ${colors.steel};
       }
     }
   }
   .back-icon {
     position: absolute;
-    /* background: ${colors.strokeTwo}; */
-    /* color: ${colors.bar}; */
     top: 5px;
     left: 5px;
     z-index: 1;
-    transition: 0.3s;
-    cursor:pointer;
-    &:hover {
-      /* color: ${colors.white}; */
-      transform: scale(1.2);
-    }
   }
 `;
 
@@ -80,24 +81,24 @@ const PostView = ({ history, match, post, getPostById }) => {
   };
 
   if (!post) return null;
-
+  const { title, content, tags = [] } = post;
   return (
     <section id="view-post">
       <Wrapper>
-        <MCard>
-          <h3 className="title">{post.title}</h3>
+        <Card curved={true}>
+          <h3 className="title">{title}</h3>
           <div
             className="content"
-            dangerouslySetInnerHTML={{ __html: marked(post.content) }}
+            dangerouslySetInnerHTML={{ __html: marked(content) }}
           ></div>
-          {/* <div className="tags">
-            {post.tags.map((tag, index) => (
+          <div className="tagList">
+            {["javascript", "react"].map((tag, index) => (
               <Tag onClick={handleTagClick(tag)} key={index}>
                 {tag.toUpperCase()}
               </Tag>
             ))}
-          </div> */}
-        </MCard>
+          </div>
+        </Card>
         <Icon
           size={24}
           background={true}
