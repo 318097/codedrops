@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   h2 {
     font-family: Font1;
     font-size: 2rem;
-    color: ${colors.gray};
+    color: ${colors.slate};
     .code {
       color: ${colors.slate};
       font-size: 2.4rem;

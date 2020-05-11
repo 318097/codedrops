@@ -1,1 +1,13 @@
 @import "@ml318097/react-ui/dist/styles/colors.scss";
+
+html,
+body {
+  font-family: Font5;
+  background: url("./assets/background/concrete-texture.png");
+}
+
+.code-icon {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}

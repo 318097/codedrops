@@ -1,3 +1,5 @@
+@import "@ml318097/react-ui/dist/styles/defaults.scss";
+
 @font-face {
   font-family: Font1;
   src: url("./assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf");
@@ -21,10 +23,4 @@
 @font-face {
   font-family: Font5;
   src: url("./assets/fonts/Avenir/AvenirLTStd-Medium.otf");
-}
-
-html,
-body {
-  font-family: Font5;
-  background: url("./assets/background/dot-grid.png");
 }

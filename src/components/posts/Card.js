@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import colors, { Card as MCard, Tag, Icon } from "@ml318097/react-ui";
 
 const Wrapper = styled.div`
-  height: 115px;
+  height: 135px;
   cursor: pointer;
   position: relative;
   .card {
@@ -16,7 +16,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-
+    &:after {
+      background: ${colors.steel};
+    }
     .title {
       color: ${colors.iron};
       text-align: center;
@@ -30,24 +32,20 @@ const Wrapper = styled.div`
     }
     .tagList {
       position: absolute;
-      bottom: 4px;
-      left: 2px;
+      bottom: 8px;
+      left: 6px;
       text-align: left;
       .tag {
-        cursor: pointer;
-        margin-right: 3px;
         font-size: 0.8rem;
-        padding: 4px 8px;
         color: ${colors.steel};
       }
     }
   }
   .bulb-icon {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 4px;
+    right: 4px;
     z-index: 1;
-    color: ${colors.yellow};
   }
 `;
 
@@ -75,7 +73,7 @@ const Card = ({ history, post }) => {
           ></div>
         )}
         <div className="tagList">
-          {["javascript", "react"].map((tag, index) => (
+          {tags.map((tag, index) => (
             <Tag onClick={handleTagClick(tag)} key={index}>
               {tag.toUpperCase()}
             </Tag>

@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   .card {
     height: 100%;
     padding: 12px 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     .title {
@@ -41,9 +42,10 @@ const Wrapper = styled.div`
       }
       pre {
         padding: 4px;
-        border: 1px solid ${colors.strokeTwo};
-        border-radius: 2px;
+        border: 0.5px solid ${colors.strokeTwo};
+        border-radius: 6px;
         font-size: 1rem;
+        background: ${colors.featherDark};
         code {
           font-size: 1rem;
           background: none;
@@ -52,19 +54,18 @@ const Wrapper = styled.div`
       }
     }
     .tagList {
+      padding-left: 4px;
       .tag {
         cursor: pointer;
         margin-right: 3px;
-        font-size: 1rem;
-        padding: 4px 8px;
         color: ${colors.steel};
       }
     }
   }
   .back-icon {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 8px;
+    left: 6px;
     z-index: 1;
   }
 `;
@@ -81,11 +82,12 @@ const PostView = ({ history, match, post, getPostById }) => {
   };
 
   if (!post) return null;
+
   const { title, content, tags = [] } = post;
   return (
     <section id="view-post">
       <Wrapper>
-        <Card curved={true}>
+        <Card curved>
           <h3 className="title">{title}</h3>
           <div
             className="content"
@@ -100,8 +102,8 @@ const PostView = ({ history, match, post, getPostById }) => {
           </div>
         </Card>
         <Icon
-          size={24}
-          background={true}
+          size={16}
+          background
           className="back-icon"
           onClick={() => history.push("/")}
           type="caret-left"
