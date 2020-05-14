@@ -5,24 +5,25 @@ import {
   SET_TAGS,
   SET_POSTS,
   UPDATE_FILTER,
-  GET_POST_BY_ID
+  GET_POST_BY_ID,
+  GET_RELATED_POSTS,
 } from "./constants";
 
-export const fetchTags = () => async dispatch => {
+export const fetchTags = () => async (dispatch) => {
   const {
-    data: { tags }
+    data: { tags },
   } = await axios.get("/posts/tags");
 
   const tagList = tags.map(({ _id, color, name }) => ({
     _id,
     color,
     label: name.toUpperCase(),
-    value: name
+    value: name,
   }));
 
   dispatch({
     type: SET_TAGS,
-    payload: tagList
+    payload: tagList,
   });
 };
 
@@ -30,19 +31,19 @@ export const fetchPosts = () => async (dispatch, getState) => {
   try {
     dispatch(setAppLoading(true));
     const {
-      posts: { filters, posts }
+      posts: { filters, posts },
     } = getState();
     const updatedPosts = filters && filters.page > 1 ? [...posts] : [];
     const {
-      data: { posts: data, meta }
+      data: { posts: data, meta },
     } = await axios.get("/posts", { params: filters });
     updatedPosts.push(...data);
     dispatch({
       type: SET_POSTS,
       payload: {
         posts: updatedPosts,
-        meta
-      }
+        meta,
+      },
     });
   } catch (err) {
     console.log(err);
@@ -62,12 +63,20 @@ export const setFilter = (filterUpdate, resetPage = true) => async (
   dispatch(fetchPosts());
 };
 
-export const getPostById = postId => async (dispatch, getState) => {
+export const getPostById = (postId) => async (dispatch, getState) => {
   dispatch(setAppLoading(true));
   const {
-    data: { post }
+    data: { post },
   } = await axios.get(`/posts/${postId}`);
 
   dispatch({ type: GET_POST_BY_ID, payload: post });
   dispatch(setAppLoading(false));
+};
+
+export const fetchRelatedPosts = (postId) => async (dispatch, getState) => {
+  const {
+    data: { posts },
+  } = await axios.get(`/posts/random`);
+
+  dispatch({ type: GET_RELATED_POSTS, payload: posts });
 };

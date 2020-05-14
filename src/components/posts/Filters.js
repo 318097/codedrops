@@ -36,7 +36,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
   //   history.push(`/posts?${query}`);
   // };
 
-  const handleTagFilter = values => setFilter({ tags: values });
+  const handleTagFilter = (values) => setFilter({ tags: values });
 
   const { tags = [], search = "" } = filters || {};
 
@@ -49,7 +49,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
         className="input input-width"
         placeholder="Search..."
         defaultValue={search}
-        onSearch={value => setFilter({ search: value })}
+        onSearch={(value) => setFilter({ search: value })}
       />
       <Select
         mode="multiple"
@@ -70,14 +70,6 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
           Showing {postCount} of {meta.count} posts.
         </div>
       )}
-
-      {/* <div>
-        {tags.map(tag => (
-          <Tag key={tag} onClose={handleTagClose(tag)} closable>
-            {tag}
-          </Tag>
-        ))}
-      </div> */}
     </div>
   );
 };

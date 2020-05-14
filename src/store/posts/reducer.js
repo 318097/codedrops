@@ -2,7 +2,8 @@ import {
   SET_TAGS,
   SET_POSTS,
   UPDATE_FILTER,
-  GET_POST_BY_ID
+  GET_POST_BY_ID,
+  GET_RELATED_POSTS,
 } from "./constants";
 
 const initialState = {
@@ -14,8 +15,8 @@ const initialState = {
     search: "",
     page: 1,
     limit: 25,
-    tags: []
-  }
+    tags: [],
+  },
 };
 
 const postReducer = (state = initialState, action) => {
@@ -24,25 +25,31 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload.posts,
-        meta: action.payload.meta
+        meta: action.payload.meta,
       };
     }
     case SET_TAGS: {
       return {
         ...state,
-        tags: action.payload
+        tags: action.payload,
       };
     }
     case UPDATE_FILTER: {
       return {
         ...state,
-        filters: { ...state.filters, ...action.payload }
+        filters: { ...state.filters, ...action.payload },
       };
     }
     case GET_POST_BY_ID: {
       return {
         ...state,
-        selectedPost: action.payload
+        selectedPost: action.payload,
+      };
+    }
+    case GET_RELATED_POSTS: {
+      return {
+        ...state,
+        relatedPosts: action.payload,
       };
     }
     default:

@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Card = ({ history, post }) => {
+const Card = ({ history, post, customStyle }) => {
   const { title = "", content = "", type = "DROP", tags = [], _id } =
     post || {};
 
@@ -63,7 +63,7 @@ const Card = ({ history, post }) => {
   if (!post) return <Fragment />;
 
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper style={customStyle} onClick={handleClick}>
       <MCard>
         {type === "POST" && <h3 className="title">{title}</h3>}
         {type === "DROP" && (

@@ -3,19 +3,13 @@ import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
+import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon } from "@ml318097/react-ui";
 
 const Wrapper = styled.div`
-  margin-top: 20px;
-  max-width: 450px;
-  width: 95%;
-  height: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+
   .card {
     height: 100%;
     padding: 12px 0;
@@ -45,6 +39,7 @@ const Wrapper = styled.div`
         border: 0.5px solid ${colors.strokeTwo};
         border-radius: 6px;
         font-size: 1rem;
+        overflow-x: auto;
         background: ${colors.featherDark};
         code {
           font-size: 1rem;
@@ -83,10 +78,10 @@ const PostView = ({ history, match, post, getPostById }) => {
 
   if (!post) return null;
 
-  const { title, content, tags = [] } = post;
+  const { title, content, tags = [], _id } = post;
   return (
     <section id="view-post">
-      <Wrapper>
+      <Wrapper className="postWrapper">
         <Card curved>
           <h3 className="title">{title}</h3>
           <div
@@ -94,7 +89,7 @@ const PostView = ({ history, match, post, getPostById }) => {
             dangerouslySetInnerHTML={{ __html: marked(content) }}
           ></div>
           <div className="tagList">
-            {["javascript", "react"].map((tag, index) => (
+            {tags.map((tag, index) => (
               <Tag onClick={handleTagClick(tag)} key={index}>
                 {tag.toUpperCase()}
               </Tag>
@@ -109,6 +104,7 @@ const PostView = ({ history, match, post, getPostById }) => {
           type="caret-left"
         />
       </Wrapper>
+      <RelatedPosts postId={_id} />
     </section>
   );
 };
