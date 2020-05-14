@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 const RelatedPosts = ({ postId, relatedPosts = [], fetchRelatedPosts }) => {
   useEffect(() => {
     fetchRelatedPosts(postId);
-  }, []);
+  }, [postId]);
 
   return (
     <div className="related-post">

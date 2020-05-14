@@ -69,7 +69,7 @@ const PostView = ({ history, match, post, getPostById }) => {
   useEffect(() => {
     const { id } = match.params;
     getPostById(id);
-  }, []);
+  }, [match]);
 
   const handleTagClick = (value) => (event) => {
     event.stopPropagation();
