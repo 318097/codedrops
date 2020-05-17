@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
@@ -11,7 +11,7 @@ import "./Posts.scss";
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 215px);
-  /* justify-content: center; */
+  justify-content: center;
   grid-gap: 8px;
 `;
 
@@ -50,18 +50,18 @@ const Posts = ({
         ) : (
           <div className="not-found">No posts found.</div>
         )}
+        {meta && page * 10 < meta.count && (
+          <div className="actions-row">
+            <Button
+              onClick={() => {
+                setFilter({ page: page + 1 });
+              }}
+            >
+              Load
+            </Button>
+          </div>
+        )}
       </div>
-      {meta && page * 10 < meta.count && (
-        <div className="flex center mt">
-          <Button
-            onClick={() => {
-              setFilter({ page: page + 1 });
-            }}
-          >
-            Load
-          </Button>
-        </div>
-      )}
     </section>
   );
 };

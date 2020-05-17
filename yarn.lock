@@ -1258,10 +1258,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@ml318097/react-ui@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@ml318097/react-ui/-/react-ui-0.16.0.tgz#6fb55529fe3a9903360acbc977d897916bfb5b33"
-  integrity sha512-aY1QczA6N/nUTi48NfKSc0opS7DfJz/qzL2+kX2ciT0I9AjSTNtF9UybLyikGJt5ILAaSQWqgd3wC4bX64I+DA==
+"@ml318097/react-ui@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@ml318097/react-ui/-/react-ui-0.21.0.tgz#540fd8b11ec986289e20940b8eff1a1135635eb5"
+  integrity sha512-0/69hClZBHrMdmkmNdIfWSIzmeZPYBeOGj5AybpU7Ox6B0CXAj3R9gp576mFKOJT1I1SnGoMeLap99PHSHjkSQ==
   dependencies:
     classnames "^2.2.6"
     node-sass "^4.14.0"

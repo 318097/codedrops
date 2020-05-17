@@ -7,9 +7,7 @@ import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon } from "@ml318097/react-ui";
 
-const Wrapper = styled.div`
-  position: relative;
-
+const CardWrapper = styled.div`
   .card {
     height: 100%;
     padding: 12px 0;
@@ -81,7 +79,7 @@ const PostView = ({ history, match, post, getPostById }) => {
   const { title, content, tags = [], _id } = post;
   return (
     <section id="view-post">
-      <Wrapper className="postWrapper">
+      <CardWrapper className="post-wrapper">
         <Card curved>
           <h3 className="title">{title}</h3>
           <div
@@ -103,8 +101,10 @@ const PostView = ({ history, match, post, getPostById }) => {
           onClick={() => history.push("/")}
           type="caret-left"
         />
-      </Wrapper>
-      <RelatedPosts postId={_id} />
+      </CardWrapper>
+      <div className="related-post-wrapper">
+        <RelatedPosts postId={_id} />
+      </div>
     </section>
   );
 };

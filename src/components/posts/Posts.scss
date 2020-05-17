@@ -3,6 +3,7 @@ section#posts {
   padding: 16px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 
   & > div.header {
     display: flex;
@@ -18,7 +19,6 @@ section#posts {
   }
   & > div.post-container {
     flex-grow: 1;
-    overflow: auto;
   }
 
   .not-found {
@@ -29,17 +29,37 @@ section#posts {
 }
 
 #view-post {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 8px;
   margin-top: 30px;
-  .postWrapper {
-    grid-column: 4/10;
-  }
-  .related-post {
-    margin-left: 30px;
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @media (max-width: 700px) {
     flex-direction: column;
-    grid-column: 10/12;
+    justify-content: flex-start;
+    .post-wrapper {
+      margin-bottom: 30px;
+    }
   }
+  .post-wrapper {
+    flex: 1 0 33.3%;
+    position: relative;
+    max-width: 600px;
+    width: 400px;
+    height: 500px;
+  }
+  .related-post-wrapper {
+    flex: 0 0 33.3%;
+    margin-left: 30px;
+    .related-post {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+.actions-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
