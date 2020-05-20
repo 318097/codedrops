@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { Button } from "@ml318097/react-ui";
-
 import { fetchPosts, setFilter, fetchTags } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
@@ -43,12 +42,11 @@ const Posts = ({
         ) : (
           <div className="not-found">No posts found.</div>
         )}
-        {meta && page * 10 < meta.count && (
+        {meta && page * 25 <= meta.count && (
           <div className="actions-row">
             <Button
-              onClick={() => {
-                setFilter({ page: page + 1 });
-              }}
+              size="lg"
+              onClick={() => setFilter({ page: page + 1 }, false)}
             >
               Load
             </Button>
