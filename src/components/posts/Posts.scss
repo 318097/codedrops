@@ -1,23 +1,11 @@
 section#posts {
   flex: 1 1 auto;
-  padding: 16px;
+  padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
   overflow: auto;
 
-  & > div.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @media screen and (max-width: 512px) {
-      flex-direction: column;
-    }
-    h3 {
-      display: inline-block;
-      margin: 0 20px 0 0;
-    }
-  }
-  & > div.post-container {
+  div.post-container {
     flex-grow: 1;
   }
 
@@ -25,6 +13,12 @@ section#posts {
     margin-top: 10px;
     text-align: center;
     font-size: 1.2rem;
+  }
+
+  .actions-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
   }
 }
 
@@ -56,10 +50,4 @@ section#posts {
       flex-direction: column;
     }
   }
-}
-
-.actions-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
 }

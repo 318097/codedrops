@@ -8,7 +8,6 @@ import Home from "./components/Home";
 import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
 import { Icon } from "@ml318097/react-ui";
-import "@ml318097/react-ui/dist/styles/custom-styles.scss";
 
 axios.defaults.baseURL = config.SERVER_URL;
 

@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   cursor: pointer;
   position: relative;
   .card {
+    border-radius: 2px;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -16,9 +17,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    &:after {
-      background: ${colors.steel};
-    }
+
     .title {
       color: ${colors.iron};
       text-align: center;

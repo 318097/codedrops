@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Tag, Input, Select } from "antd";
+
+import { connect } from "react-redux";
+// import { withRouter } from "react-router-dom";
+import { setFilter } from "../../store/posts/actions";
+
 const { Search } = Input;
 const { Option } = Select;
 
@@ -41,19 +46,18 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
   const { tags = [], search = "" } = filters || {};
 
   return (
-    <div className="header">
-      <h3 className="custom-header">Posts</h3>
-
+    <div className="filters">
       <Search
         allowClear
-        className="input input-width"
+        className="field-width"
         placeholder="Search..."
         defaultValue={search}
         onSearch={(value) => setFilter({ search: value })}
+        style={{ marginRight: "4px" }}
       />
       <Select
         mode="multiple"
-        className="input"
+        className="field-width"
         style={{ minWidth: "150px" }}
         placeholder="Tags"
         value={tags}
@@ -73,5 +77,15 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
     </div>
   );
 };
+const mapStateToProps = ({ posts }) => ({
+  meta: posts.meta,
+  tagList: posts.tags,
+  filters: posts.filters,
+  postCount: posts.length,
+});
 
-export default Filters;
+const mapDispatchToProps = {
+  setFilter,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);

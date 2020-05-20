@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { Button } from "@ml318097/react-ui";
-// import Filters from "./Filters";
+
 import { fetchPosts, setFilter, fetchTags } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
@@ -33,13 +33,6 @@ const Posts = ({
 
   return (
     <section id="posts">
-      {/* <Filters
-        filters={filters}
-        setFilter={setFilter}
-        tagList={tagList}
-        meta={meta}
-        postCount={posts.length || 0}
-      /> */}
       <div className="post-container">
         {posts.length ? (
           <GridContainer>

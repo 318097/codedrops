@@ -24,3 +24,14 @@
   font-family: Font5;
   src: url("./assets/fonts/Avenir/AvenirLTStd-Medium.otf");
 }
+
+* {
+  font-family: Font5;
+}
+
+html,
+html body {
+  font-size: 10px;
+  font-family: Font5;
+  background: url("./assets/background/concrete-texture.png");
+}
