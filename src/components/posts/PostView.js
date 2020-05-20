@@ -14,6 +14,8 @@ const CardWrapper = styled.div`
     box-shadow: none;
     display: flex;
     flex-direction: column;
+    border-radius: 2px;
+    background: ${colors.featherDark};
     .title {
       text-align: center;
       margin: 10px;
@@ -35,10 +37,10 @@ const CardWrapper = styled.div`
       pre {
         padding: 4px;
         border: 0.5px solid ${colors.strokeTwo};
-        border-radius: 6px;
+        border-radius: 2px;
         font-size: 1rem;
         overflow-x: auto;
-        background: ${colors.featherDark};
+        background: ${colors.white};
         code {
           font-size: 1rem;
           background: none;
@@ -80,7 +82,7 @@ const PostView = ({ history, match, post, getPostById }) => {
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
-        <Card curved>
+        <Card>
           <h3 className="title">{title}</h3>
           <div
             className="content"

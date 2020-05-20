@@ -8,14 +8,14 @@ const StyledHeader = styled.header`
   position: sticky;
   z-index: 10;
   top: 0;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 8px 16px;
   h2 {
     font-family: Font1;
     font-size: 2rem;
     color: ${colors.slate};
-    font-weight: bold;
+    margin-right: 60px;
     .code {
       font-weight: bold;
       font-family: inherit;
@@ -28,9 +28,9 @@ const StyledHeader = styled.header`
   }
   @media (max-width: 480px) {
     flex-direction: column;
-    padding-bottom: 12px;
-    align-items: center;
-    justify-content: center;
+    h2 {
+      margin-right: 0px;
+    }
   }
 `;
 

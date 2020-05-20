@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-
+    background: ${colors.featherDark};
     .title {
       color: ${colors.iron};
       text-align: center;
