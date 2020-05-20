@@ -4,6 +4,7 @@ import { Switch, BrowserRouter, Route } from "react-router-dom";
 import "./App.scss";
 import config from "./config";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
@@ -25,6 +26,7 @@ const App = () => {
         </Switch>
       </BrowserRouter>
       {/* </div> */}
+      <Footer />
       <Icon className="code-icon" type="coding" />
     </div>
   );
