@@ -12,6 +12,9 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fill, 215px);
   justify-content: center;
   grid-gap: 8px;
+  max-width: 1110px;
+  width: 98%;
+  margin: 0 auto;
 `;
 
 const Posts = ({

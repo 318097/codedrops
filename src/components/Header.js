@@ -8,9 +8,12 @@ const StyledHeader = styled.header`
   position: sticky;
   z-index: 10;
   top: 0;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  padding: 8px 0;
+  max-width: 1110px;
+  width: 98%;
+  margin: 0 auto;
   h2 {
     font-family: Font1;
     font-size: 2rem;

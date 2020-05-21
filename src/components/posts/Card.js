@@ -31,12 +31,12 @@ const Wrapper = styled.div`
     }
     .tagList {
       position: absolute;
-      bottom: 6px;
-      left: 6px;
+      bottom: 4px;
+      left: 4px;
       text-align: left;
       .tag {
+        background: ${colors.strokeOne};
         font-size: 0.8rem;
-        color: ${colors.steel};
       }
     }
   }

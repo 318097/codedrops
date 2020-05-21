@@ -12,9 +12,15 @@ const RelatedPosts = ({ postId, relatedPosts = [], fetchRelatedPosts }) => {
   return (
     <div className="related-post">
       <h3 className="text-center">Related Posts</h3>
-      {relatedPosts.slice(0, 3).map((post) => (
-        <Card customStyle={{ marginTop: "10px" }} key={post._id} post={post} />
-      ))}
+      <div className="posts">
+        {relatedPosts.slice(0, 3).map((post) => (
+          <Card
+            customStyle={{ marginTop: "10px" }}
+            key={post._id}
+            post={post}
+          />
+        ))}
+      </div>
     </div>
   );
 };

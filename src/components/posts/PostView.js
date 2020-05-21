@@ -104,9 +104,7 @@ const PostView = ({ history, match, post, getPostById }) => {
           type="caret-left"
         />
       </CardWrapper>
-      <div className="related-post-wrapper">
-        <RelatedPosts postId={_id} />
-      </div>
+      <RelatedPosts postId={_id} />
     </section>
   );
 };

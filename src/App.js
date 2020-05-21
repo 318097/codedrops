@@ -27,7 +27,7 @@ const App = () => {
       </BrowserRouter>
       {/* </div> */}
       <Footer />
-      <Icon className="code-icon" type="coding" />
+      <Icon className="code-icon" type="tag" />
     </div>
   );
 };

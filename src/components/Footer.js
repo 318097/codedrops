@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
-  position: absolute;
-  bottom: 4px;
-  right: 3px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
   a {
     margin: 0 2px;
     cursor: pointer;
