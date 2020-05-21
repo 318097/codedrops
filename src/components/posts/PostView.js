@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
-import colors, { Card, Tag, Icon } from "@ml318097/react-ui";
+import colors, { Card, Tag, Icon } from "@codedrops/react-ui";
 
 const CardWrapper = styled.div`
   .card {

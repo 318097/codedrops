@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import { Button } from "@ml318097/react-ui";
+import { Button } from "@codedrops/react-ui";
 import { fetchPosts, setFilter, fetchTags } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";

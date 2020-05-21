@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import colors, { Card as MCard, Tag, Icon } from "@ml318097/react-ui";
+import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   height: 135px;

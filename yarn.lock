@@ -1074,6 +1074,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codedrops/react-ui@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@codedrops/react-ui/-/react-ui-0.22.0.tgz#52e204e8c6dd1800ac0b11e0c664c4db8dfc91b0"
+  integrity sha512-pXPTrAmvWz5kpLnCE6vMk85d5JmRe/l81P2yJUV7S5/2HmfYY0njtPEdO+mGHAhQCh4DM+v0CJwQ5obHVM9y9g==
+  dependencies:
+    classnames "^2.2.6"
+    node-sass "^4.14.0"
+    styled-components "4.4.1"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -1295,15 +1304,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
-
-"@ml318097/react-ui@^0.21.0":
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@ml318097/react-ui/-/react-ui-0.21.0.tgz#540fd8b11ec986289e20940b8eff1a1135635eb5"
-  integrity sha512-0/69hClZBHrMdmkmNdIfWSIzmeZPYBeOGj5AybpU7Ox6B0CXAj3R9gp576mFKOJT1I1SnGoMeLap99PHSHjkSQ==
-  dependencies:
-    classnames "^2.2.6"
-    node-sass "^4.14.0"
-    styled-components "4.4.1"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "@ml318097/react-ui";
+import { Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   position: absolute;

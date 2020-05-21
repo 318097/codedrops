@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
-import { Icon } from "@ml318097/react-ui";
+import { Icon } from "@codedrops/react-ui";
 
 axios.defaults.baseURL = config.SERVER_URL;
 
