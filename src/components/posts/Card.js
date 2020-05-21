@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    background: ${colors.featherDark};
+    background: ${colors.feather};
     .title {
       color: ${colors.iron};
       text-align: center;
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     }
     .tagList {
       position: absolute;
-      bottom: 8px;
+      bottom: 6px;
       left: 6px;
       text-align: left;
       .tag {

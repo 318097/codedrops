@@ -15,7 +15,7 @@ const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 2px;
-    background: ${colors.featherDark};
+    background: ${colors.feather};
     .title {
       text-align: center;
       margin: 10px;
