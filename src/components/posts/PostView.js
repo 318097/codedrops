@@ -9,6 +9,7 @@ import colors, { Card, Tag, Icon } from "@codedrops/react-ui";
 
 const CardWrapper = styled.div`
   .card {
+    border: 1px solid ${colors.strokeOne};
     height: 100%;
     padding: 12px 0;
     box-shadow: none;

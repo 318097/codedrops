@@ -6,8 +6,10 @@ import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   height: 135px;
+  width: 215px;
   cursor: pointer;
   position: relative;
+  margin: 2px;
   .card {
     border-radius: 2px;
     height: 100%;
@@ -18,6 +20,7 @@ const Wrapper = styled.div`
     justify-content: center;
     padding: 5px;
     background: ${colors.feather};
+    border: 1px solid ${colors.strokeOne};
     .title {
       color: ${colors.iron};
       text-align: center;
@@ -78,7 +81,9 @@ const Card = ({ history, post, customStyle }) => {
             </Tag>
           ))}
         </div>
-        {type === "DROP" && <Icon className="bulb-icon" type="bulb" />}
+        {type === "DROP" && (
+          <Icon size={12} className="bulb-icon" type="bulb" />
+        )}
       </MCard>
     </Wrapper>
   );
