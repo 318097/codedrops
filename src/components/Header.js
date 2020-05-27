@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import colors from "@codedrops/react-ui";
 import Filters from "./posts/Filters";
+import Logo from "../assets/code-drops";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -39,9 +40,9 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <h2>
-      <span className="code custom-header">Code</span>drops
-    </h2>
+    <Logo />
+    {/* <span className="code custom-header">Code</span>drops */}
+
     <Filters />
   </StyledHeader>
 );
