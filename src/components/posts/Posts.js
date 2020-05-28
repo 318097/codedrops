@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { Button } from "@codedrops/react-ui";
-import { fetchPosts, setFilter, fetchTags } from "../../store/posts/actions";
+import { fetchPosts, setFilter } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
 
@@ -17,18 +17,9 @@ const GridContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Posts = ({
-  posts,
-  fetchPosts,
-  setFilter,
-  fetchTags,
-  tagList,
-  meta,
-  filters,
-}) => {
+const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
   useEffect(() => {
     if (!posts.length) fetchPosts();
-    if (!tagList.length) fetchTags();
   }, []);
 
   const { page = 1 } = filters;
@@ -63,14 +54,12 @@ const Posts = ({
 const mapStateToProps = ({ posts }) => ({
   posts: posts.posts ? posts.posts : [],
   meta: posts.meta,
-  tagList: posts.tags,
   filters: posts.filters,
 });
 
 const mapDispatchToProps = {
   fetchPosts,
   setFilter,
-  fetchTags,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Posts));

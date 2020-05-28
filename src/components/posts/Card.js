@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
@@ -38,7 +39,7 @@ const Wrapper = styled.div`
       left: 4px;
       text-align: left;
       .tag {
-        background: ${colors.strokeOne};
+        padding: 1px 2px 0px 2px;
         font-size: 0.8rem;
       }
     }
@@ -51,7 +52,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Card = ({ history, post, customStyle }) => {
+const Card = ({ history, post, customStyle, tagColors = {} }) => {
   const { title = "", content = "", type = "DROP", tags = [], _id } =
     post || {};
 
@@ -76,7 +77,11 @@ const Card = ({ history, post, customStyle }) => {
         )}
         <div className="tagList">
           {tags.map((tag, index) => (
-            <Tag onClick={handleTagClick(tag)} key={index}>
+            <Tag
+              onClick={handleTagClick(tag)}
+              key={index}
+              color={tagColors[tag] ? tagColors[tag] : colors.steel}
+            >
               {tag.toUpperCase()}
             </Tag>
           ))}
@@ -89,9 +94,8 @@ const Card = ({ history, post, customStyle }) => {
   );
 };
 
-Card.defaultProps = {
-  showTitle: true,
-  showContent: true,
-};
+const mapStateToProps = ({ posts }) => ({
+  tagColors: posts.tagColors,
+});
 
-export default withRouter(Card);
+export default connect(mapStateToProps)(withRouter(Card));

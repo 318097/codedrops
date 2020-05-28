@@ -10,6 +10,7 @@ const initialState = {
   posts: [],
   meta: null,
   tags: [],
+  tagColors: {},
   selectedPost: null,
   filters: {
     search: "",
@@ -32,6 +33,10 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         tags: action.payload,
+        tagColors: action.payload.reduce(
+          (obj, { value, color }) => ({ ...obj, [value]: color }),
+          {}
+        ),
       };
     }
     case UPDATE_FILTER: {

@@ -52,9 +52,7 @@ const CardWrapper = styled.div`
     .tagList {
       padding-left: 4px;
       .tag {
-        cursor: pointer;
         margin-right: 3px;
-        color: ${colors.steel};
       }
     }
   }
@@ -66,7 +64,7 @@ const CardWrapper = styled.div`
   }
 `;
 
-const PostView = ({ history, match, post, getPostById }) => {
+const PostView = ({ history, match, post, getPostById, tagColors }) => {
   useEffect(() => {
     const { id } = match.params;
     getPostById(id);
@@ -91,7 +89,11 @@ const PostView = ({ history, match, post, getPostById }) => {
           ></div>
           <div className="tagList">
             {tags.map((tag, index) => (
-              <Tag onClick={handleTagClick(tag)} key={index}>
+              <Tag
+                onClick={handleTagClick(tag)}
+                key={index}
+                color={tagColors[tag] ? tagColors[tag] : colors.steel}
+              >
                 {tag.toUpperCase()}
               </Tag>
             ))}
@@ -112,6 +114,7 @@ const PostView = ({ history, match, post, getPostById }) => {
 
 const mapStateToProps = ({ posts }) => ({
   post: posts.selectedPost,
+  tagColors: posts.tagColors,
 });
 
 const mapDispatchToProps = {
