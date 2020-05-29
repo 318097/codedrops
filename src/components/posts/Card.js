@@ -20,10 +20,11 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 5px;
-    background: ${colors.feather};
-    border: 1px solid ${colors.strokeTwo};
+    background: ${colors.white};
+    border: 1px solid ${colors.strokeOne};
+    box-shadow: 2px 2px 2px #e0e0e0;
     &:hover {
-      background: ${colors.featherDark};
+      background: ${colors.feather};
     }
     .title {
       color: ${colors.iron};
@@ -42,6 +43,7 @@ const Wrapper = styled.div`
       left: 4px;
       text-align: left;
       .tag {
+        border-radius: 0;
         padding: 1px 2px 0px 2px;
         font-size: 0.8rem;
       }

@@ -51,7 +51,9 @@ const CardWrapper = styled.div`
     .tagList {
       padding-left: 4px;
       .tag {
+        padding: 2px 4px 0;
         margin-right: 3px;
+        border-radius: 0;
       }
     }
   }
