@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
-  height: 135px;
+  height: 165px;
   width: 215px;
   cursor: pointer;
   position: relative;
@@ -21,7 +21,10 @@ const Wrapper = styled.div`
     justify-content: center;
     padding: 5px;
     background: ${colors.feather};
-    border: 1px solid ${colors.strokeOne};
+    border: 1px solid ${colors.strokeTwo};
+    &:hover {
+      background: ${colors.featherDark};
+    }
     .title {
       color: ${colors.iron};
       text-align: center;

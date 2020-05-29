@@ -11,11 +11,10 @@ const CardWrapper = styled.div`
   .card {
     border: 1px solid ${colors.strokeOne};
     height: 100%;
-    padding: 12px 0;
-    box-shadow: none;
+    padding: 12px 0 4px;
     display: flex;
     flex-direction: column;
-    border-radius: 2px;
+    border-radius: 4px;
     background: ${colors.feather};
     .title {
       text-align: center;
@@ -31,7 +30,7 @@ const CardWrapper = styled.div`
       code {
         background: ${colors.orchid};
         color: ${colors.white};
-        padding: 2px;
+        padding: 2px 4px 0;
         border-radius: 2px;
         font-size: 1rem;
       }
@@ -58,7 +57,7 @@ const CardWrapper = styled.div`
   }
   .back-icon {
     position: absolute;
-    top: 8px;
+    top: 6px;
     left: 6px;
     z-index: 1;
   }

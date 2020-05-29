@@ -9,17 +9,15 @@ const StyledHeader = styled.header`
   position: sticky;
   z-index: 10;
   top: 0;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 8px 0;
-  max-width: 1110px;
+  padding: 8px;
   width: 98%;
   margin: 0 auto;
-  h2 {
+  /* h2 {
     font-family: Font1;
     font-size: 2rem;
     color: ${colors.slate};
-    margin-right: 60px;
     .code {
       font-weight: bold;
       font-family: inherit;
@@ -35,7 +33,7 @@ const StyledHeader = styled.header`
     h2 {
       margin-right: 0px;
     }
-  }
+  } */
 `;
 
 const Header = () => (

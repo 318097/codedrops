@@ -5,14 +5,10 @@ section#posts {
   flex-direction: column;
   overflow: auto;
 
-  div.post-container {
-    flex-grow: 1;
-  }
-
   .not-found {
     margin-top: 10px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 3.2rem;
   }
 
   .actions-row {

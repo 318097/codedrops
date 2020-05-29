@@ -26,27 +26,26 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
 
   return (
     <section id="posts">
-      <div className="post-container">
-        {posts.length ? (
-          <GridContainer>
-            {posts.map((post) => (
-              <Card key={post._id} post={post} />
-            ))}
-          </GridContainer>
-        ) : (
-          <div className="not-found">No posts found.</div>
-        )}
-        {meta && page * 25 <= meta.count && (
-          <div className="actions-row">
-            <Button
-              size="lg"
-              onClick={() => setFilter({ page: page + 1 }, false)}
-            >
-              Load
-            </Button>
-          </div>
-        )}
-      </div>
+      {posts.length ? (
+        <GridContainer>
+          {posts.map((post) => (
+            <Card key={post._id} post={post} />
+          ))}
+        </GridContainer>
+      ) : (
+        <div className="not-found">No posts found.</div>
+      )}
+
+      {meta && page * 25 <= meta.count && (
+        <div className="actions-row">
+          <Button
+            size="lg"
+            onClick={() => setFilter({ page: page + 1 }, false)}
+          >
+            Load
+          </Button>
+        </div>
+      )}
     </section>
   );
 };
