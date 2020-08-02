@@ -14,11 +14,7 @@ const RelatedPosts = ({ postId, relatedPosts = [], fetchRelatedPosts }) => {
       <h3 className="text-center">Related Posts</h3>
       <div className="posts">
         {relatedPosts.slice(0, 3).map((post) => (
-          <Card
-            customStyle={{ marginTop: "10px" }}
-            key={post._id}
-            post={post}
-          />
+          <Card key={post._id} post={post} />
         ))}
       </div>
     </div>

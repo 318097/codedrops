@@ -1,20 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-import { Button } from "@codedrops/react-ui";
+import colors, { Button } from "@codedrops/react-ui";
 import { fetchPosts, setFilter } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
 
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 215px);
-  justify-content: center;
-  grid-gap: 8px;
-  max-width: 1110px;
-  width: 98%;
-  margin: 0 auto;
+const PageWrapper = styled.div`
+  margin-bottom: 25px;
+  .page-splitter {
+    display: block;
+    width: 80%;
+    margin: 20px 30px 25px;
+    position: relative;
+    span {
+      padding: 0 12px;
+      display: inline-block;
+      position: relative;
+      left: 20px;
+      background: ${colors.strokeOne};
+      font-size: 1rem;
+    }
+    &:after {
+      content: "";
+      z-index: -1;
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: 50%;
+      background: ${colors.strokeOne};
+    }
+  }
+  .notes-wrapper {
+    columns: 240px;
+    column-gap: 12px;
+  }
 `;
 
 const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
@@ -24,27 +46,41 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
 
   const { page = 1 } = filters;
 
+  const noteChunks = Array(Math.ceil(posts.length / 25))
+    .fill(null)
+    .map((_, index) => posts.slice(index * 25, index * 25 + 25));
+
   return (
     <section id="posts">
       {posts.length ? (
-        <GridContainer>
-          {posts.map((post) => (
-            <Card key={post._id} post={post} />
+        <Fragment>
+          {noteChunks.map((chunk, index) => (
+            <PageWrapper key={index}>
+              <div className="notes-wrapper">
+                {chunk.map((post) => (
+                  <Card key={post._id} post={post} />
+                ))}
+              </div>
+              {index < noteChunks.length - 1 && (
+                <div className="page-splitter">
+                  <span>{`Page: ${index + 2}`}</span>
+                </div>
+              )}
+            </PageWrapper>
           ))}
-        </GridContainer>
+          {meta && page * 25 <= meta.count && (
+            <div className="actions-row">
+              <Button
+                size="lg"
+                onClick={() => setFilter({ page: page + 1 }, false)}
+              >
+                Load
+              </Button>
+            </div>
+          )}
+        </Fragment>
       ) : (
         <div className="not-found">No posts found.</div>
-      )}
-
-      {meta && page * 25 <= meta.count && (
-        <div className="actions-row">
-          <Button
-            size="lg"
-            onClick={() => setFilter({ page: page + 1 }, false)}
-          >
-            Load
-          </Button>
-        </div>
       )}
     </section>
   );

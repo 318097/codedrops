@@ -8,6 +8,7 @@ import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon } from "@codedrops/react-ui";
 
 const CardWrapper = styled.div`
+  position: relative;
   .card {
     border: 1px solid ${colors.strokeOne};
     height: 100%;
@@ -15,7 +16,7 @@ const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    background: ${colors.feather};
+    box-shadow: 5px 5px 10px #e0e0e0;
     .title {
       text-align: center;
       margin: 10px;

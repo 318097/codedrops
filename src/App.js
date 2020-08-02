@@ -6,7 +6,6 @@ import "./App.scss";
 import config from "./config";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
 import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
 import { Icon } from "@codedrops/react-ui";
@@ -25,7 +24,6 @@ const App = ({ fetchTags, tagList }) => {
       {/* <div className="content"> */}
       <BrowserRouter>
         <Switch>
-          <Route exact path="/home" component={Home} />
           <Route exact path="/" component={Posts} />
           <Route exact path="/:id" component={PostView} />
           {/* <Route component={PageNotFound} /> */}

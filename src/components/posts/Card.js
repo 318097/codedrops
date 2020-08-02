@@ -6,55 +6,45 @@ import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
-  height: 165px;
-  width: 215px;
-  cursor: pointer;
-  position: relative;
-  margin: 2px;
+  break-inside: avoid-column;
+  margin-bottom: 8px;
   .card {
+    position: relative;
+    cursor: pointer;
+    min-height: 115px;
     border-radius: 2px;
-    height: 100%;
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    background: ${colors.white};
+    flex-direction: column;
     border: 1px solid ${colors.strokeOne};
-    box-shadow: 2px 2px 2px #e0e0e0;
+    box-shadow: 4px 4px 6px #e0e0e0;
+    padding: 20px 10px;
+
     &:hover {
-      background: ${colors.feather};
+      background: ${colors.featherDark};
     }
     .title {
       color: ${colors.iron};
       text-align: center;
-    }
-    .content {
-      width: 100%;
-      overflow: auto;
-      pre code {
-        font-size: 1rem;
-      }
-    }
-    .tagList {
-      position: absolute;
-      bottom: 4px;
-      left: 4px;
-      text-align: left;
-      .tag {
-        border-radius: 0;
-        padding: 1px 2px 0px 2px;
-        font-size: 0.8rem;
-      }
+      font-weight: normal;
     }
   }
-  .bulb-icon {
+  .tagList {
+    margin-top: 4px;
+    margin-left: 2px;
+    .tag {
+      border-radius: 2px;
+      padding: 3px 2px 0px 2px;
+      font-size: 0.8rem;
+    }
+  }
+  /* .bulb-icon {
     position: absolute;
     top: 4px;
     right: 4px;
     z-index: 1;
-  }
+  } */
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {} }) => {
@@ -73,13 +63,15 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
   return (
     <Wrapper style={customStyle} onClick={handleClick}>
       <MCard>
-        {type === "POST" && <h3 className="title">{title}</h3>}
+        <h3 className="title">{title}</h3>
         {type === "DROP" && (
           <div
             className="content"
             dangerouslySetInnerHTML={{ __html: marked(content) }}
           ></div>
         )}
+      </MCard>
+      {!!tags.length && (
         <div className="tagList">
           {tags.map((tag, index) => (
             <Tag
@@ -91,10 +83,10 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
             </Tag>
           ))}
         </div>
-        {type === "DROP" && (
+      )}
+      {/* {type === "DROP" && (
           <Icon size={12} className="bulb-icon" type="bulb" />
-        )}
-      </MCard>
+        )} */}
     </Wrapper>
   );
 };
