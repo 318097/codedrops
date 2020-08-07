@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAppLoading } from "../app/actions";
-
+import config from "../../config";
 import {
   SET_TAGS,
   SET_POSTS,
@@ -36,7 +36,9 @@ export const fetchPosts = () => async (dispatch, getState) => {
     const updatedPosts = filters && filters.page > 1 ? [...posts] : [];
     const {
       data: { posts: data, meta },
-    } = await axios.get("/posts", { params: filters });
+    } = await axios.get(`/posts?collectionId=${config.COLLECTION_ID}`, {
+      params: filters,
+    });
     updatedPosts.push(...data);
     dispatch({
       type: SET_POSTS,
@@ -67,7 +69,7 @@ export const getPostById = (postId) => async (dispatch, getState) => {
   dispatch(setAppLoading(true));
   const {
     data: { post },
-  } = await axios.get(`/posts/${postId}`);
+  } = await axios.get(`/posts/${postId}?collectionId=${config.COLLECTION_ID}`);
 
   dispatch({ type: GET_POST_BY_ID, payload: post });
   dispatch(setAppLoading(false));
@@ -76,7 +78,7 @@ export const getPostById = (postId) => async (dispatch, getState) => {
 export const fetchRelatedPosts = (postId) => async (dispatch, getState) => {
   const {
     data: { posts },
-  } = await axios.get(`/posts/random`);
+  } = await axios.get(`/posts/random?collectionId=${config.COLLECTION_ID}`);
 
   dispatch({ type: GET_RELATED_POSTS, payload: posts });
 };

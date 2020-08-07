@@ -34,9 +34,16 @@ html body {
   font-size: 10px;
   font-family: Font5;
   background: $bg;
+  height: 100vh;
+  max-height: 100vh;
   h1,
   h2,
   h3 {
     font-weight: bold;
   }
+  // #root,
+  // .app {
+  //   height: 100%;
+  //   max-height: 100%;
+  // }
 }

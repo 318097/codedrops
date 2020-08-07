@@ -22,9 +22,7 @@ section#posts {
 
 #view-post {
   display: flex;
-
   overflow-y: auto;
-
   flex-direction: column;
   .post-wrapper {
     margin-bottom: 30px;
@@ -38,7 +36,7 @@ section#posts {
   }
   @media (min-width: 700px) {
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     .post-wrapper {
       width: 500px;

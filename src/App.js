@@ -13,15 +13,16 @@ import { fetchTags } from "./store/posts/actions";
 
 axios.defaults.baseURL = config.SERVER_URL;
 
-const App = ({ fetchTags, tagList }) => {
-  useEffect(() => {
-    if (!tagList.length) fetchTags();
-  }, []);
+const App = ({ fetchTags, tagList, appLoading }) => {
+  // useEffect(() => {
+  //   if (!tagList.length) fetchTags();
+  // }, []);
 
   return (
     <div className="app">
       <Header />
       {/* <div className="content"> */}
+      {appLoading && <div className="spinner">Loading</div>}
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Posts} />
@@ -36,8 +37,9 @@ const App = ({ fetchTags, tagList }) => {
   );
 };
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, app: { appLoading } }) => ({
   tagList: posts.tags,
+  appLoading,
 });
 
 const mapDispatchToProps = {

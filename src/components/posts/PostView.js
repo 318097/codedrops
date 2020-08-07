@@ -41,7 +41,7 @@ const CardWrapper = styled.div`
         border-radius: 2px;
         font-size: 1rem;
         overflow-x: auto;
-        background: ${colors.white};
+        background: ${colors.bg};
         code {
           font-size: 1rem;
           background: none;
@@ -70,7 +70,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
   useEffect(() => {
     const { id } = match.params;
     getPostById(id);
-  }, [match]);
+  }, [match.params.id]);
 
   const handleTagClick = (value) => (event) => {
     event.stopPropagation();
