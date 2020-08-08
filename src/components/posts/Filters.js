@@ -55,7 +55,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
         onSearch={(value) => setFilter({ search: value })}
         style={{ marginRight: "4px" }}
       />
-      <Select
+      {/* <Select
         mode="multiple"
         className="field-width"
         style={{ minWidth: "150px" }}
@@ -68,7 +68,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
             {label}
           </Option>
         ))}
-      </Select>
+      </Select> */}
       {postCount > 0 && (
         <div>
           Showing {postCount} of {meta.count} posts.

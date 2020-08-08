@@ -19,18 +19,19 @@ const PageWrapper = styled.div`
       display: inline-block;
       position: relative;
       left: 20px;
-      background: ${colors.strokeOne};
+      background: ${colors.bar};
+      color: white;
       font-size: 1rem;
+      z-index: 2;
     }
     &:after {
       content: "";
-      z-index: -1;
       display: block;
       width: 100%;
       height: 1px;
       position: absolute;
       top: 50%;
-      background: ${colors.strokeOne};
+      background: ${colors.bar};
     }
   }
   .notes-wrapper {

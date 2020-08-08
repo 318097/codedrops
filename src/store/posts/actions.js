@@ -61,7 +61,7 @@ export const setFilter = (filterUpdate, resetPage = true) => async (
   const { filters } = getState();
   const updatedFiters = { ...filters, ...filterUpdate };
   if (resetPage) updatedFiters["page"] = 1;
-  dispatch({ type: UPDATE_FILTER, payload: updatedFiters });
+  await dispatch({ type: UPDATE_FILTER, payload: updatedFiters });
   dispatch(fetchPosts());
 };
 

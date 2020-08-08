@@ -10,6 +10,7 @@ import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
 import { Icon } from "@codedrops/react-ui";
 import { fetchTags } from "./store/posts/actions";
+import WavesOpacity from "./assets/wavesOpacity.svg";
 
 axios.defaults.baseURL = config.SERVER_URL;
 
@@ -21,17 +22,18 @@ const App = ({ fetchTags, tagList, appLoading }) => {
   return (
     <div className="app">
       <Header />
-      {/* <div className="content"> */}
-      {appLoading && <div className="spinner">Loading</div>}
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Posts} />
-          <Route exact path="/:id" component={PostView} />
-          {/* <Route component={PageNotFound} /> */}
-        </Switch>
-      </BrowserRouter>
-      {/* </div> */}
+      <div className="content" style={{ position: "relative", zIndex: "1" }}>
+        {appLoading && <div className="spinner">Loading</div>}
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Posts} />
+            <Route exact path="/:id" component={PostView} />
+            {/* <Route component={PageNotFound} /> */}
+          </Switch>
+        </BrowserRouter>
+      </div>
       <Footer />
+      <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
       <Icon className="code-icon" type="tag" />
     </div>
   );

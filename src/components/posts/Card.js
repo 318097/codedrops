@@ -7,19 +7,19 @@ import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   break-inside: avoid-column;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   position: relative;
   .card {
     position: relative;
     cursor: pointer;
     min-height: 115px;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: 1px solid ${colors.strokeOne};
-    box-shadow: 2px 2px 4px #e0e0e0;
+    /* box-shadow: 2px 2px 4px #e0e0e0; */
     padding: 20px 10px;
 
     &:hover {
@@ -63,7 +63,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
 
   return (
     <Wrapper style={customStyle} onClick={handleClick}>
-      <MCard>
+      <MCard curved>
         <h3 className="title">{title}</h3>
         {type === "DROP" && (
           <div

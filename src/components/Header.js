@@ -11,7 +11,8 @@ const StyledHeader = styled.header`
   top: 0;
   justify-content: space-around;
   align-items: center;
-  /* padding: 8px; */
+  padding: 4px 0 6px;
+  /* background: white; */
   width: 98%;
   margin: 0 auto;
   /* h2 {
@@ -41,7 +42,7 @@ const Header = () => (
     <Logo />
     {/* <span className="code custom-header">Code</span>drops */}
 
-    {/* <Filters /> */}
+    <Filters />
   </StyledHeader>
 );
 

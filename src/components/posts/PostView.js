@@ -15,8 +15,8 @@ const CardWrapper = styled.div`
     padding: 12px 0 4px;
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
-    box-shadow: 5px 5px 10px #e0e0e0;
+    /* border-radius: 4px; */
+    /* box-shadow: 5px 5px 10px #e0e0e0; */
     .title {
       text-align: center;
       margin: 10px;
