@@ -83,7 +83,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
-        <Card>
+        <Card bottomLine>
           <h3 className="title">{title}</h3>
           <div
             className="content"
