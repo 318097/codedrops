@@ -8,17 +8,18 @@ import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 const Wrapper = styled.div`
   break-inside: avoid-column;
   margin-bottom: 8px;
+  position: relative;
   .card {
     position: relative;
     cursor: pointer;
     min-height: 115px;
-    border-radius: 2px;
+    border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: 1px solid ${colors.strokeOne};
-    box-shadow: 4px 4px 6px #e0e0e0;
+    box-shadow: 2px 2px 4px #e0e0e0;
     padding: 20px 10px;
 
     &:hover {
@@ -39,12 +40,12 @@ const Wrapper = styled.div`
       font-size: 0.8rem;
     }
   }
-  /* .bulb-icon {
+  .bulb-icon {
     position: absolute;
     top: 4px;
     right: 4px;
     z-index: 1;
-  } */
+  }
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {} }) => {
@@ -84,9 +85,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
           ))}
         </div>
       )}
-      {/* {type === "DROP" && (
-          <Icon size={12} className="bulb-icon" type="bulb" />
-        )} */}
+      {type === "DROP" && <Icon size={12} className="bulb-icon" type="bulb" />}
     </Wrapper>
   );
 };

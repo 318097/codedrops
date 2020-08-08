@@ -34,7 +34,7 @@ const PageWrapper = styled.div`
     }
   }
   .notes-wrapper {
-    columns: 240px;
+    columns: 220px;
     column-gap: 12px;
   }
 `;

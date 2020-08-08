@@ -1,15 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "@codedrops/react-ui";
+import colors, { Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  padding: 4px 0;
   a {
-    margin: 0 2px;
     cursor: pointer;
+    .icon {
+      padding: 8px;
+      &:hover {
+        background: ${colors.strokeTwo};
+      }
+    }
   }
 `;
 

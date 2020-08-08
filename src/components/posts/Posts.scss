@@ -1,6 +1,6 @@
 section#posts {
   flex: 1 1 auto;
-  padding: 0;
+  padding: 0 2%;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -21,9 +21,11 @@ section#posts {
 }
 
 #view-post {
+  padding: 0 2%;
   display: flex;
   overflow-y: auto;
   flex-direction: column;
+  flex: 1 1 auto;
   .post-wrapper {
     margin-bottom: 30px;
   }
