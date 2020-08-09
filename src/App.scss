@@ -18,3 +18,29 @@ div.filters {
     flex-direction: column;
   }
 }
+pre,
+pre code,
+code {
+  font-size: 1rem;
+  color: $bar;
+}
+
+code {
+  background: $orchid;
+  padding: 2px;
+  border-radius: 2px;
+  color: $white;
+  padding: 3px 2px 1px;
+}
+
+pre {
+  border: 1px solid $strokeOne;
+  background: $feather;
+  border-radius: 4px;
+  padding: 4px 8px;
+  line-height: 1.4rem;
+  & > code {
+    cursor: pointer;
+    background: none;
+  }
+}

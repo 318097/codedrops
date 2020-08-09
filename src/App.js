@@ -3,14 +3,17 @@ import axios from "axios";
 import { Switch, BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.scss";
+
 import config from "./config";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/posts/Posts";
+import Contacts from "./components/Contact";
 import PostView from "./components/posts/PostView";
 import { Icon } from "@codedrops/react-ui";
 import { fetchTags } from "./store/posts/actions";
 import WavesOpacity from "./assets/wavesOpacity.svg";
+import "@codedrops/react-ui/dist/styles/custom-styles.scss";
 
 axios.defaults.baseURL = config.SERVER_URL;
 
@@ -26,6 +29,7 @@ const App = ({ fetchTags, tagList, appLoading }) => {
         {appLoading && <div className="spinner">Loading</div>}
         <BrowserRouter>
           <Switch>
+            <Route exact path="/contact" component={Contacts} />
             <Route exact path="/" component={Posts} />
             <Route exact path="/:id" component={PostView} />
             {/* <Route component={PageNotFound} /> */}

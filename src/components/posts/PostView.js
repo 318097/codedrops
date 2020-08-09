@@ -28,26 +28,6 @@ const CardWrapper = styled.div`
       padding: 20px 10px;
       font-size: 1.2rem;
       line-height: 1.6;
-      code {
-        background: ${colors.orchid};
-        color: ${colors.white};
-        padding: 2px 4px 0;
-        border-radius: 2px;
-        font-size: 1rem;
-      }
-      pre {
-        padding: 4px;
-        border: 0.5px solid ${colors.strokeTwo};
-        border-radius: 2px;
-        font-size: 1rem;
-        overflow-x: auto;
-        background: ${colors.bg};
-        code {
-          font-size: 1rem;
-          background: none;
-          color: ${colors.bar};
-        }
-      }
     }
     .tagList {
       padding-left: 4px;
