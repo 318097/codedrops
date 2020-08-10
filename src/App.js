@@ -8,7 +8,6 @@ import config from "./config";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/posts/Posts";
-import Contacts from "./components/Contact";
 import PostView from "./components/posts/PostView";
 import { Icon } from "@codedrops/react-ui";
 import { fetchTags } from "./store/posts/actions";
