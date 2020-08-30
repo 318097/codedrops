@@ -8,6 +8,7 @@ const connectToDb = async () => await MongoClient.connect(config.DB);
 
 exports.handler = async (event, context) => {
   try {
+    console.log(`Mongo URI: ${process.env.REACT_APP_DB_URL}`);
     const db = await connectToDb();
     const collection = db.collection("posts");
 
@@ -20,7 +21,7 @@ exports.handler = async (event, context) => {
     } = event.queryStringParameters;
 
     const aggregation = {
-      collectionId,
+      // collectionId,
       deleted: false,
       isAdmin: true,
       status: "POSTED",
