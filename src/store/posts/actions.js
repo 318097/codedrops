@@ -30,13 +30,14 @@ export const fetchTags = () => async (dispatch) => {
 export const fetchPosts = () => async (dispatch, getState) => {
   try {
     dispatch(setAppLoading(true));
+    const url = config.IS_SERVER ? `/posts` : `/getPosts`;
     const {
       posts: { filters, posts },
     } = getState();
     const updatedPosts = filters && filters.page > 1 ? [...posts] : [];
     const {
       data: { posts: data, meta },
-    } = await axios.get(`/posts?collectionId=${config.COLLECTION_ID}`, {
+    } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`, {
       params: filters,
     });
     updatedPosts.push(...data);
@@ -67,18 +68,20 @@ export const setFilter = (filterUpdate, resetPage = true) => async (
 
 export const getPostById = (postId) => async (dispatch, getState) => {
   dispatch(setAppLoading(true));
+  const url = config.IS_SERVER ? `/posts/${postId}` : `/getPostById`;
   const {
     data: { post },
-  } = await axios.get(`/posts/${postId}?collectionId=${config.COLLECTION_ID}`);
+  } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`);
 
   dispatch({ type: GET_POST_BY_ID, payload: post });
   dispatch(setAppLoading(false));
 };
 
 export const fetchRelatedPosts = (postId) => async (dispatch, getState) => {
+  const url = config.IS_SERVER ? `/posts/random` : `/getRandomPosts`;
   const {
     data: { posts },
-  } = await axios.get(`/posts/random?collectionId=${config.COLLECTION_ID}`);
+  } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`);
 
   dispatch({ type: GET_RELATED_POSTS, payload: posts });
 };
