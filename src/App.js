@@ -24,7 +24,7 @@ const App = ({ fetchTags, tagList, appLoading }) => {
     <div className="app" id="react-ui">
       <Header />
       <div className="content" style={{ position: "relative", zIndex: "1" }}>
-        {appLoading && <div className="spinner">Loading</div>}
+        {appLoading && <div className="spinner" />}
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Posts} />

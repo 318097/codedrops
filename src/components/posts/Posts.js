@@ -40,7 +40,7 @@ const PageWrapper = styled.div`
   }
 `;
 
-const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
+const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
   useEffect(() => {
     if (!posts.length) fetchPosts();
   }, []);
@@ -80,17 +80,18 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters }) => {
             </div>
           )}
         </Fragment>
-      ) : (
+      ) : appLoading ? null : (
         <div className="not-found">No posts found.</div>
       )}
     </section>
   );
 };
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, app: { appLoading } }) => ({
   posts: posts.posts ? posts.posts : [],
   meta: posts.meta,
   filters: posts.filters,
+  appLoading,
 });
 
 const mapDispatchToProps = {
