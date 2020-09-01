@@ -53,7 +53,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
         placeholder="Search..."
         defaultValue={search}
         onSearch={(value) => setFilter({ search: value })}
-        style={{ marginRight: "4px" }}
+        style={{ marginRight: "4px", width: "160px" }}
       />
       {/* <Select
         mode="multiple"

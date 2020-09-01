@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   .card {
     position: relative;
     cursor: pointer;
-    min-height: 115px;
+    /* min-height: 115px; */
     /* border-radius: 4px; */
     width: 100%;
     box-sizing: border-box;
@@ -28,12 +28,16 @@ const Wrapper = styled.div`
     .title {
       color: ${colors.iron};
       text-align: center;
-      font-weight: normal;
+      font-weight: bold;
+      padding: 30px 0 20px;
+    }
+    .title.post {
+      padding: 40px 0;
+      font-size: 1.8rem;
     }
   }
   .tagList {
-    margin-top: 4px;
-    margin-left: 2px;
+    margin: 0 2px;
     .tag {
       border-radius: 2px;
       padding: 3px 2px 0px 2px;
@@ -54,7 +58,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
 
   const handleClick = () => history.push(`/${_id}`);
 
-  const handleTagClick = (value) => (event) => {
+  const handleTagClick = (event, value) => {
     event.stopPropagation();
     history.push(`/posts?tags=${value}`);
   };
@@ -62,10 +66,10 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
   if (!post) return <Fragment />;
 
   return (
-    <Wrapper style={customStyle} onClick={handleClick}>
-      <MCard curved>
-        <h3 className="title">{title}</h3>
-        {type === "DROP" && (
+    <Wrapper style={customStyle}>
+      <MCard curved onClick={handleClick}>
+        <h3 className={`title ${type === "POST" ? "post" : ""}`}>{title}</h3>
+        {["DROP", "QUIZ"].includes(type) && (
           <div
             className="content"
             dangerouslySetInnerHTML={{ __html: marked(content) }}
@@ -76,7 +80,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
         <div className="tagList">
           {tags.map((tag, index) => (
             <Tag
-              onClick={handleTagClick(tag)}
+              onClick={(e) => handleTagClick(e, tag)}
               key={index}
               color={tagColors[tag] ? tagColors[tag] : colors.steel}
             >
