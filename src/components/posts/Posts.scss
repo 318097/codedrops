@@ -18,7 +18,7 @@ section {
   .actions-row {
     display: flex;
     justify-content: center;
-    margin-top: 12px;
+    margin-bottom: 12px;
   }
 }
 
@@ -28,7 +28,13 @@ section {
   flex-direction: column;
   flex: 1 1 auto;
   .post-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 80px;
+    &:after {
+      display: block;
+      content: "~~~";
+      font-size: 3.4rem;
+      text-align: center;
+    }
   }
   .related-post {
     .posts {
@@ -44,6 +50,10 @@ section {
     .post-wrapper {
       width: 500px;
       height: 500px;
+      &:after {
+        display: none;
+        margin-bottom: 0;
+      }
     }
     .related-post {
       width: 215px;

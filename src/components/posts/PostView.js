@@ -12,11 +12,9 @@ const CardWrapper = styled.div`
   .card {
     border: 1px solid ${colors.strokeOne};
     height: 100%;
-    padding: 12px 0 4px;
+    padding: 20px 0 10px;
     display: flex;
     flex-direction: column;
-    /* border-radius: 4px; */
-    /* box-shadow: 5px 5px 10px #e0e0e0; */
     .title {
       text-align: center;
       margin: 10px;
