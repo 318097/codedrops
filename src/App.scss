@@ -1,10 +1,10 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 
-.code-icon {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-}
+// .code-icon {
+//   position: absolute;
+//   bottom: 4px;
+//   right: 4px;
+// }
 
 div.filters {
   display: flex;
@@ -24,7 +24,6 @@ code {
 
 code {
   background: $orchid;
-  padding: 2px;
   border-radius: 2px;
   color: $white;
   padding: 3px 2px 1px;
@@ -38,6 +37,7 @@ pre {
   line-height: 1.4rem;
   & > code {
     cursor: pointer;
+    padding: 0;
     background: none;
   }
 }
@@ -78,3 +78,12 @@ pre {
   }
 }
 /* Spinnner */
+
+@media screen and (max-width: 500px) {
+  pre,
+  code,
+  pre code {
+    font-size: 1.4rem !important;
+    line-height: 1.6rem !important;
+  }
+}

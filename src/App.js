@@ -35,7 +35,7 @@ const App = ({ fetchTags, tagList, appLoading }) => {
       </div>
       <Footer />
       <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
-      <Icon className="code-icon" type="tag" />
+      {/* <Icon className="code-icon" type="tag" /> */}
     </div>
   );
 };
