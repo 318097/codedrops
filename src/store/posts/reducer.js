@@ -5,13 +5,14 @@ import {
   GET_POST_BY_ID,
   GET_RELATED_POSTS,
 } from "./constants";
+import { tags, tagColors } from "../../data";
 import config from "../../config";
 
 const initialState = {
   posts: [],
   meta: null,
-  tags: [],
-  tagColors: {},
+  tags,
+  tagColors,
   selectedPost: null,
   filters: {
     search: "",
