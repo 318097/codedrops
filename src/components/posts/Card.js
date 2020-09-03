@@ -53,10 +53,10 @@ const Wrapper = styled.div`
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {} }) => {
-  const { title = "", content = "", type = "DROP", tags = [], _id } =
+  const { title = "", content = "", type = "DROP", tags = [], _id, slug } =
     post || {};
 
-  const handleClick = () => history.push(`/${_id}`);
+  const handleClick = () => history.push(`/${slug}`);
 
   const handleTagClick = (event, value) => {
     event.stopPropagation();
