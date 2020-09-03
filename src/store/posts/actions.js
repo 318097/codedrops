@@ -1,4 +1,5 @@
 import axios from "axios";
+import { get, find } from "lodash";
 import { setAppLoading } from "../app/actions";
 import config from "../../config";
 import {
@@ -69,10 +70,21 @@ export const setFilter = (filterUpdate, resetPage = true) => async (
 export const getPostById = (postId) => async (dispatch, getState) => {
   try {
     dispatch(setAppLoading(true));
-    const url = config.IS_SERVER ? `/posts/${postId}` : `/getPostById`;
-    const {
-      data: { post },
-    } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`);
+    const { posts } = getState();
+    const postList = get(posts, "posts", []);
+
+    let post = find(
+      postList,
+      (post) => post.slug === postId || post._id === postId
+    );
+
+    if (!post) {
+      const url = config.IS_SERVER ? `/posts/${postId}` : `/getPostById`;
+      const { data } = await axios.get(
+        `${url}?collectionId=${config.COLLECTION_ID}`
+      );
+      post = get(data, "post", {});
+    }
 
     dispatch({ type: GET_POST_BY_ID, payload: post });
   } catch (err) {

@@ -57,7 +57,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
 
   if (!post) return null;
 
-  const { title, content, tags = [], _id } = post;
+  const { title, content, tags = [], _id } = post || {};
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
