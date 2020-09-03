@@ -5,6 +5,7 @@ import {
   GET_POST_BY_ID,
   GET_RELATED_POSTS,
 } from "./constants";
+import config from "../../config";
 
 const initialState = {
   posts: [],
@@ -15,7 +16,7 @@ const initialState = {
   filters: {
     search: "",
     page: 1,
-    limit: 25,
+    limit: config.POST_COUNT,
     tags: [],
   },
 };

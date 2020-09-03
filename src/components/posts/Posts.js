@@ -6,6 +6,7 @@ import colors, { Button } from "@codedrops/react-ui";
 import { fetchPosts, setFilter } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
+import config from "../../config";
 
 const PageWrapper = styled.div`
   margin-bottom: 25px;
@@ -47,9 +48,14 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 
   const { page = 1 } = filters;
 
-  const noteChunks = Array(Math.ceil(posts.length / 25))
+  const noteChunks = Array(Math.ceil(posts.length / config.POST_COUNT))
     .fill(null)
-    .map((_, index) => posts.slice(index * 25, index * 25 + 25));
+    .map((_, index) =>
+      posts.slice(
+        index * config.POST_COUNT,
+        index * config.POST_COUNT + config.POST_COUNT
+      )
+    );
 
   return (
     <section id="posts">
@@ -67,7 +73,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
           )}
         </PageWrapper>
       ))}
-      {meta && page * 25 <= meta.count && (
+      {meta && page * config.POST_COUNT <= meta.count && (
         <div className="actions-row">
           <Button
             size="lg"

@@ -20,6 +20,7 @@ const config = {
   SERVER_URL,
   COLLECTION_ID: REACT_APP_COLLECTION_ID || "omway2fLvhXGnKhwtABwP4",
   IS_SERVER: REACT_APP_SRC !== "FIREBASE",
+  POST_COUNT: 25,
 };
 
 export default config;
