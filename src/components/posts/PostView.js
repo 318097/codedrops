@@ -51,8 +51,8 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
   }, [match.params.id]);
 
   const handleTagClick = (value) => (event) => {
-    event.stopPropagation();
-    history.push(`/?tags=${value}`);
+    // event.stopPropagation();
+    // history.push(`/posts/?tags=${value}`);
   };
 
   if (!post) return null;
@@ -83,7 +83,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
           size={16}
           background
           className="back-icon"
-          onClick={() => history.push("/")}
+          onClick={() => history.push("/posts")}
           type="caret-left"
         />
       </CardWrapper>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Switch, BrowserRouter, Route } from "react-router-dom";
+import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.scss";
 
@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/posts/Posts";
 import PostView from "./components/posts/PostView";
+import PageNotFound from "./components/PageNotFound";
 import { Icon } from "@codedrops/react-ui";
 import { fetchTags } from "./store/posts/actions";
 import WavesOpacity from "./assets/wavesOpacity.svg";
@@ -27,9 +28,10 @@ const App = ({ fetchTags, tagList, appLoading }) => {
       <div className="content" style={{ position: "relative", zIndex: "1" }}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Posts} />
-            <Route exact path="/:id" component={PostView} />
-            {/* <Route component={PageNotFound} /> */}
+            <Route exact path="/" render={() => <Redirect to="/posts" />} />
+            <Route exact path="/posts" component={Posts} />
+            <Route exact path="/posts/:id" component={PostView} />
+            <Route component={PageNotFound} />
           </Switch>
         </BrowserRouter>
       </div>

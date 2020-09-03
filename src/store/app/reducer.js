@@ -5,7 +5,7 @@ import {
 } from "./constants";
 
 const initialState = {
-  appLoading: true,
+  appLoading: false,
   appNotification: null,
 };
 

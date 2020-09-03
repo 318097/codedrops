@@ -56,11 +56,10 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
   const { title = "", content = "", type = "DROP", tags = [], _id, slug } =
     post || {};
 
-  const handleClick = () => history.push(`/${slug}`);
+  const handleClick = () => history.push(`/posts/${slug}`);
 
   const handleTagClick = (event, value) => {
-    event.stopPropagation();
-    history.push(`/posts?tags=${value}`);
+    // history.push(`/posts?tags=${value}`);
   };
 
   if (!post) return <Fragment />;

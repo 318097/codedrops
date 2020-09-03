@@ -53,35 +53,29 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 
   return (
     <section id="posts">
-      {posts.length ? (
-        <Fragment>
-          {noteChunks.map((chunk, index) => (
-            <PageWrapper key={index}>
-              <div className="notes-wrapper">
-                {chunk.map((post) => (
-                  <Card key={post._id} post={post} />
-                ))}
-              </div>
-              {index < noteChunks.length - 1 && (
-                <div className="page-splitter">
-                  <span>{`Page: ${index + 2}`}</span>
-                </div>
-              )}
-            </PageWrapper>
-          ))}
-          {meta && page * 25 <= meta.count && (
-            <div className="actions-row">
-              <Button
-                size="lg"
-                onClick={() => setFilter({ page: page + 1 }, false)}
-              >
-                Load
-              </Button>
+      {noteChunks.map((chunk, index) => (
+        <PageWrapper key={index}>
+          <div className="notes-wrapper">
+            {chunk.map((post) => (
+              <Card key={post._id} post={post} />
+            ))}
+          </div>
+          {index < noteChunks.length - 1 && (
+            <div className="page-splitter">
+              <span>{`Page: ${index + 2}`}</span>
             </div>
           )}
-        </Fragment>
-      ) : appLoading ? null : (
-        <div className="not-found">No posts found.</div>
+        </PageWrapper>
+      ))}
+      {meta && page * 25 <= meta.count && (
+        <div className="actions-row">
+          <Button
+            size="lg"
+            onClick={() => setFilter({ page: page + 1 }, false)}
+          >
+            Load
+          </Button>
+        </div>
       )}
     </section>
   );
