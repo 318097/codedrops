@@ -24,18 +24,18 @@ const App = ({ fetchTags, tagList, appLoading }) => {
   return (
     <div className="app" id="react-ui">
       {appLoading && <div className="spinner" />}
-      <Header />
-      <div className="content" style={{ position: "relative", zIndex: "1" }}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <div className="content" style={{ position: "relative", zIndex: "1" }}>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/posts" />} />
             <Route exact path="/posts" component={Posts} />
             <Route exact path="/posts/:id" component={PostView} />
             <Route component={PageNotFound} />
           </Switch>
-        </BrowserRouter>
-      </div>
-      <Footer />
+        </div>
+        <Footer />
+      </BrowserRouter>
       <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
       {/* <Icon className="code-icon" type="tag" /> */}
     </div>

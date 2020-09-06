@@ -1,6 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import colors from "@codedrops/react-ui";
+
 import Filters from "./posts/Filters";
 import Logo from "../assets/code-drops";
 
@@ -37,13 +39,15 @@ const StyledHeader = styled.header`
   } */
 `;
 
-const Header = () => (
-  <StyledHeader>
-    <Logo />
-    {/* <span className="code custom-header">Code</span>drops */}
+const Header = ({ location }) => {
+  return (
+    <StyledHeader>
+      <Logo />
+      {/* <span className="code custom-header">Code</span>drops */}
 
-    <Filters />
-  </StyledHeader>
-);
+      {location.pathname === "/posts" && <Filters />}
+    </StyledHeader>
+  );
+};
 
-export default Header;
+export default withRouter(Header);

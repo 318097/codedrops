@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Tag, Input, Select } from "antd";
-
+import { pick, get } from "lodash";
 import { connect } from "react-redux";
 // import { withRouter } from "react-router-dom";
 import { setFilter } from "../../store/posts/actions";
@@ -69,7 +69,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
           </Option>
         ))}
       </Select> */}
-      {postCount > 0 && (
+      {meta && (
         <div>
           Showing {postCount} of {meta.count} posts.
         </div>
@@ -77,12 +77,14 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
     </div>
   );
 };
-const mapStateToProps = ({ posts }) => ({
-  meta: posts.meta,
-  tagList: posts.tags,
-  filters: posts.filters,
-  postCount: posts.length,
-});
+const mapStateToProps = ({ posts }) => {
+  const data = pick(posts, ["meta", "filters"]);
+
+  return {
+    ...data,
+    postCount: get(posts, "posts.length", 0),
+  };
+};
 
 const mapDispatchToProps = {
   setFilter,
