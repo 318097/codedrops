@@ -17,9 +17,11 @@ import WavesOpacity from "./assets/wavesOpacity.svg";
 axios.defaults.baseURL = config.SERVER_URL;
 
 const App = ({ fetchTags, tagList, appLoading }) => {
-  // useEffect(() => {
-  //   if (!tagList.length) fetchTags();
-  // }, []);
+  useEffect(() => {
+    const lastVisited = localStorage.getItem("last-access");
+    const today = new Date().setHours(23, 59, 59, 999);
+    if (today > lastVisited) localStorage.setItem("last-access", today);
+  }, []);
 
   return (
     <div className="app" id="react-ui">
