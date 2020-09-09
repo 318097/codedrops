@@ -12,16 +12,13 @@ const Wrapper = styled.div`
   .card {
     position: relative;
     cursor: pointer;
-    /* min-height: 115px; */
-    /* border-radius: 4px; */
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: 1px solid ${colors.strokeOne};
-    /* box-shadow: 2px 2px 4px #e0e0e0; */
     padding: 20px 10px;
-
+    overflow: hidden;
     &:hover {
       background: ${colors.featherDark};
     }
@@ -36,13 +33,27 @@ const Wrapper = styled.div`
       font-size: 1.8rem;
     }
   }
-  .tagList {
+  .tag-list {
     margin: 0 2px;
     .tag {
       border-radius: 2px;
       padding: 3px 2px 0px 2px;
       font-size: 0.8rem;
     }
+  }
+  .live-id {
+    border-radius: 30%;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 32px;
+    width: 32px;
+    font-size: 0.8rem;
+    background: ${colors.strokeOne};
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    padding: 8px;
   }
   .bulb-icon {
     position: absolute;
@@ -53,8 +64,15 @@ const Wrapper = styled.div`
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {} }) => {
-  const { title = "", content = "", type = "DROP", tags = [], _id, slug } =
-    post || {};
+  const {
+    title = "",
+    content = "",
+    type = "DROP",
+    tags = [],
+    _id,
+    slug,
+    liveId,
+  } = post || {};
 
   const handleClick = () => history.push(`/posts/${slug}`);
 
@@ -74,9 +92,10 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
             dangerouslySetInnerHTML={{ __html: marked(content) }}
           ></div>
         )}
+        <div className="live-id">{liveId}</div>
       </MCard>
       {!!tags.length && (
-        <div className="tagList">
+        <div className="tag-list">
           {tags.map((tag, index) => (
             <Tag
               onClick={(e) => handleTagClick(e, tag)}
@@ -88,6 +107,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
           ))}
         </div>
       )}
+
       {type === "DROP" && <Icon size={12} className="bulb-icon" type="bulb" />}
     </Wrapper>
   );
