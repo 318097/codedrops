@@ -65,8 +65,8 @@ const Wrapper = styled.div`
     font-size: 0.8rem;
     background: ${colors.strokeOne};
     position: absolute;
-    bottom: -8px;
-    right: -8px;
+    bottom: -6px;
+    right: -2px;
     padding: 8px;
   }
   .new-post {
