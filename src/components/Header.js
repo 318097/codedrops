@@ -4,7 +4,7 @@ import styled from "styled-components";
 import colors from "@codedrops/react-ui";
 
 import Filters from "./posts/Filters";
-import Logo from "../assets/code-drops";
+import Logo from "../assets/logo-v3";
 
 const StyledHeader = styled.header`
   display: flex;
