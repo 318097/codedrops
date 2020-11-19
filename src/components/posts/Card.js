@@ -7,11 +7,11 @@ import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 
 const lastVisited = localStorage.getItem("last-access");
 
-const isNew = (createdAt) => {
-  if (!lastVisited) return;
+const isNew = (publishedAt) => {
+  if (!lastVisited || !publishedAt) return;
 
-  const createdAtTime = new Date(createdAt).getTime();
-  return createdAtTime > lastVisited;
+  const publishedAtTime = new Date(publishedAt).getTime();
+  return publishedAtTime > lastVisited;
 };
 
 const Wrapper = styled.div`
@@ -94,7 +94,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
     _id,
     slug,
     liveId,
-    createdAt,
+    publishedAt,
   } = post || {};
 
   const handleClick = () => history.push(`/posts/${slug}`);
@@ -105,7 +105,8 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
 
   if (!post) return <Fragment />;
 
-  const isNewPost = isNew(createdAt);
+  const isNewPost = isNew(publishedAt);
+
   return (
     <Wrapper style={customStyle}>
       <MCard curved onClick={handleClick}>
