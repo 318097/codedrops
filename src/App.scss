@@ -1,11 +1,5 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 
-// .code-icon {
-//   position: absolute;
-//   bottom: 4px;
-//   right: 4px;
-// }
-
 div.filters {
   display: flex;
   align-items: center;
@@ -14,19 +8,12 @@ div.filters {
     flex-direction: column;
   }
 }
-pre,
-pre code,
-code {
-  font-size: 1rem;
-  line-height: 1.2rem;
-  color: $bar;
-}
 
 code {
   background: $orchid;
   border-radius: 2px;
   color: $white;
-  padding: 3px 2px 1px;
+  padding: 1px 2px;
 }
 
 pre {
@@ -34,11 +21,13 @@ pre {
   background: $feather;
   border-radius: 4px;
   padding: 4px 8px;
-  line-height: 1.4rem;
+  line-height: 1.6rem;
   & > code {
     cursor: pointer;
     padding: 0;
     background: none;
+    font-size: 1.2rem;
+    color: $bar;
   }
 }
 
@@ -86,12 +75,3 @@ pre {
   }
 }
 /* Spinnner */
-
-@media screen and (max-width: 500px) {
-  pre,
-  code,
-  pre code {
-    font-size: 1.4rem !important;
-    line-height: 1.6rem !important;
-  }
-}
