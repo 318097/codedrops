@@ -48,6 +48,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
   return (
     <div className="filters">
       <Search
+        size="small"
         allowClear
         className="field-width"
         placeholder="Search..."

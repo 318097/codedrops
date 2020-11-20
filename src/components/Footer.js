@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import colors, { Icon } from "@codedrops/react-ui";
+import { Icon } from "@codedrops/react-ui";
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,11 +9,9 @@ const Wrapper = styled.div`
   padding: 4px 0;
   a {
     cursor: pointer;
+    position: relative;
     .icon {
-      padding: 8px;
-      &:hover {
-        background: ${colors.strokeTwo};
-      }
+      margin: 0;
     }
   }
 `;

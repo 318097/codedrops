@@ -81,8 +81,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
         </Card>
         <Icon
           size={16}
-          background
-          className="back-icon"
+          className="back-icon icon"
           onClick={() => history.push("/posts")}
           type="caret-left"
         />

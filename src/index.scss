@@ -19,6 +19,10 @@
   font-family: Cascadia-Regular;
 }
 
+.ant-input {
+  font-size: 10px; // Search input text
+}
+
 html,
 html body {
   font-size: 10px;
@@ -31,5 +35,13 @@ html body {
   h2,
   h3 {
     font-family: Cascadia-Bold;
+  }
+  .icon {
+    border-radius: 0;
+    padding: 8px;
+    &:hover {
+      border-radius: 50%;
+      background: $strokeTwo;
+    }
   }
 }
