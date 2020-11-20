@@ -18,7 +18,7 @@ const CardWrapper = styled.div`
     .title {
       text-align: center;
       margin: 10px;
-      font-size: 1.4rem;
+      font-size: 2rem;
     }
     .content {
       flex: 1 1 auto;

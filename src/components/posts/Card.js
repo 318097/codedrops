@@ -34,8 +34,8 @@ const Wrapper = styled.div`
     .title {
       color: ${colors.iron};
       text-align: center;
-      font-weight: bold;
       padding: 30px 0 20px;
+      font-size: 1.6rem;
     }
     .title.post {
       padding: 40px 0;

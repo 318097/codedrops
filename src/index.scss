@@ -1,13 +1,28 @@
 @import "@codedrops/react-ui/dist/styles/defaults.scss";
 
+@font-face {
+  font-family: Cascadia-Regular;
+  src: url("./assets/fonts/CascadiaMono-Regular.woff2");
+}
+
+@font-face {
+  font-family: Cascadia-Light;
+  src: url("./assets/fonts/CascadiaMonoPL-Light.woff2");
+}
+
+@font-face {
+  font-family: Cascadia-Bold;
+  src: url("./assets/fonts/CascadiaMonoPL-Bold.woff2");
+}
+
 * {
-  font-family: monospace;
+  font-family: Cascadia-Regular;
 }
 
 html,
 html body {
   font-size: 10px;
-  // font-family: Font5;
+  font-family: Cascadia-Regular;
   // background: $bg;
   background: url("./assets/background/grey.png");
   height: 100vh;
@@ -15,6 +30,6 @@ html body {
   h1,
   h2,
   h3 {
-    font-weight: bold;
+    font-family: Cascadia-Bold;
   }
 }
