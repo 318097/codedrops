@@ -86,7 +86,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
           type="caret-left"
         />
       </CardWrapper>
-      <RelatedPosts postId={_id} />
+      <RelatedPosts postId={_id} tags={tags} />
     </section>
   );
 };

@@ -93,12 +93,14 @@ export const getPostById = (postId) => async (dispatch, getState) => {
   }
 };
 
-export const fetchRelatedPosts = (postId) => async (dispatch, getState) => {
+export const fetchRelatedPosts = ({ postId, tags }) => async (dispatch) => {
   try {
     const url = config.IS_SERVER ? `/posts/random` : `/getRandomPosts`;
     const {
       data: { posts },
-    } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`);
+    } = await axios.get(`${url}`, {
+      params: { collectionId: config.COLLECTION_ID, tags, postId },
+    });
 
     dispatch({ type: GET_RELATED_POSTS, payload: posts });
   } catch (err) {}

@@ -4,16 +4,21 @@ import { fetchRelatedPosts } from "../../store/posts/actions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-const RelatedPosts = ({ postId, relatedPosts = [], fetchRelatedPosts }) => {
+const RelatedPosts = ({
+  postId,
+  tags,
+  relatedPosts = [],
+  fetchRelatedPosts,
+}) => {
   useEffect(() => {
-    fetchRelatedPosts(postId);
+    fetchRelatedPosts({ postId, tags });
   }, [postId]);
 
   return (
     <div className="related-post">
       <h3 className="text-center">Related Posts</h3>
       <div className="posts">
-        {relatedPosts.slice(0, 3).map((post) => (
+        {relatedPosts.map((post) => (
           <Card key={post._id} post={post} />
         ))}
       </div>
