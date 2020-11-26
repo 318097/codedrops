@@ -18,11 +18,10 @@ axios.defaults.baseURL = config.SERVER_URL;
 
 const App = ({ fetchTags, tagList, appLoading }) => {
   useEffect(() => {
-    return () => {
-      const lastVisited = localStorage.getItem("last-access");
-      const today = new Date().setHours(23, 59, 59, 999);
-      if (today > lastVisited) localStorage.setItem("last-access", today);
-    };
+    const lastVisited = localStorage.getItem("last-access");
+    const now = new Date().getTime();
+    if (lastVisited + 86400 < now || !lastVisited)
+      localStorage.setItem("last-access", now);
   }, []);
 
   return (

@@ -12,7 +12,7 @@ const CardWrapper = styled.div`
   .card {
     border: 1px solid ${colors.strokeOne};
     height: 100%;
-    padding: 20px 0 10px;
+    padding: 10px 0 2px;
     display: flex;
     flex-direction: column;
     .title {
@@ -63,19 +63,28 @@ const CardWrapper = styled.div`
         }
       }
     }
-    .tagList {
-      padding-left: 4px;
-      .tag {
-        padding: 2px 4px 0;
-        margin-right: 3px;
-        border-radius: 0;
+    .actions {
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .tag-list {
+        .tag {
+          padding: 2px 4px 0;
+          margin-right: 3px;
+          border-radius: 0;
+        }
+      }
+      .date {
+        font-size: 1rem;
+        color: $bar;
       }
     }
   }
   .back-icon {
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 0px;
+    left: 0px;
     z-index: 1;
   }
 `;
@@ -93,8 +102,15 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
 
   if (!post) return null;
 
-  const { title, content, tags = [], _id, type, chainedPosts = [] } =
-    post || {};
+  const {
+    title,
+    content,
+    tags = [],
+    _id,
+    type,
+    chainedPosts = [],
+    publishedAt,
+  } = post || {};
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
@@ -123,16 +139,22 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
               dangerouslySetInnerHTML={{ __html: marked(content) }}
             />
           )}
-          <div className="tagList">
-            {tags.map((tag, index) => (
-              <Tag
-                onClick={handleTagClick(tag)}
-                key={index}
-                color={tagColors[tag] ? tagColors[tag] : colors.steel}
-              >
-                {tag.toUpperCase()}
-              </Tag>
-            ))}
+          <div className="actions">
+            <div className="tag-list">
+              {tags.map((tag, index) => (
+                <Tag
+                  onClick={handleTagClick(tag)}
+                  key={index}
+                  color={tagColors[tag] ? tagColors[tag] : colors.steel}
+                >
+                  {tag.toUpperCase()}
+                </Tag>
+              ))}
+            </div>
+            <div className="date">
+              {publishedAt &&
+                `Published on: ${new Date(publishedAt).toLocaleDateString()}`}
+            </div>
           </div>
         </Card>
         <Icon
