@@ -1,77 +1,93 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment, useState } from "react";
 import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
-import colors, { Card, Tag, Icon } from "@codedrops/react-ui";
+import colors, { Card, Tag, Icon, Button } from "@codedrops/react-ui";
 
 const CardWrapper = styled.div`
   position: relative;
   .card {
-    border: 1px solid ${colors.strokeOne};
+    border: 1px solid ${colors.bg};
+    box-shadow: ${colors.bg} 3px 3px 3px;
     height: 100%;
     padding: 10px 0 2px;
     display: flex;
     flex-direction: column;
+    &:hover {
+      background: ${colors.white};
+    }
     .title {
       text-align: center;
-      margin: 10px;
+      padding: 0 10px;
+      margin-bottom: 10px;
       font-size: 2rem;
     }
-    .content {
+    .content-wrapper {
       flex: 1 1 auto;
       overflow: auto;
-      padding: 20px 10px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      .chain-item {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 16px;
-        .chain-item-header {
+      padding: 0 10px;
+      .content {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        .chain-item {
           display: flex;
-          align-items: center;
-          margin-bottom: 8px;
-          .chain-item-id {
-            background: ${colors.strokeOne};
-            border-radius: 50%;
-            display: inline-flex;
+          flex-direction: column;
+          margin-bottom: 16px;
+          .chain-item-header {
+            display: flex;
             align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.4s;
-            margin-right: 10px;
-            position: relative;
-            top: 3px;
+            margin-bottom: 8px;
+            .chain-item-id {
+              background: ${colors.strokeOne};
+              border-radius: 50%;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 22px;
+              height: 22px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: 0.4s;
+              margin-right: 10px;
+              position: relative;
+              top: 3px;
+            }
+            .chain-item-title {
+              position: relative;
+              top: 2px;
+              font-size: 1.2rem;
+            }
           }
-          .chain-item-title {
-            position: relative;
-            top: 2px;
+          .chain-item-content {
+            padding-left: 12px;
             font-size: 1.2rem;
+            line-height: 1.6;
+            color: ${colors.bar};
           }
-        }
-        .chain-item-content {
-          padding-left: 12px;
-          font-size: 1.2rem;
-          line-height: 1.6;
-          color: ${colors.bar};
         }
       }
     }
+    .quiz-solution {
+      background: ${colors.bg};
+      border: 1px solid ${colors.strokeTwo};
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      border-radius: 4px;
+    }
     .actions {
-      padding: 4px;
+      padding: 0 10px 4px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       .tag-list {
         .tag {
           padding: 2px 4px 0;
-          margin-right: 3px;
+          margin: 0 3px 3px 0px;
           border-radius: 0;
         }
       }
@@ -90,6 +106,8 @@ const CardWrapper = styled.div`
 `;
 
 const PostView = ({ history, match, post, getPostById, tagColors }) => {
+  const [viewSolution, setViewSolution] = useState(false);
+
   useEffect(() => {
     const { id } = match.params;
     getPostById(id);
@@ -110,35 +128,51 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
     type,
     chainedPosts = [],
     publishedAt,
+    solution,
   } = post || {};
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
         <Card bottomLine>
           <h3 className="title">{title}</h3>
-          {type === "CHAIN" ? (
-            <div className="content">
-              {chainedPosts.map((post, index) => (
-                <div className="chain-item" key={post._id}>
-                  <div className="chain-item-header">
-                    <div className="chain-item-id">{index + 1}</div>
-                    <h3 className="chain-item-title">{post.title}</h3>
+          <div className="content-wrapper">
+            {type === "CHAIN" ? (
+              <div className="content">
+                {chainedPosts.map((post, index) => (
+                  <div className="chain-item" key={post._id}>
+                    <div className="chain-item-header">
+                      <div className="chain-item-id">{index + 1}</div>
+                      <h3 className="chain-item-title">{post.title}</h3>
+                    </div>
+                    <div
+                      className="chain-item-content"
+                      dangerouslySetInnerHTML={{
+                        __html: marked(post.content || ""),
+                      }}
+                    />
                   </div>
-                  <div
-                    className="chain-item-content"
-                    dangerouslySetInnerHTML={{
-                      __html: marked(post.content || ""),
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{ __html: marked(content) }}
-            />
-          )}
+                ))}
+              </div>
+            ) : (
+              <div
+                className="content"
+                dangerouslySetInnerHTML={{ __html: marked(content) }}
+              />
+            )}
+            {type === "QUIZ" && solution && (
+              <Fragment>
+                {viewSolution ? (
+                  <div className="quiz-solution">{solution}</div>
+                ) : (
+                  <div className="fcc w-100">
+                    <Button onClick={() => setViewSolution(true)}>
+                      View Solution
+                    </Button>
+                  </div>
+                )}
+              </Fragment>
+            )}
+          </div>
           <div className="actions">
             <div className="tag-list">
               {tags.map((tag, index) => (

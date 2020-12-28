@@ -25,9 +25,10 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    border: 1px solid ${colors.strokeOne};
     padding: 20px 10px;
     overflow: hidden;
+    border: 1px solid ${colors.bg};
+    box-shadow: ${colors.bg} 3px 3px 3px;
     &:hover {
       background: ${colors.featherDark};
     }

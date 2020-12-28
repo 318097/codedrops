@@ -75,10 +75,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
       ))}
       {meta && page * config.POST_COUNT <= meta.count && (
         <div className="actions-row">
-          <Button
-            size="lg"
-            onClick={() => setFilter({ page: page + 1 }, false)}
-          >
+          <Button onClick={() => setFilter({ page: page + 1 }, false)}>
             Load
           </Button>
         </div>
