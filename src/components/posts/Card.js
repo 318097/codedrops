@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
+import { md } from "../../util";
 
 const lastVisited = localStorage.getItem("last-access");
 
@@ -115,7 +115,7 @@ const Card = ({ history, post, customStyle, tagColors = {} }) => {
         {["DROP", "QUIZ"].includes(type) && (
           <div
             className="content"
-            dangerouslySetInnerHTML={{ __html: marked(content) }}
+            dangerouslySetInnerHTML={{ __html: md.render(content) }}
           ></div>
         )}
         <div className="live-id">{liveId}</div>

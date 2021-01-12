@@ -1,11 +1,11 @@
 import React, { useEffect, Fragment, useState } from "react";
-import marked from "marked";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon, Button } from "@codedrops/react-ui";
+import { md } from "../../util";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -134,7 +134,10 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
     <section id="view-post">
       <CardWrapper className="post-wrapper">
         <Card bottomLine>
-          <h3 className="title">{title}</h3>
+          <h3
+            className="title"
+            dangerouslySetInnerHTML={{ __html: md.renderInline(title) }}
+          />
           <div className="content-wrapper">
             {type === "CHAIN" ? (
               <div className="content">
@@ -142,12 +145,17 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
                   <div className="chain-item" key={post._id}>
                     <div className="chain-item-header">
                       <div className="chain-item-id">{index + 1}</div>
-                      <h3 className="chain-item-title">{post.title}</h3>
+                      <h3
+                        className="chain-item-title"
+                        dangerouslySetInnerHTML={{
+                          __html: md.renderInline(post.title),
+                        }}
+                      />
                     </div>
                     <div
                       className="chain-item-content"
                       dangerouslySetInnerHTML={{
-                        __html: marked(post.content || ""),
+                        __html: md.render(post.content || ""),
                       }}
                     />
                   </div>
@@ -156,7 +164,7 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
             ) : (
               <div
                 className="content"
-                dangerouslySetInnerHTML={{ __html: marked(content) }}
+                dangerouslySetInnerHTML={{ __html: md.render(content) }}
               />
             )}
             {type === "QUIZ" && solution && (
