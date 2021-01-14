@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon, Button } from "@codedrops/react-ui";
+import { showPopup } from "../../helper";
 import { md } from "../../util";
 
 const CardWrapper = styled.div`
@@ -103,9 +104,22 @@ const CardWrapper = styled.div`
     left: 0px;
     z-index: 1;
   }
+  .heart-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 1;
+  }
 `;
 
-const PostView = ({ history, match, post, getPostById, tagColors }) => {
+const PostView = ({
+  history,
+  match,
+  post,
+  getPostById,
+  tagColors,
+  session,
+}) => {
   const [viewSolution, setViewSolution] = useState(false);
 
   useEffect(() => {
@@ -116,6 +130,11 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
   const handleTagClick = (value) => (event) => {
     // event.stopPropagation();
     // history.push(`/posts/?tags=${value}`);
+  };
+
+  const toggleFavoritePost = () => {
+    if (!session || !session.loggedIn)
+      showPopup({ title: "Please login to mark as favorite" });
   };
 
   if (!post) return null;
@@ -205,15 +224,23 @@ const PostView = ({ history, match, post, getPostById, tagColors }) => {
           onClick={() => history.push("/posts")}
           type="caret-left"
         />
+        <Icon
+          size={12}
+          className="heart-icon icon"
+          onClick={toggleFavoritePost}
+          fill={colors.blue}
+          type="heart"
+        />
       </CardWrapper>
       <RelatedPosts postId={_id} tags={tags} />
     </section>
   );
 };
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, app }) => ({
   post: posts.selectedPost,
   tagColors: posts.tagColors,
+  session: app.session,
 });
 
 const mapDispatchToProps = {
