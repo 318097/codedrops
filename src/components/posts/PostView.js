@@ -17,6 +17,7 @@ const CardWrapper = styled.div`
     padding: 10px 0 2px;
     display: flex;
     flex-direction: column;
+    min-height: 450px;
     &:hover {
       background: ${colors.white};
     }

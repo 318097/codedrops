@@ -5,6 +5,7 @@ import Filters from "./posts/Filters";
 import Logo from "../assets/logo-v3";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import colors from "@codedrops/react-ui";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -14,7 +15,8 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 4px 0 6px;
-  background: inherit;
+  background: ${colors.bg};
+  /* background: url("../assets/background/grey.png"); */
 `;
 
 const Header = ({ location, session }) => {

@@ -12,11 +12,10 @@
 
 #view-post {
   display: flex;
-  overflow-y: auto;
   flex-direction: column;
   flex: 1 1 auto;
   .post-wrapper {
-    margin-bottom: 80px;
+    margin-bottom: 70px;
     &:after {
       display: block;
       content: "~~~";
@@ -26,27 +25,32 @@
   }
   .related-post {
     .posts {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      column-gap: 12px;
+      display: flex;
+      flex-direction: column;
     }
   }
   @media (min-width: 700px) {
     flex-direction: row;
     align-items: start;
-    justify-content: center;
+    justify-content: space-between;
     .post-wrapper {
-      width: 500px;
-      height: 500px;
+      flex: auto;
+      margin: 0 30px 0 0;
       &:after {
         display: none;
-        margin-bottom: 0;
       }
     }
     .related-post {
-      width: 215px;
-      margin-left: 12px;
-      display: grid;
+      flex: 0 1 460px;
+      .posts {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex: 1 1 auto;
+        & > div {
+          width: 215px;
+        }
+      }
     }
   }
 }
