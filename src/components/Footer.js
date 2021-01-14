@@ -14,6 +14,13 @@ const Wrapper = styled.div`
       margin: 0;
     }
   }
+  @media (min-width: 700px) {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
 `;
 
 const Footer = () => (

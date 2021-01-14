@@ -71,7 +71,6 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
               <Route component={PageNotFound} />
             </Switch>
           </div>
-          <Footer />
         </BrowserRouter>
       </div>
       <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
@@ -84,6 +83,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
       >
         <img src={BMC} alt="Buy Me A Coffee" />
       </a>
+      <Footer />
     </div>
   );
 };

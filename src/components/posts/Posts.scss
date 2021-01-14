@@ -34,7 +34,7 @@
     align-items: start;
     justify-content: space-between;
     .post-wrapper {
-      flex: auto;
+      flex: 1 0 500px;
       margin: 0 30px 0 0;
       &:after {
         display: none;
@@ -48,7 +48,8 @@
         flex-wrap: wrap;
         flex: 1 1 auto;
         & > div {
-          width: 215px;
+          width: 100%;
+          max-width: 228px;
         }
       }
     }
