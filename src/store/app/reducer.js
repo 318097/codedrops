@@ -7,6 +7,7 @@ import {
 const initialState = {
   appLoading: false,
   appNotification: null,
+  session: null,
 };
 
 const appReducer = (state = initialState, action) => {
