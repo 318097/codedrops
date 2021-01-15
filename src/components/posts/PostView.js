@@ -7,6 +7,7 @@ import { getPostById } from "../../store/posts/actions";
 import colors, { Card, Tag, Icon, Button } from "@codedrops/react-ui";
 import { showPopup } from "../../helper";
 import { md } from "../../util";
+import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const CardWrapper = styled.div`
     .title {
       text-align: center;
       padding: 0 10px;
-      margin-bottom: 10px;
+      margin: 10px 0;
       font-size: 2rem;
     }
     .content-wrapper {
@@ -105,7 +106,7 @@ const CardWrapper = styled.div`
     left: 0px;
     z-index: 1;
   }
-  .heart-icon {
+  .bookmark-icon {
     position: absolute;
     top: 2px;
     right: 2px;
@@ -133,7 +134,7 @@ const PostView = ({
     // history.push(`/posts/?tags=${value}`);
   };
 
-  const toggleFavoritePost = () => {
+  const toggleBookmark = () => {
     if (!session || !session.loggedIn)
       showPopup({ title: "Please login to mark as favorite" });
   };
@@ -219,18 +220,13 @@ const PostView = ({
             </div>
           </div>
         </Card>
-        <Icon
-          size={16}
-          className="back-icon icon"
+        <ArrowLeftOutlined
+          className="back-icon icon icon-bg icon-md"
           onClick={() => history.push("/posts")}
-          type="caret-left"
         />
-        <Icon
-          size={12}
-          className="heart-icon icon"
-          onClick={toggleFavoritePost}
-          fill={colors.blue}
-          type="heart"
+        <BookOutlined
+          className="bookmark-icon icon icon-bg icon-md"
+          onClick={toggleBookmark}
         />
       </CardWrapper>
       <RelatedPosts postId={_id} tags={tags} />

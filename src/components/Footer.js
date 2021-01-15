@@ -30,21 +30,21 @@ const Footer = () => (
       rel="noopener noreferrer"
       href="https://www.facebook.com/codedrops.tech/"
     >
-      <Icon type="facebook" />
+      <Icon className="icon icon-bg" type="facebook" />
     </a>
     <a
       target="_blank"
       rel="noopener noreferrer"
       href="https://www.instagram.com/codedrops.tech/"
     >
-      <Icon type="instagram" />
+      <Icon className="icon icon-bg" type="instagram" />
     </a>
     <a
       target="_blank"
       rel="noopener noreferrer"
       href="https://twitter.com/codedrops_tech"
     >
-      <Icon type="twitter" />
+      <Icon className="icon icon-bg" type="twitter" />
     </a>
   </Wrapper>
 );
