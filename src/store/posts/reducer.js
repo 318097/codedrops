@@ -4,6 +4,7 @@ import {
   UPDATE_FILTER,
   GET_POST_BY_ID,
   GET_RELATED_POSTS,
+  GET_BOOKMARKS,
 } from "./constants";
 import { tags, tagColors } from "../../data";
 import config from "../../config";
@@ -20,6 +21,7 @@ const initialState = {
     limit: config.POST_COUNT,
     tags: [],
   },
+  bookmarks: [],
 };
 
 const postReducer = (state = initialState, action) => {
@@ -57,6 +59,12 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         relatedPosts: action.payload,
+      };
+    }
+    case GET_BOOKMARKS: {
+      return {
+        ...state,
+        bookmarks: action.payload,
       };
     }
     default:

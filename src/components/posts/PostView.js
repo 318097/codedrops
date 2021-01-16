@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import RelatedPosts from "./RelatedPosts";
-import { getPostById } from "../../store/posts/actions";
-import colors, { Card, Tag, Icon, Button } from "@codedrops/react-ui";
+import { getPostById, toggleBookmark } from "../../store/posts/actions";
+import colors, { Card, Tag, Button } from "@codedrops/react-ui";
 import { showPopup } from "../../helper";
 import { md } from "../../util";
 import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import _ from "lodash";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -121,6 +122,7 @@ const PostView = ({
   getPostById,
   tagColors,
   session,
+  toggleBookmark,
 }) => {
   const [viewSolution, setViewSolution] = useState(false);
 
@@ -134,9 +136,11 @@ const PostView = ({
     // history.push(`/posts/?tags=${value}`);
   };
 
-  const toggleBookmark = () => {
+  const handleBookmarkClick = async () => {
     if (!session || !session.loggedIn)
       showPopup({ title: "Please login to mark as favorite" });
+
+    toggleBookmark({ _id: post._id, status: !_.get(post, "bookmarked") });
   };
 
   if (!post) return null;
@@ -226,7 +230,7 @@ const PostView = ({
         />
         <BookOutlined
           className="bookmark-icon icon icon-bg icon-md"
-          onClick={toggleBookmark}
+          onClick={handleBookmarkClick}
         />
       </CardWrapper>
       <RelatedPosts postId={_id} tags={tags} />
@@ -242,6 +246,7 @@ const mapStateToProps = ({ posts, app }) => ({
 
 const mapDispatchToProps = {
   getPostById,
+  toggleBookmark,
 };
 
 export default connect(

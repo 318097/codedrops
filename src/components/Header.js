@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
@@ -21,7 +22,7 @@ const StyledHeader = styled.header`
   top: 0;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 0 6px;
+  padding: 8px 0;
   background: ${colors.bg};
   /* background: url("../assets/background/grey.png"); */
   .user-info {
@@ -40,7 +41,9 @@ const Header = ({ location, session, history, setSession }) => {
 
   return (
     <StyledHeader>
-      <Logo />
+      <a onClick={() => history.push("/posts")}>
+        <Logo />
+      </a>
       {location.pathname === "/posts" && <Filters />}
       {session ? (
         <div className="ml fcc">

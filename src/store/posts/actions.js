@@ -8,6 +8,7 @@ import {
   UPDATE_FILTER,
   GET_POST_BY_ID,
   GET_RELATED_POSTS,
+  GET_BOOKMARKS,
 } from "./constants";
 
 export const fetchTags = () => async (dispatch) => {
@@ -103,5 +104,31 @@ export const fetchRelatedPosts = ({ postId, tags }) => async (dispatch) => {
     });
 
     dispatch({ type: GET_RELATED_POSTS, payload: posts });
+  } catch (err) {}
+};
+
+export const fetchBookmarks = () => async (dispatch) => {
+  try {
+    const url = config.IS_SERVER ? `/posts/bookmarks` : `/bookmarks`;
+    const {
+      data: { bookmarks },
+    } = await axios.get(`${url}`, {
+      params: { collectionId: config.COLLECTION_ID },
+    });
+
+    dispatch({ type: GET_BOOKMARKS, payload: bookmarks });
+  } catch (err) {}
+};
+
+export const toggleBookmark = ({ _id, status }) => async (dispatch) => {
+  try {
+    const url = config.IS_SERVER ? `/posts/${_id}/bookmark` : `/bookmarks`;
+    const {
+      data: { bookmarks },
+    } = await axios.put(`${url}`, {
+      status,
+    });
+
+    // dispatch({ type: GET_BOOKMARKS, payload: bookmarks });
   } catch (err) {}
 };
