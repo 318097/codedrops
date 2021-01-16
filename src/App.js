@@ -6,6 +6,7 @@ import "./App.scss";
 import config from "./config";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Bookmarks from "./components/posts/Bookmarks";
 import Posts from "./components/posts/Posts";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -66,6 +67,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
               <Route exact path="/" render={() => <Redirect to="/posts" />} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/bookmarks" component={Bookmarks} />
               <Route exact path="/posts" component={Posts} />
               <Route exact path="/posts/:id" component={PostView} />
               <Route component={PageNotFound} />
