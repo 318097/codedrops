@@ -86,19 +86,22 @@ const Wrapper = styled.div`
   }
 `;
 
-const Card = ({ history, post, customStyle, tagColors = {} }) => {
+const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
   const {
     title = "",
     content = "",
     type = "DROP",
     tags = [],
-    _id,
     slug,
     liveId,
     publishedAt,
   } = post || {};
 
-  const handleClick = () => history.push(`/posts/${slug}`);
+  const handleClick = () => {
+    let queryParams = "";
+    if (target) queryParams = `?target=${target}`;
+    history.push(`/posts/${slug}${queryParams}`);
+  };
 
   const handleTagClick = (event, value) => {
     // history.push(`/posts?tags=${value}`);

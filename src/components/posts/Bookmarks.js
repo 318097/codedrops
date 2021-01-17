@@ -20,7 +20,7 @@ const Posts = ({ fetchBookmarks, bookmarks }) => {
     <section id="posts">
       <PageWrapper>
         {bookmarks.map((post) => (
-          <Card key={post._id} post={post} />
+          <Card key={post._id} post={post} target={"bookmarks"} />
         ))}
       </PageWrapper>
     </section>

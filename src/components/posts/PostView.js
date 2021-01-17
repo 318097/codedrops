@@ -9,6 +9,7 @@ import { showPopup } from "../../helper";
 import { md } from "../../util";
 import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import _ from "lodash";
+import queryString from "query-string";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -123,9 +124,9 @@ const PostView = ({
   tagColors,
   session,
   toggleBookmark,
+  location,
 }) => {
   const [viewSolution, setViewSolution] = useState(false);
-
   useEffect(() => {
     const { id } = match.params;
     getPostById(id);
@@ -136,11 +137,17 @@ const PostView = ({
     // history.push(`/posts/?tags=${value}`);
   };
 
+  const goBack = () => {
+    const parsed = queryString.parse(location.search);
+    const route = parsed.target || "posts";
+    history.push(`/${route}`);
+  };
+
   const handleBookmarkClick = async () => {
     if (!session || !session.loggedIn)
       showPopup({ title: "Please login to mark as favorite" });
 
-    toggleBookmark({ _id: post._id, status: !_.get(post, "bookmarked") });
+    toggleBookmark({ _id: post._id, status: !_.get(post, "isBookmarked") });
   };
 
   if (!post) return null;
@@ -154,6 +161,7 @@ const PostView = ({
     chainedPosts = [],
     publishedAt,
     solution,
+    isBookmarked,
   } = post || {};
   return (
     <section id="view-post">
@@ -226,9 +234,10 @@ const PostView = ({
         </Card>
         <ArrowLeftOutlined
           className="back-icon icon icon-bg icon-md"
-          onClick={() => history.push("/posts")}
+          onClick={goBack}
         />
         <BookOutlined
+          style={{ color: isBookmarked ? "green" : "black" }}
           className="bookmark-icon icon icon-bg icon-md"
           onClick={handleBookmarkClick}
         />

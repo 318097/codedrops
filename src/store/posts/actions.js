@@ -1,5 +1,5 @@
 import axios from "axios";
-import { get, find } from "lodash";
+import { get, find, includes } from "lodash";
 import { setAppLoading } from "../app/actions";
 import config from "../../config";
 import {
@@ -71,7 +71,10 @@ export const setFilter = (filterUpdate, resetPage = true) => async (
 export const getPostById = (postId) => async (dispatch, getState) => {
   try {
     dispatch(setAppLoading(true));
-    const { posts } = getState();
+    const {
+      posts,
+      app: { session },
+    } = getState();
     const postList = get(posts, "posts", []);
 
     let post = find(
@@ -86,6 +89,13 @@ export const getPostById = (postId) => async (dispatch, getState) => {
       );
       post = get(data, "post", {});
     }
+
+    let isBookmarked = false;
+    if (session) {
+      isBookmarked = includes(get(session, "bookmarkedPosts", []), post._id);
+    }
+
+    post["isBookmarked"] = isBookmarked;
 
     dispatch({ type: GET_POST_BY_ID, payload: post });
   } catch (err) {
@@ -120,15 +130,27 @@ export const fetchBookmarks = () => async (dispatch) => {
   } catch (err) {}
 };
 
-export const toggleBookmark = ({ _id, status }) => async (dispatch) => {
+export const toggleBookmark = ({ _id, status }) => async (
+  dispatch,
+  getState
+) => {
   try {
-    const url = config.IS_SERVER ? `/posts/${_id}/bookmark` : `/bookmarks`;
+    dispatch(setAppLoading(true));
     const {
-      data: { bookmarks },
-    } = await axios.put(`${url}`, {
+      posts: { selectedPost },
+    } = getState();
+
+    const url = config.IS_SERVER ? `/posts/${_id}/bookmark` : `/bookmarks`;
+    await axios.put(`${url}`, {
       status,
     });
 
-    // dispatch({ type: GET_BOOKMARKS, payload: bookmarks });
-  } catch (err) {}
+    dispatch({
+      type: GET_POST_BY_ID,
+      payload: { ...selectedPost, isBookmarked: status },
+    });
+  } catch (err) {
+  } finally {
+    dispatch(setAppLoading(false));
+  }
 };
