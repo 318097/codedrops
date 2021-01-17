@@ -8,7 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.2.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "highlight.js": "^10.5.0",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.4",
