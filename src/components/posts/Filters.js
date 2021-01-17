@@ -50,7 +50,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
       <Search
         size="small"
         allowClear
-        className="field-width"
+        className="field-width search-input"
         placeholder="Search..."
         defaultValue={search}
         onSearch={(value) => setFilter({ search: value })}
@@ -71,7 +71,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
         ))}
       </Select> */}
       {meta && (
-        <div>
+        <div className="show-count">
           Showing {postCount} of {meta.count} posts.
         </div>
       )}

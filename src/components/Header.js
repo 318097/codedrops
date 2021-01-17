@@ -31,6 +31,23 @@ const StyledHeader = styled.header`
     padding: 0px 12px 0 2px;
     border-radius: 20px;
   }
+  @media screen and (max-width: 600px) {
+    .logo {
+      position: relative;
+      top: 4px;
+      svg {
+        width: 80%;
+      }
+    }
+    .filters {
+      .search-input {
+        width: 100px !important;
+      }
+      .show-count {
+        display: none;
+      }
+    }
+  }
 `;
 
 const Header = ({ location, session, history, setSession }) => {
@@ -41,7 +58,7 @@ const Header = ({ location, session, history, setSession }) => {
 
   return (
     <StyledHeader>
-      <a onClick={() => history.push("/posts")}>
+      <a className="logo" onClick={() => history.push("/posts")}>
         <Logo />
       </a>
       {location.pathname === "/posts" && <Filters />}
