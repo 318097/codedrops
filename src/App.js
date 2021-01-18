@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import "./App.scss";
-import config from "./config";
+import { Icon } from "@codedrops/react-ui";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Bookmarks from "./components/posts/Bookmarks";
@@ -12,17 +12,30 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import PostView from "./components/posts/PostView";
 import PageNotFound from "./components/PageNotFound";
+import QuickBall from "./components/QuickBall";
+
 import { fetchTags } from "./store/posts/actions";
-import WavesOpacity from "./assets/wavesOpacity.svg";
 import { getToken, hasToken } from "./authService";
-import { setSession } from "./store/app/actions";
+import { setSession, toggleQuickBall } from "./store/app/actions";
+
+import "./App.scss";
+import config from "./config";
 import BMC from "./assets/bmc.png";
+import WavesOpacity from "./assets/wavesOpacity.svg";
 
 axios.defaults.baseURL = config.SERVER_URL;
 axios.defaults.headers.common["authorization"] = getToken();
 axios.defaults.headers.common["external-source"] = "CODEDROPS";
 
-const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
+const App = ({
+  fetchTags,
+  tagList,
+  appLoading,
+  session,
+  setSession,
+  toggleQuickBall,
+  quickBallStatus,
+}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -73,10 +86,22 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
               <Route component={PageNotFound} />
             </Switch>
           </div>
+          <div className="quick-ball">
+            {quickBallStatus ? (
+              <QuickBall toggleQuickBall={toggleQuickBall} />
+            ) : (
+              <Icon
+                className="icon quick-ball-icon"
+                type="triangle"
+                onClick={toggleQuickBall}
+              />
+            )}
+          </div>
         </BrowserRouter>
       </div>
       <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
       {/* <Icon className="code-icon" type="tag" /> */}
+
       <a
         href="https://www.buymeacoffee.com/codedropstech"
         id="buy-me-a-coffee"
@@ -90,15 +115,20 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
   );
 };
 
-const mapStateToProps = ({ posts, app: { appLoading, session } }) => ({
+const mapStateToProps = ({
+  posts,
+  app: { appLoading, session, quickBallStatus },
+}) => ({
   tagList: posts.tags,
   appLoading,
   session,
+  quickBallStatus,
 });
 
 const mapDispatchToProps = {
   fetchTags,
   setSession,
+  toggleQuickBall,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

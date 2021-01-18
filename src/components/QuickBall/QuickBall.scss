@@ -1,0 +1,58 @@
+@import "@codedrops/react-ui/dist/styles/colors.scss";
+
+.quick-ball {
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  z-index: 1000000;
+  .container {
+    width: 300px;
+    height: 200px;
+    background: $bg;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    position: relative;
+    .close-icon {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+    }
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .name {
+        font-family: Cascadia-Bold;
+        font-size: 1rem;
+        padding: 8px;
+        background: $strokeOne;
+        margin: 0;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .bb {
+        border-bottom: 5px solid $orchid;
+      }
+      .sub-menu-container {
+        padding-left: 24px;
+        background: $featherDark;
+        border-bottom: 1px solid $strokeOne;
+        position: relative;
+        .index {
+          position: absolute;
+          left: 8px;
+          top: 8px;
+        }
+        .name {
+          background: none;
+          padding-left: 0;
+        }
+        .short-description {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
