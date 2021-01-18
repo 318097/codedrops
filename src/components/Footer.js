@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 4px 0;
+  animation: delay 1s 6s forwards;
+  opacity: 0;
   a {
     cursor: pointer;
     position: relative;

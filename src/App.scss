@@ -10,6 +10,7 @@
     max-width: 1024px;
     width: 96%;
     padding: 0 2%;
+    flex: auto;
   }
 }
 
@@ -63,12 +64,14 @@ pre {
   }
 }
 
-.not-found {
+.not-found,
+.empty {
   margin-top: 10px;
   text-align: center;
-  font-size: 2.6rem;
-  text-transform: uppercase;
+  font-size: 2rem;
   opacity: 0.6;
+  color: $steel;
+  font-family: Cascadia-Bold;
 }
 
 /* Spinnner */

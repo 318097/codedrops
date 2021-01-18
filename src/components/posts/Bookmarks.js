@@ -11,24 +11,29 @@ const PageWrapper = styled.div`
   column-gap: 12px;
 `;
 
-const Posts = ({ fetchBookmarks, bookmarks }) => {
+const Posts = ({ fetchBookmarks, bookmarks, appLoading }) => {
   useEffect(() => {
     if (!bookmarks.length) fetchBookmarks();
   }, []);
 
   return (
     <section id="posts">
-      <PageWrapper>
-        {bookmarks.map((post) => (
-          <Card key={post._id} post={post} target={"bookmarks"} />
-        ))}
-      </PageWrapper>
+      {appLoading ? null : bookmarks.length ? (
+        <PageWrapper>
+          {bookmarks.map((post) => (
+            <Card key={post._id} post={post} target={"bookmarks"} />
+          ))}
+        </PageWrapper>
+      ) : (
+        <p className="empty">No bookmarks yet..</p>
+      )}
     </section>
   );
 };
 
-const mapStateToProps = ({ posts }) => ({
+const mapStateToProps = ({ posts, app: { appLoading } }) => ({
   bookmarks: posts.bookmarks || [],
+  appLoading,
 });
 
 const mapDispatchToProps = {

@@ -20,6 +20,8 @@
   bottom: 12px;
   right: 10px;
   z-index: 100;
+  animation: delay 1s 7s forwards;
+  opacity: 0;
   img {
     height: 30px;
   }
@@ -61,5 +63,14 @@ html body {
   }
   .icon-md {
     font-size: 14px;
+  }
+}
+
+@keyframes delay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

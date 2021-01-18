@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
@@ -59,26 +59,30 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 
   return (
     <section id="posts">
-      {noteChunks.map((chunk, index) => (
-        <PageWrapper key={index}>
-          <div className="notes-wrapper">
-            {chunk.map((post) => (
-              <Card key={post._id} post={post} />
-            ))}
-          </div>
-          {index < noteChunks.length - 1 && (
-            <div className="page-splitter">
-              <span>{`Page: ${index + 2}`}</span>
+      {appLoading ? null : (
+        <Fragment>
+          {noteChunks.map((chunk, index) => (
+            <PageWrapper key={index}>
+              <div className="notes-wrapper">
+                {chunk.map((post) => (
+                  <Card key={post._id} post={post} />
+                ))}
+              </div>
+              {index < noteChunks.length - 1 && (
+                <div className="page-splitter">
+                  <span>{`Page: ${index + 2}`}</span>
+                </div>
+              )}
+            </PageWrapper>
+          ))}
+          {meta && page * config.POST_COUNT <= meta.count && (
+            <div className="actions-row">
+              <Button onClick={() => setFilter({ page: page + 1 }, false)}>
+                Load
+              </Button>
             </div>
           )}
-        </PageWrapper>
-      ))}
-      {meta && page * config.POST_COUNT <= meta.count && (
-        <div className="actions-row">
-          <Button onClick={() => setFilter({ page: page + 1 }, false)}>
-            Load
-          </Button>
-        </div>
+        </Fragment>
       )}
     </section>
   );

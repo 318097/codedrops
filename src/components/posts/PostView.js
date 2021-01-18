@@ -10,6 +10,7 @@ import { md } from "../../util";
 import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import _ from "lodash";
 import queryString from "query-string";
+import { message } from "antd";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -145,9 +146,14 @@ const PostView = ({
 
   const handleBookmarkClick = async () => {
     if (!session || !session.loggedIn)
-      showPopup({ title: "Please login to mark as favorite" });
+      showPopup({ title: "Login to bookmark posts" });
 
-    toggleBookmark({ _id: post._id, status: !_.get(post, "isBookmarked") });
+    const status = !_.get(post, "isBookmarked");
+    await toggleBookmark({ _id: post._id, status });
+
+    if (status) {
+      message.success("Bookmarked!!");
+    }
   };
 
   if (!post) return null;
