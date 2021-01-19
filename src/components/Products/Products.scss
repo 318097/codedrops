@@ -1,0 +1,21 @@
+@import "@codedrops/react-ui/dist/styles/colors.scss";
+
+section#products {
+  max-width: 600px;
+  margin-top: 20px;
+  .name {
+    font-size: 3rem;
+    font-family: Cascadia-Bold;
+    color: $primary;
+  }
+  .short-description {
+    font-size: 1.2rem;
+    color: $bar;
+  }
+
+  .description {
+    margin-top: 20px;
+    font-size: 1.8rem;
+    color: $steel;
+  }
+}

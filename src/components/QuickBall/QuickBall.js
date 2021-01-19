@@ -8,7 +8,7 @@ import { PRODUCTS } from "../../constants";
 const menu = [
   {
     name: "Products",
-    subMenu: PRODUCTS,
+    subMenu: [PRODUCTS[0]],
   },
 ];
 

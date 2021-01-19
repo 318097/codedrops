@@ -9,7 +9,7 @@ const initialState = {
   appLoading: false,
   appNotification: null,
   session: null,
-  quickBallStatus: true,
+  quickBallStatus: false,
 };
 
 const appReducer = (state = initialState, action) => {
