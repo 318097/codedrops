@@ -14,6 +14,7 @@ import colors from "@codedrops/react-ui";
 import _ from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
+import axios from "axios";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -54,6 +55,7 @@ const Header = ({ location, session, history, setSession }) => {
   const logout = () => {
     localStorage.clear();
     setSession(null);
+    axios.defaults.headers.common["authorization"] = null;
   };
 
   return (

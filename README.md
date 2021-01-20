@@ -8,4 +8,4 @@
 - [ ] Connect to Atom
 - [ ] Show Tags & Count
 - [ ] Track posts which have been read by a user
-- [ ] Feedback
+- [x] Feedback

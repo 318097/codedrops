@@ -14,6 +14,7 @@ import PostView from "./components/posts/PostView";
 import PageNotFound from "./components/PageNotFound";
 import QuickBall from "./components/QuickBall";
 import Products from "./components/Products";
+import Feedback from "./components/Feedback";
 
 import { fetchTags } from "./store/posts/actions";
 import { getToken, hasToken } from "./authService";
@@ -83,6 +84,7 @@ const App = ({
               <Route exact path="/register" component={Register} />
               <Route exact path="/bookmarks" component={Bookmarks} />
               <Route exact path="/posts" component={Posts} />
+              <Route exact path="/feedback" component={Feedback} />
               <Route exact path="/posts/:id" component={PostView} />
               <Route exact path="/products/:id" component={Products} />
               <Route component={PageNotFound} />
@@ -94,7 +96,7 @@ const App = ({
             ) : (
               <Icon
                 className="icon quick-ball-icon"
-                type="bulb"
+                type="circle-3"
                 onClick={toggleQuickBall}
               />
             )}

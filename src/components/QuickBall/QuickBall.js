@@ -10,10 +10,18 @@ const menu = [
     name: "Products",
     subMenu: [PRODUCTS[0]],
   },
+  {
+    name: "Feedback",
+    productPath: "/feedback",
+  },
 ];
 
 const QuickBall = ({ history, toggleQuickBall }) => {
-  const handleClick = (productPath) => history.push(productPath);
+  const handleClick = (productPath) => {
+    if (!productPath) return;
+    history.push(productPath);
+    toggleQuickBall();
+  };
 
   return (
     <div className="container">
@@ -25,8 +33,10 @@ const QuickBall = ({ history, toggleQuickBall }) => {
       />
       {menu.map(({ name, subMenu = [], productPath }) => (
         <div key={name} className="menu-container">
-          <h4 className="name bb">{name}</h4>
-          {subMenu.length &&
+          <h4 onClick={() => handleClick(productPath)} className="name bb">
+            {name}
+          </h4>
+          {!!subMenu.length &&
             subMenu.map(({ name, shortDescription, productPath }, index) => {
               return (
                 <div key={name} className="sub-menu-container">
