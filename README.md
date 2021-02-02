@@ -9,3 +9,6 @@
 - [ ] Show Tags & Count
 - [ ] Track posts which have been read by a user
 - [x] Feedback
+- [ ] SSR
+- [ ] SEO
+- [ ] Adsense

@@ -1,6 +1,7 @@
 export const PRODUCTS = [
   {
     id: "github-marker",
+    visible: true,
     name: "Github Marker",
     shortDescription:
       "A Chrome Extention to Mark links as read, favorite or bookmark in github",
@@ -16,11 +17,13 @@ export const PRODUCTS = [
       "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en",
   },
   {
-    id: "dot",
-    name: "DOT",
-    shortDescription: "",
-    productPath: "/products/dot",
-    description: "",
+    id: "note-box",
+    visible: false,
+    name: "Note Box",
+    shortDescription: "A Chrome extension to store notes for every domain",
+    productPath: "/products/note-box",
+    description:
+      "A chrome extension which provides a notes page based on the domain. The notes for the specific domain can be accessed when the user is on that specific domain. There is a home page from where all the domains and their notes can be viewed.",
     image: "",
     gallery: [],
     video: "",
@@ -28,10 +31,11 @@ export const PRODUCTS = [
     download: "",
   },
   {
-    id: "note-box",
-    name: "Note Box",
+    id: "dot",
+    visible: false,
+    name: "DOT",
     shortDescription: "",
-    productPath: "/products/note-box",
+    productPath: "/products/dot",
     description: "",
     image: "",
     gallery: [],

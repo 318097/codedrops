@@ -8,7 +8,7 @@ import { PRODUCTS } from "../../constants";
 const menu = [
   {
     name: "Products",
-    subMenu: [PRODUCTS[0]],
+    subMenu: PRODUCTS.filter((product) => product.visible),
   },
   {
     name: "Feedback",
@@ -28,7 +28,7 @@ const QuickBall = ({ history, toggleQuickBall }) => {
       <Icon
         type="cancel-2"
         className="close-icon"
-        size={12}
+        size={14}
         onClick={toggleQuickBall}
       />
       {menu.map(({ name, subMenu = [], productPath }) => (
