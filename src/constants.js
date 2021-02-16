@@ -23,7 +23,7 @@ export const PRODUCTS = [
     shortDescription: "A Chrome extension to store notes for every domain",
     productPath: "/products/note-box",
     description:
-      'A Chrome Extension that provides a "notes container" for every domain. Add unlimed notes, along with an option to mark that item as `DONE`. Notes/Todos gets added based on the URL. Revisit the same note list when back to that URL or access all the notes from Homepage. <br/> No Login/Signup. <br/>All the notes are stored in browser memory.',
+      'A Chrome Extension that provides a "notes container" for every domain. Add unlimed notes, along with an option to mark that item as `DONE`. Notes/Todos gets added based on the URL. Revisit the same note list when back to that URL or access all the notes from the Homepage. <br/> No Login/Signup. <br/>All the notes are stored in the browser memory.',
     logo: "",
     image: "",
     gallery: [],
