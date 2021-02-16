@@ -25,6 +25,7 @@ const Register = ({ history }) => {
     try {
       const { data } = await axios.post("/auth/register", form);
       history.push("/login");
+      message.success("Success");
     } catch (err) {
       const { response: { data: errorMessage = "Error." } = {} } = err;
       message.error(errorMessage);
