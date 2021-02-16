@@ -8,8 +8,8 @@ export const PRODUCTS = [
     productPath: "/products/github-marker",
     description:
       "There are a lot of links provide in Github pages. Some might need to be marked as read, some you find amazing & some you would love to read it later. <br/><br/>Github Marker does exactly that. The extension provides 3 options attached to every link found on github related pages: <br/>1. Mark as Read/Unread  <br/>2. Favorite/Un-Favorite a link <br/>3. Bookmark/Unbookmark a link",
-    image:
-      "https://www.dropbox.com/s/m073ew5yorwv13u/Github-Marker-920x680.png?dl=0",
+    logo: "",
+    image: "",
     gallery: [],
     video: "",
     url: "",
@@ -18,17 +18,19 @@ export const PRODUCTS = [
   },
   {
     id: "note-box",
-    visible: false,
+    visible: true,
     name: "Note Box",
     shortDescription: "A Chrome extension to store notes for every domain",
     productPath: "/products/note-box",
     description:
-      "A chrome extension which provides a notes page based on the domain. The notes for the specific domain can be accessed when the user is on that specific domain. There is a home page from where all the domains and their notes can be viewed.",
+      'A Chrome Extension that provides a "notes container" for every domain. Add unlimed notes, along with an option to mark that item as `DONE`. Notes/Todos gets added based on the URL. Revisit the same note list when back to that URL or access all the notes from Homepage. <br/> No Login/Signup. <br/>All the notes are stored in browser memory.',
+    logo: "",
     image: "",
     gallery: [],
-    video: "",
+    video: "https://youtu.be/fX3IKhiEz1s",
     url: "",
-    download: "",
+    download:
+      "https://chrome.google.com/webstore/detail/note-box/mbbajjgefpenmkkhcnmmnoodlbcbfnmp",
   },
   {
     id: "dot",
@@ -37,6 +39,7 @@ export const PRODUCTS = [
     shortDescription: "",
     productPath: "/products/dot",
     description: "",
+    logo: "",
     image: "",
     gallery: [],
     video: "",
