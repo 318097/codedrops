@@ -8,8 +8,6 @@ const {
 
 const isProd = NODE_ENV === "production";
 
-// const SERVER_COLLECTION_ID = "dHEqTd3knQGHTDMqwz8QP9";
-
 const SERVER_URL = isProd
   ? REACT_APP_SRC === "FIREBASE"
     ? REACT_APP_FIREBASE_URL

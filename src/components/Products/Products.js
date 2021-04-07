@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button } from "@codedrops/react-ui";
 import "./Products.scss";
-import { PRODUCTS } from "../../constants";
+import data from "../../DATA.json";
 import PageNotFound from "../PageNotFound";
 
 const Products = ({ history, match }) => {
   const { id } = match.params;
-  const matchedProduct = PRODUCTS.find((product) => product.id === id);
+  const matchedProduct = data.products.find((product) => product.id === id);
   const { name, shortDescription, description, download, image, visible } =
     matchedProduct || {};
 

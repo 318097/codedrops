@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Icon } from "@codedrops/react-ui";
 import "./QuickBall.scss";
-import { PRODUCTS } from "../../constants";
+import data from "../../DATA.json";
 
 const menu = [
   {
     name: "Products",
-    subMenu: PRODUCTS.filter((product) => product.visible),
+    subMenu: data.products.filter((product) => product.visible),
   },
   {
     name: "Feedback",
