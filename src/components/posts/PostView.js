@@ -203,7 +203,7 @@ const PostView = ({
             ) : (
               <div
                 className="content"
-                dangerouslySetInnerHTML={{ __html: md.render(content) }}
+                dangerouslySetInnerHTML={{ __html: md.render(content || "") }}
               />
             )}
             {type === "QUIZ" && solution && (
