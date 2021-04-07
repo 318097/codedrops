@@ -24,35 +24,38 @@ const QuickBall = ({ history, toggleQuickBall }) => {
   };
 
   return (
-    <div className="container">
+    <div className="wrapper">
       <Icon
         type="cancel-2"
         className="close-icon"
-        size={14}
+        size={16}
         onClick={toggleQuickBall}
       />
-      {menu.map(({ name, subMenu = [], productPath }) => (
-        <div key={name} className="menu-container">
-          <h4 onClick={() => handleClick(productPath)} className="name bb">
-            {name}
-          </h4>
-          {!!subMenu.length &&
-            subMenu.map(({ name, shortDescription, productPath }, index) => {
-              return (
-                <div key={name} className="sub-menu-container">
-                  <span className="index">{index + 1}.</span>
-                  <h4
-                    className="name"
+      <div className="container">
+        {menu.map(({ name, subMenu = [], productPath }) => (
+          <div key={name} className="menu-container">
+            <h4 onClick={() => handleClick(productPath)} className="name bb">
+              {name}
+            </h4>
+            {!!subMenu.length &&
+              subMenu.map(({ name, shortDescription, productPath }, index) => {
+                return (
+                  <div
+                    key={name}
+                    className="sub-menu-container"
                     onClick={() => handleClick(productPath)}
-                  >{`${name}`}</h4>
-                  {shortDescription && (
-                    <p className="short-description">{shortDescription}</p>
-                  )}
-                </div>
-              );
-            })}
-        </div>
-      ))}
+                  >
+                    <span className="index">{index + 1}.</span>
+                    <h4 className="name">{name}</h4>
+                    {shortDescription && (
+                      <p className="short-description">{shortDescription}</p>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -97,6 +97,7 @@ const App = ({
               <Icon
                 className="icon quick-ball-icon"
                 type="menu"
+                size={20}
                 onClick={toggleQuickBall}
               />
             )}
