@@ -1,21 +1,46 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 
 section#products {
-  max-width: 600px;
-  margin-top: 20px;
-  .name {
-    font-size: 3rem;
-    font-family: Cascadia-Bold;
-    color: $primary;
-  }
-  .short-description {
-    font-size: 1.2rem;
-    color: $bar;
-  }
+  position: relative;
+  .content {
+    z-index: 1;
+    position: relative;
+    max-width: 600px;
+    padding: 20px;
+    .logo {
+      max-width: 36px;
+      margin-bottom: 12px;
+    }
+    .name {
+      font-size: 3rem;
+      font-family: Cascadia-Bold;
+      color: $primary;
+    }
+    .tagline {
+      font-size: 1.8rem;
+      color: $bar;
+      line-height: 2.2rem;
+    }
 
-  .description {
-    margin-top: 20px;
-    font-size: 1.8rem;
-    color: $steel;
+    .description {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: $steel;
+      line-height: 2.4rem;
+      margin-bottom: 20px;
+    }
+    .link {
+      margin-right: 16px;
+      font-size: 1.2rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .poster {
+    position: absolute;
+    // max-width: 500px;
+    top: 100px;
+    right: 0;
   }
 }

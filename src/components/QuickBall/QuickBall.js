@@ -38,7 +38,7 @@ const QuickBall = ({ history, toggleQuickBall }) => {
               {name}
             </h4>
             {!!subMenu.length &&
-              subMenu.map(({ name, shortDescription, productPath }, index) => {
+              subMenu.map(({ name, tagline, productPath }, index) => {
                 return (
                   <div
                     key={name}
@@ -47,9 +47,7 @@ const QuickBall = ({ history, toggleQuickBall }) => {
                   >
                     <span className="index">{index + 1}.</span>
                     <h4 className="name">{name}</h4>
-                    {shortDescription && (
-                      <p className="short-description">{shortDescription}</p>
-                    )}
+                    {tagline && <p className="tagline">{tagline}</p>}
                   </div>
                 );
               })}

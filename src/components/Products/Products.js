@@ -8,9 +8,21 @@ import PageNotFound from "../PageNotFound";
 
 const Products = ({ history, match }) => {
   const { id } = match.params;
+
   const matchedProduct = data.products.find((product) => product.id === id);
-  const { name, shortDescription, description, download, image, visible } =
-    matchedProduct || {};
+
+  const {
+    name,
+    tagline,
+    description,
+    download,
+    image,
+    visible,
+    logo,
+    video,
+    ph,
+    poster,
+  } = matchedProduct || {};
 
   const downloadProduct = () => {
     window.open(`${download}?utm_source=codedrops`, "__blank");
@@ -20,17 +32,35 @@ const Products = ({ history, match }) => {
 
   return (
     <section id="products">
-      <h3 className="name" dangerouslySetInnerHTML={{ __html: name }} />
-      <p
-        className="short-description"
-        dangerouslySetInnerHTML={{ __html: shortDescription }}
-      />
-      <p
-        className="description"
-        dangerouslySetInnerHTML={{ __html: description }}
-      />
-      {!!download && <Button onClick={downloadProduct}>Download</Button>}
-      {/* <img src={image} alt={name} /> */}
+      <div className="content">
+        {!!logo && <img className="logo" alt="logo" src={logo} />}
+        <h3 className="name" dangerouslySetInnerHTML={{ __html: name }} />
+        <p className="tagline" dangerouslySetInnerHTML={{ __html: tagline }} />
+        <p
+          className="description"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+
+        <div className="flex center" style={{ marginBottom: "24px" }}>
+          {!!video && (
+            <a className="link" href={video} target="__blank">
+              Demo
+            </a>
+          )}
+          {!!ph && (
+            <a className="link" href={ph} target="__blank">
+              Product Hunt
+            </a>
+          )}
+        </div>
+
+        {!!download && <Button onClick={downloadProduct}>Download</Button>}
+        {/* <img src={image} alt={name} /> */}
+      </div>
+      {/* {poster && <img src={poster} alt="preview" className="poster" />} */}
+      {/* <video autoPlay width="640" height="500">
+        <source src={poster} type="video/mp4" />
+      </video> */}
     </section>
   );
 };
