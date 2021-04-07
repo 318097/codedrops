@@ -8,7 +8,7 @@
       "description": "There are a lot of links provided on Github pages. Some might need to be marked as read, some might be amazing & some you would love to read it later. Github Marker does exactly that.<br/>The extension provides 3 options attached to every link found on Github related pages/URLs:<br/>1. Mark as Read/Unread <br/>2. Favorite/Un-Favorite a link<br/>3. Bookmark/Unbookmark a link",
       "gallery": [],
       "productPath": "/products/github-marker",
-      "logo": "",
+      "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
       "video": "",
       "poster": "",
       "download": "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en",
