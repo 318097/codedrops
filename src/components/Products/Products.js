@@ -11,17 +11,8 @@ const Products = ({ history, match }) => {
 
   const matchedProduct = data.products.find((product) => product.id === id);
 
-  const {
-    name,
-    tagline,
-    description,
-    links,
-    image,
-    visible,
-    logo,
-    video,
-    poster,
-  } = matchedProduct || {};
+  const { name, tagline, description, links, image, visible, logo, poster } =
+    matchedProduct || {};
 
   const ctaAction = () => {
     window.open(`${links.product.url}`, "__blank");
@@ -41,9 +32,9 @@ const Products = ({ history, match }) => {
         />
 
         <div className="flex center" style={{ marginBottom: "24px" }}>
-          {!!video && (
-            <a className="link" href={video} target="__blank">
-              Demo
+          {!!links.demo && (
+            <a className="link" href={links.demo.url} target="__blank">
+              {links.demo.label}
             </a>
           )}
           {!!links.ph && (
@@ -58,10 +49,6 @@ const Products = ({ history, match }) => {
         )}
         {/* <img src={image} alt={name} /> */}
       </div>
-      {/* {poster && <img src={poster} alt="preview" className="poster" />} */}
-      {/* <video autoPlay width="640" height="500">
-        <source src={poster} type="video/mp4" />
-      </video> */}
     </section>
   );
 };
