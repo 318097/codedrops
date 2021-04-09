@@ -12,6 +12,7 @@
       "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
       "video": "",
       "poster": "",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "Download",
@@ -39,6 +40,7 @@
       "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
       "video": "https://youtu.be/fX3IKhiEz1s",
       "poster": "",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "Download",
@@ -65,6 +67,7 @@
       "logo": "https://raw.githubusercontent.com/318097/file-ops/master/icons/icon128.png",
       "video": "https://youtu.be/ze9KtYe3f48",
       "poster": "https://res.cloudinary.com/codedropstech/image/upload/v1617810191/products/file-ops/Screenshot_2021-04-07_at_9.12.33_PM_fmchbl.png",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "Download",
@@ -99,7 +102,8 @@
       "logo": "",
       "gallery": [],
       "video": "",
-      "poster": ""
+      "poster": "",
+      "status": "WIP"
     },
     {
       "id": "react-ui",
@@ -107,6 +111,7 @@
       "visible": false,
       "name": "React UI",
       "tagline": "Custom UI components library for React.js",
+      "status": "WIP",
       "links": {
         "product": {
           "label": "NPM",
@@ -119,7 +124,10 @@
         "github": {
           "url": "https://github.com/318097/react-ui"
         }
-      }
+      },
+      "customMessages": [
+        "DM if interested in collaboration"
+      ]
     },
     {
       "id": "atom",
@@ -127,6 +135,7 @@
       "visible": false,
       "name": "Atom",
       "tagline": "Manage expenses, todos, goals & timeline",
+      "status": "WIP",
       "links": {
         "product": {
           "label": "App",
@@ -135,7 +144,10 @@
         "github": {
           "url": "https://github.com/318097/atom"
         }
-      }
+      },
+      "customMessages": [
+        "DM if interested in collaboration"
+      ]
     },
     {
       "id": "codedrops",
@@ -143,6 +155,7 @@
       "visible": false,
       "name": "Codedrops",
       "tagline": "Micro-blogging on Web Development",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "Visit",
@@ -152,14 +165,19 @@
           "url": "https://github.com/318097/code-drops"
         }
       },
-      "social": {}
+      "social": {
+        "facebook": "https://www.facebook.com/codedrops.tech/",
+        "instagram": "https://www.instagram.com/codedrops.tech/",
+        "twitter": "https://twitter.com/codedrops_tech"
+      }
     },
     {
       "id": "notes-app",
       "visibleOnPortfolio": true,
       "visible": false,
       "name": "Notes App",
-      "tagline": "",
+      "tagline": "A customizable app for tracking & maintaing notes",
+      "status": "WIP",
       "links": {
         "product": {
           "label": "Open",
@@ -168,7 +186,10 @@
         "github": {
           "url": "https://github.com/318097/notes-app"
         }
-      }
+      },
+      "customMessages": [
+        "DM if interested in collaboration"
+      ]
     },
     {
       "id": "snake",
@@ -176,6 +197,7 @@
       "visible": false,
       "name": "Snake",
       "tagline": "Single & Multi player Snake game",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "Play",
