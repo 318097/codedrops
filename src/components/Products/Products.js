@@ -15,17 +15,16 @@ const Products = ({ history, match }) => {
     name,
     tagline,
     description,
-    download,
+    links,
     image,
     visible,
     logo,
     video,
-    ph,
     poster,
   } = matchedProduct || {};
 
-  const downloadProduct = () => {
-    window.open(`${download}?utm_source=codedrops`, "__blank");
+  const ctaAction = () => {
+    window.open(`${links.product.url}`, "__blank");
   };
 
   if (!visible) return <PageNotFound />;
@@ -47,14 +46,16 @@ const Products = ({ history, match }) => {
               Demo
             </a>
           )}
-          {!!ph && (
-            <a className="link" href={ph} target="__blank">
-              Product Hunt
+          {!!links.ph && (
+            <a className="link" href={links.ph.url} target="__blank">
+              {links.ph.label}
             </a>
           )}
         </div>
 
-        {!!download && <Button onClick={downloadProduct}>Download</Button>}
+        {!!links.product && (
+          <Button onClick={ctaAction}>{links.product.label}</Button>
+        )}
         {/* <img src={image} alt={name} /> */}
       </div>
       {/* {poster && <img src={poster} alt="preview" className="poster" />} */}

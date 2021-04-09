@@ -2,6 +2,7 @@
   "products": [
     {
       "id": "github-marker",
+      "visibleOnPortfolio": true,
       "visible": true,
       "name": "Github Marker",
       "tagline": "A chrome extention to Favorite, Bookmark & Mark link as Read in Github",
@@ -11,13 +12,23 @@
       "logo": "",
       "video": "",
       "poster": "",
-      "download": "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en",
-      "ph": "https://www.producthunt.com/posts/github-marker",
-      "github": "https://github.com/318097/github-marker",
-      "keywords": []
+      "links": {
+        "product": {
+          "label": "Download",
+          "url": "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en"
+        },
+        "ph": {
+          "label": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/github-marker"
+        },
+        "github": {
+          "url": "https://github.com/318097/github-marker"
+        }
+      }
     },
     {
       "id": "note-box",
+      "visibleOnPortfolio": true,
       "visible": true,
       "name": "Note Box",
       "taglineV0": "A Chrome extension to store notes for every domain",
@@ -28,13 +39,23 @@
       "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
       "video": "https://youtu.be/fX3IKhiEz1s",
       "poster": "",
-      "download": "https://chrome.google.com/webstore/detail/note-box/mbbajjgefpenmkkhcnmmnoodlbcbfnmp",
-      "ph": "https://www.producthunt.com/posts/note-box",
-      "github": "https://github.com/318097/note-box",
-      "keywords": []
+      "links": {
+        "product": {
+          "label": "Download",
+          "url": "https://chrome.google.com/webstore/detail/note-box/mbbajjgefpenmkkhcnmmnoodlbcbfnmp"
+        },
+        "ph": {
+          "label": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/note-box"
+        },
+        "github": {
+          "url": "https://github.com/318097/note-box"
+        }
+      }
     },
     {
       "id": "file-ops",
+      "visibleOnPortfolio": true,
       "visible": true,
       "name": "File Ops",
       "tagline": "A VS Code extension to easily tag/alias files & quick switch between files",
@@ -44,9 +65,19 @@
       "logo": "https://raw.githubusercontent.com/318097/file-ops/master/icons/icon128.png",
       "video": "https://youtu.be/ze9KtYe3f48",
       "poster": "https://res.cloudinary.com/codedropstech/image/upload/v1617810191/products/file-ops/Screenshot_2021-04-07_at_9.12.33_PM_fmchbl.png",
-      "download": "https://marketplace.visualstudio.com/items?itemName=mehullakhanpal.file-ops",
-      "ph": "https://www.producthunt.com/posts/file-ops",
-      "github": "https://github.com/318097/file-ops",
+      "links": {
+        "product": {
+          "label": "Download",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mehullakhanpal.file-ops"
+        },
+        "ph": {
+          "label": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/file-ops"
+        },
+        "github": {
+          "url": "https://github.com/318097/file-ops"
+        }
+      },
       "tags": [
         "file-ops",
         "productivity",
@@ -59,6 +90,7 @@
     },
     {
       "id": "dot",
+      "visibleOnPortfolio": false,
       "visible": false,
       "name": "DOT",
       "tagline": "",
@@ -67,37 +99,95 @@
       "logo": "",
       "gallery": [],
       "video": "",
-      "poster": "",
-      "download": "",
-      "keywords": []
+      "poster": ""
     },
     {
       "id": "react-ui",
+      "visibleOnPortfolio": true,
       "visible": false,
       "name": "React UI",
-      "tagline": "",
-      "productPath": "/products/react-ui",
-      "description": "",
-      "logo": "",
-      "gallery": [],
-      "video": "",
-      "poster": "",
-      "download": "",
-      "keywords": []
+      "tagline": "Custom UI components library for React.js",
+      "links": {
+        "product": {
+          "label": "NPM",
+          "url": "npm link"
+        },
+        "ph": {
+          "label": "Preview",
+          "url": "https://codedrops-react-ui.netlify.app/"
+        },
+        "github": {
+          "url": "https://github.com/318097/react-ui"
+        }
+      }
     },
     {
       "id": "atom",
+      "visibleOnPortfolio": true,
       "visible": false,
       "name": "Atom",
+      "tagline": "Manage expenses, todos, goals & timeline",
+      "links": {
+        "product": {
+          "label": "App",
+          "url": "http://at0m.netlify.com/"
+        },
+        "github": {
+          "url": "https://github.com/318097/atom"
+        }
+      }
+    },
+    {
+      "id": "codedrops",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "Codedrops",
+      "tagline": "Micro-blogging on Web Development",
+      "links": {
+        "product": {
+          "label": "Visit",
+          "url": "https://www.codedrops.tech/"
+        },
+        "github": {
+          "url": "https://github.com/318097/code-drops"
+        }
+      },
+      "social": {}
+    },
+    {
+      "id": "notes-app",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "Notes App",
       "tagline": "",
-      "productPath": "/products/atom",
-      "description": "",
-      "logo": "",
-      "gallery": [],
-      "video": "",
-      "poster": "",
-      "download": "",
-      "keywords": []
+      "links": {
+        "product": {
+          "label": "Open",
+          "url": "https://notes-appx.netlify.app/"
+        },
+        "github": {
+          "url": "https://github.com/318097/notes-app"
+        }
+      }
+    },
+    {
+      "id": "snake",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "Snake",
+      "tagline": "Single & Multi player Snake game",
+      "links": {
+        "product": {
+          "label": "Play",
+          "url": "https://318097.github.io/snake/"
+        },
+        "github": {
+          "url": "https://github.com/318097/snake"
+        }
+      },
+      "customMessages": [
+        "My first ever React app"
+      ]
     }
   ]
 }
