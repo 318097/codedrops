@@ -2,6 +2,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById, toggleBookmark } from "../../store/posts/actions";
 import colors, { Card, Tag, Button } from "@codedrops/react-ui";
@@ -172,6 +173,27 @@ const PostView = ({
   return (
     <section id="view-post">
       <CardWrapper className="post-wrapper">
+        <Helmet>
+          <title>{`Code Drops - ${title}`}</title>
+          <meta charSet="utf-8" />
+          <meta name="title" content={title} />
+          <meta property="og:title" content={title} key="ogtitle" />
+          {/* <meta name="description" content={title}/> */}
+          <meta name="twitter:card" content="summary" key="twcard" />
+          <meta
+            name="twitter:creator"
+            content={"codedrops_tech"}
+            key="twhandle"
+          />
+
+          {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
+          {/* <meta property="og:image" content={previewImage} key="ogimage" /> */}
+          <meta
+            property="og:site_name"
+            content={"codedrops.tech"}
+            key="ogsitename"
+          />
+        </Helmet>
         <Card bottomLine>
           <h3
             className="title"
