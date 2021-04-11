@@ -147,7 +147,7 @@ const PostView = ({
 
   const handleBookmarkClick = async () => {
     if (!session || !session.loggedIn)
-      showPopup({ title: "Login to bookmark posts" });
+      return showPopup({ title: "Login to bookmark posts" });
 
     const status = !_.get(post, "isBookmarked");
     await toggleBookmark({ _id: post._id, status });
