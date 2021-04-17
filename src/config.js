@@ -7,12 +7,12 @@ const {
 } = process.env;
 
 const isProd = NODE_ENV === "production";
+// const isProd = true;
 
-const SERVER_URL = isProd
-  ? REACT_APP_SRC === "FIREBASE"
-    ? REACT_APP_FIREBASE_URL
-    : REACT_APP_SERVER_URL
-  : "http://localhost:7000/api";
+const URL =
+  REACT_APP_SRC === "FIREBASE" ? REACT_APP_FIREBASE_URL : REACT_APP_SERVER_URL;
+
+const SERVER_URL = isProd ? URL : "http://localhost:7000/api";
 
 const config = {
   SERVER_URL,

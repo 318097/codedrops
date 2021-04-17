@@ -1,6 +1,7 @@
 ## Codedrops.tech
 
 ### Features
+
 - [x] Login
 - [x] Bookmark post
 - [ ] Create documentation page for Github marker, DOT
@@ -12,3 +13,4 @@
 - [ ] SSR
 - [ ] SEO
 - [ ] Adsense
+- [ ] Share post directly
