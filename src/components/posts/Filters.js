@@ -50,11 +50,11 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
       <Search
         size="small"
         allowClear
-        className="field-width search-input"
+        className="field-width search-input mr"
         placeholder="Search..."
         defaultValue={search}
         onSearch={(value) => setFilter({ search: value })}
-        style={{ marginRight: "4px", width: "160px" }}
+        style={{ width: "160px" }}
       />
       {/* <Select
         mode="multiple"
@@ -78,6 +78,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
     </div>
   );
 };
+
 const mapStateToProps = ({ posts }) => {
   const data = pick(posts, ["meta", "filters"]);
 

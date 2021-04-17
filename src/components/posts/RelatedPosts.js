@@ -15,14 +15,14 @@ const RelatedPosts = ({
   }, [postId]);
 
   return (
-    <div className="related-post">
+    <section id="related-post">
       <h3 className="text-center mb">Related Posts</h3>
-      <div className="posts">
+      <div className="posts-wrapper">
         {relatedPosts.map((post) => (
           <Card key={post._id} post={post} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

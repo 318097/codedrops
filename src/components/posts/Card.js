@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 import { md } from "../../util";
+import { toLower, isEmpty, toUpper } from "lodash";
 
 const lastVisited = localStorage.getItem("last-access");
 
@@ -14,69 +15,45 @@ const isNew = (publishedAt) => {
   return publishedAtTime > lastVisited;
 };
 
-const Wrapper = styled.div`
-  break-inside: avoid-column;
-  margin-bottom: 12px;
+const CardWrapper = styled.div`
+  height: 300px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   .card {
+    flex: 1 1 auto;
+    overflow: hidden;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     position: relative;
     cursor: pointer;
     width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
     padding: 20px 10px;
-    overflow: hidden;
     border: 1px solid ${colors.bg};
     box-shadow: ${colors.bg} 3px 3px 3px;
-    &:hover {
-      background: ${colors.featherDark};
-    }
     .title {
       color: ${colors.iron};
       text-align: center;
-      padding: 30px 0 20px;
+      padding-bottom: 20px;
       font-size: 1.6rem;
     }
-    .title.post {
-      padding: 40px 0;
-      font-size: 1.8rem;
+    .content {
+      width: 100%;
     }
   }
   .info-list {
-    margin: 2px;
+    margin-top: 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .tag-list {
-      .tag {
-        border-radius: 2px;
-        padding: 3px 2px 0px 2px;
-        font-size: 0.8rem;
-      }
+    .tag {
+      font-size: 0.8rem;
+      padding: 2px 4px 1px 4px;
     }
-  }
-  .live-id {
-    border-radius: 30%;
-    display: inline-flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    height: 32px;
-    width: 32px;
-    font-size: 0.8rem;
-    background: ${colors.strokeOne};
-    position: absolute;
-    bottom: -6px;
-    right: -2px;
-    padding: 8px;
-  }
-  .new-post {
-    color: white;
-    background: ${colors.orange};
-    font-size: 0.8rem;
-    padding: 2px 1px 0px;
-    border-radius: 2px;
-    z-index: 1;
   }
   .bulb-icon {
     position: absolute;
@@ -84,6 +61,29 @@ const Wrapper = styled.div`
     right: 4px;
     z-index: 1;
   }
+
+  &.post {
+    .card {
+      justify-content: center;
+      .title {
+        font-size: 2rem;
+        line-height: 2.8rem;
+      }
+    }
+  }
+  /* &:not(.post) {
+    .card::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 30%;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      position: absolute;
+      background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.1));
+    }
+  } */
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
@@ -112,19 +112,28 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
   const isNewPost = isNew(publishedAt);
 
   return (
-    <Wrapper style={customStyle}>
-      <MCard curved onClick={handleClick}>
-        <h3 className={`title ${type === "POST" ? "post" : ""}`}>{title}</h3>
+    <CardWrapper style={customStyle} className={toLower(type)}>
+      <MCard hover onClick={handleClick}>
+        <h3 className="title">{title}</h3>
         {["DROP", "QUIZ"].includes(type) && (
-          <div
+          <p
             className="content"
             dangerouslySetInnerHTML={{ __html: md.render(content) }}
-          ></div>
+          ></p>
         )}
-        <div className="live-id">{liveId}</div>
       </MCard>
-      {(!!tags.length || isNewPost) && (
+
+      {(!isEmpty(tags) || isNewPost) && (
         <div className="info-list">
+          <div className="fcc">
+            {isNewPost && (
+              <Tag color="orange" className="new-post">
+                NEW
+              </Tag>
+            )}
+            <Tag color="green">{`#${liveId}`}</Tag>
+          </div>
+
           <div className="tag-list">
             {tags.map((tag, index) => (
               <Tag
@@ -132,16 +141,15 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
                 key={index}
                 color={tagColors[tag] ? tagColors[tag] : colors.steel}
               >
-                {tag.toUpperCase()}
+                {toUpper(tag)}
               </Tag>
             ))}
           </div>
-          {isNewPost && <div className="new-post">NEW</div>}
         </div>
       )}
 
       {type === "DROP" && <Icon size={12} className="bulb-icon" type="bulb" />}
-    </Wrapper>
+    </CardWrapper>
   );
 };
 

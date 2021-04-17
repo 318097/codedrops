@@ -7,8 +7,9 @@ import Card from "./Card";
 import "./Posts.scss";
 
 const PageWrapper = styled.div`
-  columns: 220px;
-  column-gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 16px;
 `;
 
 const Posts = ({ fetchBookmarks, bookmarks, appLoading }) => {

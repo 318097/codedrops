@@ -7,9 +7,9 @@ import { fetchPosts, setFilter } from "../../store/posts/actions";
 import Card from "./Card";
 import "./Posts.scss";
 import config from "../../config";
+import { get } from "lodash";
 
 const PageWrapper = styled.div`
-  margin-bottom: 25px;
   .page-splitter {
     display: block;
     width: 80%;
@@ -20,7 +20,7 @@ const PageWrapper = styled.div`
       display: inline-block;
       position: relative;
       left: 20px;
-      background: ${colors.bar};
+      background: ${colors.primary};
       color: white;
       font-size: 1rem;
       z-index: 2;
@@ -32,12 +32,13 @@ const PageWrapper = styled.div`
       height: 1px;
       position: absolute;
       top: 50%;
-      background: ${colors.bar};
+      background: ${colors.primary};
     }
   }
-  .notes-wrapper {
-    columns: 220px;
-    column-gap: 12px;
+  .posts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 16px;
   }
 `;
 
@@ -57,13 +58,15 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
       )
     );
 
+  const showLoadButton = meta && page * config.POST_COUNT <= meta.count;
+
   return (
     <section id="posts">
-      {appLoading ? null : (
+      {appLoading && filters.page === 1 ? null : (
         <Fragment>
           {noteChunks.map((chunk, index) => (
             <PageWrapper key={index}>
-              <div className="notes-wrapper">
+              <div className="posts-wrapper">
                 {chunk.map((post) => (
                   <Card key={post._id} post={post} />
                 ))}
@@ -75,7 +78,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
               )}
             </PageWrapper>
           ))}
-          {meta && page * config.POST_COUNT <= meta.count && (
+          {showLoadButton && (
             <div className="actions-row">
               <Button onClick={() => setFilter({ page: page + 1 }, false)}>
                 Load
@@ -89,7 +92,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 };
 
 const mapStateToProps = ({ posts, app: { appLoading } }) => ({
-  posts: posts.posts ? posts.posts : [],
+  posts: get(posts, "posts", []),
   meta: posts.meta,
   filters: posts.filters,
   appLoading,

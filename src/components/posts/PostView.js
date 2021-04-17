@@ -9,33 +9,36 @@ import colors, { Card, Tag, Button } from "@codedrops/react-ui";
 import { showPopup } from "../../helper";
 import { md } from "../../util";
 import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
-import _ from "lodash";
+import { get } from "lodash";
 import queryString from "query-string";
 import { message } from "antd";
 
 const CardWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  overflow: hidden;
   .card {
     border: 1px solid ${colors.bg};
     box-shadow: ${colors.bg} 3px 3px 3px;
-    height: 100%;
     padding: 10px 0 2px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 450px;
-    &:hover {
-      background: ${colors.white};
-    }
     .title {
       text-align: center;
       padding: 0 10px;
       margin: 10px 0;
       font-size: 2rem;
+      line-height: 2.6rem;
     }
     .content-wrapper {
       flex: 1 1 auto;
       overflow: auto;
       padding: 0 10px;
+      width: 100%;
       .content {
         margin-bottom: 10px;
         font-size: 1.2rem;
@@ -106,8 +109,8 @@ const CardWrapper = styled.div`
   }
   .back-icon {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 2px;
+    left: 2px;
     z-index: 1;
   }
   .bookmark-icon {
@@ -149,7 +152,7 @@ const PostView = ({
     if (!session || !session.loggedIn)
       return showPopup({ title: "Login to bookmark posts" });
 
-    const status = !_.get(post, "isBookmarked");
+    const status = !get(post, "isBookmarked");
     await toggleBookmark({ _id: post._id, status });
 
     if (status) {
@@ -172,29 +175,29 @@ const PostView = ({
   } = post || {};
   return (
     <section id="view-post">
-      <CardWrapper className="post-wrapper">
-        <Helmet>
-          <title>{`Code Drops - ${title}`}</title>
-          <meta charSet="utf-8" />
-          <meta name="title" content={title} />
-          <meta property="og:title" content={title} key="ogtitle" />
-          {/* <meta name="description" content={title}/> */}
-          <meta name="twitter:card" content="summary" key="twcard" />
-          <meta
-            name="twitter:creator"
-            content={"codedrops_tech"}
-            key="twhandle"
-          />
+      <Helmet>
+        <title>{`Code Drops - ${title}`}</title>
+        <meta charSet="utf-8" />
+        <meta name="title" content={title} />
+        <meta property="og:title" content={title} key="ogtitle" />
+        {/* <meta name="description" content={title}/> */}
+        <meta name="twitter:card" content="summary" key="twcard" />
+        <meta
+          name="twitter:creator"
+          content={"codedrops_tech"}
+          key="twhandle"
+        />
 
-          {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
-          {/* <meta property="og:image" content={previewImage} key="ogimage" /> */}
-          <meta
-            property="og:site_name"
-            content={"codedrops.tech"}
-            key="ogsitename"
-          />
-        </Helmet>
-        <Card bottomLine>
+        {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
+        {/* <meta property="og:image" content={previewImage} key="ogimage" /> */}
+        <meta
+          property="og:site_name"
+          content={"codedrops.tech"}
+          key="ogsitename"
+        />
+      </Helmet>
+      <CardWrapper className="card-wrapper">
+        <Card hover={false} bottomLine>
           <h3
             className="title"
             dangerouslySetInnerHTML={{ __html: md.renderInline(title) }}
@@ -209,14 +212,14 @@ const PostView = ({
                       <h3
                         className="chain-item-title"
                         dangerouslySetInnerHTML={{
-                          __html: md.renderInline(post.title),
+                          __html: md.renderInline(get(post, "title", "")),
                         }}
                       />
                     </div>
                     <div
                       className="chain-item-content"
                       dangerouslySetInnerHTML={{
-                        __html: md.render(post.content || ""),
+                        __html: md.render(get(post, "content", "")),
                       }}
                     />
                   </div>
@@ -270,6 +273,7 @@ const PostView = ({
           onClick={handleBookmarkClick}
         />
       </CardWrapper>
+      <div className="splitter">~~~</div>
       <RelatedPosts postId={_id} tags={tags} />
     </section>
   );

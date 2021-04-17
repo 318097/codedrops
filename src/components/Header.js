@@ -11,7 +11,7 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 import colors from "@codedrops/react-ui";
-import _ from "lodash";
+import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
@@ -28,9 +28,12 @@ const StyledHeader = styled.header`
   /* background: url("../assets/background/grey.png"); */
   .user-info {
     margin: 0 4px;
-    background: ${colors.strokeTwo};
+    background: ${colors.strokeOne};
     padding: 0px 12px 0 2px;
-    border-radius: 20px;
+    border-radius: 2px;
+    .anticon {
+      padding: 5px 8px 5px 4px;
+    }
   }
   @media screen and (max-width: 600px) {
     .logo {
@@ -46,6 +49,7 @@ const StyledHeader = styled.header`
       }
       .show-count {
         display: none;
+        font-size: 1.4rem;
       }
     }
   }
@@ -72,7 +76,7 @@ const Header = ({ location, session, history, setSession }) => {
           />
           <div className="user-info fcc">
             <UserOutlined className="icon icon-md" />
-            <span>{_.get(session, "name", "")}</span>
+            <span>{get(session, "name", "")}</span>
           </div>
           <LogoutOutlined onClick={logout} className="icon icon-bg icon-md" />
         </div>
