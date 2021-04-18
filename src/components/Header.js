@@ -9,6 +9,7 @@ import {
   BookOutlined,
   LogoutOutlined,
   LoginOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import colors, { Icon } from "@codedrops/react-ui";
 import { get } from "lodash";
@@ -60,7 +61,6 @@ const StyledHeader = styled.header`
 const Header = ({
   location,
   session,
-  history,
   setSession,
   toggleQuickBall,
   quickBallStatus,
@@ -79,12 +79,16 @@ const Header = ({
       {location.pathname === "/posts" && <Filters />}
 
       <div className="fcc">
+        <Link to="/posts">
+          <HomeOutlined className="ant-icon" />
+        </Link>
         <div className="quick-ball">
           <Icon
+            id="quick-ball-icon"
             className="ant-icon"
             type="menu"
             hover
-            onClick={toggleQuickBall}
+            onClick={() => toggleQuickBall(!quickBallStatus)}
           />
           {quickBallStatus && <QuickBall toggleQuickBall={toggleQuickBall} />}
         </div>
@@ -100,10 +104,9 @@ const Header = ({
             <LogoutOutlined onClick={logout} className="ant-icon" />
           </>
         ) : (
-          <LoginOutlined
-            className="ant-icon"
-            onClick={() => history.push("/login")}
-          />
+          <Link to="/login">
+            <LoginOutlined className="ant-icon" />
+          </Link>
         )}
       </div>
     </StyledHeader>

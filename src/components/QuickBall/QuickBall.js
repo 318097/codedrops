@@ -1,4 +1,4 @@
-import React, { useState, memo, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./QuickBall.scss";
@@ -30,7 +30,12 @@ const QuickBall = ({ history, toggleQuickBall }) => {
     const ref = containerRef.current;
     const { target } = e;
 
-    if (ref && !ref.contains(target)) toggleQuickBall();
+    if (
+      ref &&
+      !ref.contains(target) &&
+      target !== document.getElementById("quick-ball-icon")
+    )
+      toggleQuickBall();
   };
 
   const handleClick = (productPath) => {
