@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 import Filters from "./posts/Filters";
 import Logo from "../assets/logo-v3";
@@ -73,15 +73,15 @@ const Header = ({
 
   return (
     <StyledHeader>
-      <a className="logo" onClick={() => history.push("/posts")}>
+      <Link className="logo" to={"/posts"}>
         <Logo />
-      </a>
+      </Link>
       {location.pathname === "/posts" && <Filters />}
 
       <div className="fcc">
         <div className="quick-ball">
           <Icon
-            className="icon quick-ball-icon"
+            className="ant-icon"
             type="menu"
             hover
             onClick={toggleQuickBall}
@@ -89,20 +89,19 @@ const Header = ({
           {quickBallStatus && <QuickBall toggleQuickBall={toggleQuickBall} />}
         </div>
         {session ? (
-          <div className="ml fcc">
-            <BookOutlined
-              onClick={() => history.push("/bookmarks")}
-              className="icon icon-bg icon-md"
-            />
+          <>
+            <Link to="/bookmarks">
+              <BookOutlined className="ant-icon" />
+            </Link>
             <div className="user-info fcc">
-              <UserOutlined className="icon icon-md" />
+              <UserOutlined className="ant-icon no-hover" />
               <span>{get(session, "name", "")}</span>
             </div>
-            <LogoutOutlined onClick={logout} className="icon icon-bg icon-md" />
-          </div>
+            <LogoutOutlined onClick={logout} className="ant-icon" />
+          </>
         ) : (
           <LoginOutlined
-            className="icon icon-bg icon-md"
+            className="ant-icon"
             onClick={() => history.push("/login")}
           />
         )}

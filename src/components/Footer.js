@@ -43,7 +43,7 @@ const Footer = () => (
   <Wrapper>
     {menuList.map(({ id, url, icon }) => (
       <a key={id} target="_blank" rel="noopener noreferrer" href={url}>
-        <Icon className="icon icon-bg" type={icon} />
+        <Icon hover type={icon} />
       </a>
     ))}
   </Wrapper>

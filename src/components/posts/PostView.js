@@ -263,13 +263,10 @@ const PostView = ({
             </div>
           </div>
         </Card>
-        <ArrowLeftOutlined
-          className="back-icon icon icon-bg icon-md"
-          onClick={goBack}
-        />
+        <ArrowLeftOutlined className="back-icon ant-icon" onClick={goBack} />
         <BookOutlined
           style={{ color: isBookmarked ? "green" : "black" }}
-          className="bookmark-icon icon icon-bg icon-md"
+          className="bookmark-icon ant-icon"
           onClick={handleBookmarkClick}
         />
       </CardWrapper>
