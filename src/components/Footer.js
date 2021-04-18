@@ -25,29 +25,27 @@ const Wrapper = styled.div`
   }
 `;
 
+const menuList = [
+  {
+    id: "facebook",
+    url: "https://www.facebook.com/codedrops.tech/",
+    icon: "facebook",
+  },
+  {
+    id: "instagram",
+    url: "https://www.instagram.com/codedrops.tech/",
+    icon: "instagram",
+  },
+  { id: "twitter", url: "https://twitter.com/codedrops_tech", icon: "twitter" },
+];
+
 const Footer = () => (
   <Wrapper>
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://www.facebook.com/codedrops.tech/"
-    >
-      <Icon className="icon icon-bg" type="facebook" />
-    </a>
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://www.instagram.com/codedrops.tech/"
-    >
-      <Icon className="icon icon-bg" type="instagram" />
-    </a>
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://twitter.com/codedrops_tech"
-    >
-      <Icon className="icon icon-bg" type="twitter" />
-    </a>
+    {menuList.map(({ id, url, icon }) => (
+      <a key={id} target="_blank" rel="noopener noreferrer" href={url}>
+        <Icon className="icon icon-bg" type={icon} />
+      </a>
+    ))}
   </Wrapper>
 );
 
