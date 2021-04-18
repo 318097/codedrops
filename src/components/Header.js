@@ -10,11 +10,13 @@ import {
   LogoutOutlined,
   LoginOutlined,
 } from "@ant-design/icons";
-import colors from "@codedrops/react-ui";
+import colors, { Icon } from "@codedrops/react-ui";
 import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
+
+import QuickBall from "./QuickBall";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -55,7 +57,14 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ location, session, history, setSession }) => {
+const Header = ({
+  location,
+  session,
+  history,
+  setSession,
+  toggleQuickBall,
+  quickBallStatus,
+}) => {
   const logout = () => {
     localStorage.clear();
     setSession(null);
@@ -68,24 +77,36 @@ const Header = ({ location, session, history, setSession }) => {
         <Logo />
       </a>
       {location.pathname === "/posts" && <Filters />}
-      {session ? (
-        <div className="ml fcc">
-          <BookOutlined
-            onClick={() => history.push("/bookmarks")}
-            className="icon icon-bg icon-md"
+
+      <div className="fcc">
+        <div className="quick-ball">
+          <Icon
+            className="icon quick-ball-icon"
+            type="menu"
+            hover
+            onClick={toggleQuickBall}
           />
-          <div className="user-info fcc">
-            <UserOutlined className="icon icon-md" />
-            <span>{get(session, "name", "")}</span>
-          </div>
-          <LogoutOutlined onClick={logout} className="icon icon-bg icon-md" />
+          {quickBallStatus && <QuickBall toggleQuickBall={toggleQuickBall} />}
         </div>
-      ) : (
-        <LoginOutlined
-          className="icon icon-bg icon-md"
-          onClick={() => history.push("/login")}
-        />
-      )}
+        {session ? (
+          <div className="ml fcc">
+            <BookOutlined
+              onClick={() => history.push("/bookmarks")}
+              className="icon icon-bg icon-md"
+            />
+            <div className="user-info fcc">
+              <UserOutlined className="icon icon-md" />
+              <span>{get(session, "name", "")}</span>
+            </div>
+            <LogoutOutlined onClick={logout} className="icon icon-bg icon-md" />
+          </div>
+        ) : (
+          <LoginOutlined
+            className="icon icon-bg icon-md"
+            onClick={() => history.push("/login")}
+          />
+        )}
+      </div>
     </StyledHeader>
   );
 };

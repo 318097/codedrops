@@ -1,32 +1,23 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 
 .quick-ball {
-  position: absolute;
-  bottom: 2%;
-  left: 2%;
-  z-index: 1000000;
-  .quick-ball-icon {
-    // opacity: 0;
-    // animation: delay 1s 2s forwards;
-    transition: all 0.4s;
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-  .wrapper {
+  position: relative;
+  .quick-ball-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
     width: 360px;
-    height: 220px;
+    height: 238px;
     background: $bg;
-    position: relative;
     border-radius: 8px;
     border: 1px solid lightgrey;
     cursor: pointer;
-    .close-icon {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      z-index: 100;
-    }
+    // .close-icon {
+    //   position: absolute;
+    //   top: -8px;
+    //   right: -8px;
+    //   z-index: 100;
+    // }
     .container {
       overflow-y: auto;
       overflow-x: hidden;
@@ -41,16 +32,19 @@
           padding: 8px;
           background: $strokeOne;
           margin: 0;
+          &.pointer:hover {
+            text-decoration: underline;
+          }
         }
-        .bb {
-          border-bottom: 5px solid $orchid;
-        }
+
         .sub-menu-container {
           padding-left: 24px;
           background: $featherDark;
           border-bottom: 1px solid $strokeOne;
           position: relative;
-
+          &:hover {
+            background: $bg;
+          }
           .index {
             position: absolute;
             left: 8px;
@@ -60,6 +54,9 @@
           .name {
             background: none;
             padding: 4px 0 0 0;
+            &:hover {
+              text-decoration: underline;
+            }
           }
           .tagline {
             font-size: 1.1rem;

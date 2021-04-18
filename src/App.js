@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { Icon } from "@codedrops/react-ui";
-
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Bookmarks from "./components/posts/Bookmarks";
@@ -12,7 +10,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import PostView from "./components/posts/PostView";
 import PageNotFound from "./components/PageNotFound";
-import QuickBall from "./components/QuickBall";
 import Products from "./components/Products";
 import Feedback from "./components/Feedback";
 
@@ -73,7 +70,11 @@ const App = ({
       <div className="content-wrapper">
         {appLoading && <div className="spinner" />}
         <BrowserRouter>
-          <Header session={session} />
+          <Header
+            session={session}
+            toggleQuickBall={toggleQuickBall}
+            quickBallStatus={quickBallStatus}
+          />
           <div
             className="content"
             style={{ position: "relative", zIndex: "1" }}
@@ -89,18 +90,6 @@ const App = ({
               <Route exact path="/products/:id" component={Products} />
               <Route component={PageNotFound} />
             </Switch>
-          </div>
-          <div className="quick-ball">
-            {quickBallStatus ? (
-              <QuickBall toggleQuickBall={toggleQuickBall} />
-            ) : (
-              <Icon
-                className="icon quick-ball-icon"
-                type="menu"
-                size={20}
-                onClick={toggleQuickBall}
-              />
-            )}
           </div>
         </BrowserRouter>
       </div>

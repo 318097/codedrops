@@ -14,3 +14,7 @@
 - [ ] SEO
 - [ ] Adsense
 - [ ] Share post directly
+
+### Fixes
+
+- [x] Fix Quick ball on close, position

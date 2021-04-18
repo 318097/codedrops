@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, memo, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Icon } from "@codedrops/react-ui";
 import "./QuickBall.scss";
 import data from "../../DATA.json";
 
@@ -17,6 +16,23 @@ const menu = [
 ];
 
 const QuickBall = ({ history, toggleQuickBall }) => {
+  const containerRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick, { capture: true });
+    return () =>
+      document.removeEventListener("click", handleOutsideClick, {
+        capture: true,
+      });
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    const ref = containerRef.current;
+    const { target } = e;
+
+    if (ref && !ref.contains(target)) toggleQuickBall();
+  };
+
   const handleClick = (productPath) => {
     if (!productPath) return;
     history.push(productPath);
@@ -24,17 +40,20 @@ const QuickBall = ({ history, toggleQuickBall }) => {
   };
 
   return (
-    <div className="wrapper">
-      <Icon
+    <div className="quick-ball-container" ref={containerRef}>
+      {/* <Icon
         type="cancel-2"
         className="close-icon"
         size={16}
         onClick={toggleQuickBall}
-      />
+      /> */}
       <div className="container">
         {menu.map(({ name, subMenu = [], productPath }) => (
           <div key={name} className="menu-container">
-            <h4 onClick={() => handleClick(productPath)} className="name bb">
+            <h4
+              onClick={() => handleClick(productPath)}
+              className={`name${productPath ? " pointer" : ""}`}
+            >
               {name}
             </h4>
             {!!subMenu.length &&
