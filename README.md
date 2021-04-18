@@ -18,3 +18,4 @@
 ### Fixes
 
 - [x] Fix Quick ball on close, position
+- [ ] Fix favicon
