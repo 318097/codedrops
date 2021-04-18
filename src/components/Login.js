@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, message } from "antd";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import { setSessionInStorage } from "../authService";
 import { setSession } from "../store/app/actions";
@@ -65,7 +65,9 @@ const Login = ({ history, setSession, session }) => {
           Login
         </Button>
 
-        <Button onClick={() => history.push("/register")}>Register</Button>
+        <Link to="/register">
+          <Button>Register</Button>
+        </Link>
       </form>
     </section>
   );

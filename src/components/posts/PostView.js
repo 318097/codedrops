@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment, useState } from "react";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import RelatedPosts from "./RelatedPosts";
@@ -142,12 +142,6 @@ const PostView = ({
     // history.push(`/posts/?tags=${value}`);
   };
 
-  const goBack = () => {
-    const parsed = queryString.parse(location.search);
-    const route = parsed.target || "posts";
-    history.push(`/${route}`);
-  };
-
   const handleBookmarkClick = async () => {
     if (!session || !session.loggedIn)
       return showPopup({ title: "Login to bookmark posts" });
@@ -173,6 +167,9 @@ const PostView = ({
     solution,
     isBookmarked,
   } = post || {};
+
+  const parsed = queryString.parse(location.search);
+  const route = parsed.target || "posts";
   return (
     <section id="view-post">
       <Helmet>
@@ -249,7 +246,6 @@ const PostView = ({
             <div className="tag-list">
               {tags.map((tag, index) => (
                 <Tag
-                  onClick={handleTagClick(tag)}
                   key={index}
                   color={tagColors[tag] ? tagColors[tag] : colors.steel}
                 >
@@ -263,7 +259,9 @@ const PostView = ({
             </div>
           </div>
         </Card>
-        <ArrowLeftOutlined className="back-icon ant-icon" onClick={goBack} />
+        <Link to={`/${route}`}>
+          <ArrowLeftOutlined className="back-icon ant-icon" />
+        </Link>
         <BookOutlined
           style={{ color: isBookmarked ? "green" : "black" }}
           className="bookmark-icon ant-icon"

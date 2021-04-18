@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 import { md } from "../../util";
@@ -21,28 +21,33 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  .card {
+  a {
     flex: 1 1 auto;
     overflow: hidden;
-    margin: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    cursor: pointer;
-    width: 100%;
-    padding: 20px 10px;
-    border: 1px solid ${colors.bg};
-    box-shadow: ${colors.bg} 3px 3px 3px;
-    .title {
-      color: ${colors.iron};
-      text-align: center;
-      padding-bottom: 20px;
-      font-size: 1.6rem;
-    }
-    .content {
+    .card {
+      overflow: hidden;
+      flex: 1 1 auto;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      cursor: pointer;
       width: 100%;
+      padding: 20px 10px;
+      border: 1px solid ${colors.bg};
+      box-shadow: ${colors.bg} 3px 3px 3px;
+      .title {
+        color: ${colors.iron};
+        text-align: center;
+        padding-bottom: 20px;
+        font-size: 1.6rem;
+      }
+      .content {
+        width: 100%;
+      }
     }
   }
   .info-list {
@@ -97,12 +102,6 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
     publishedAt,
   } = post || {};
 
-  const handleClick = () => {
-    let queryParams = "";
-    if (target) queryParams = `?target=${target}`;
-    history.push(`/posts/${slug}${queryParams}`);
-  };
-
   const handleTagClick = (event, value) => {
     // history.push(`/posts?tags=${value}`);
   };
@@ -111,17 +110,21 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
 
   const isNewPost = isNew(publishedAt);
 
+  const pathname = `/posts/${slug}`;
+
   return (
     <CardWrapper style={customStyle} className={toLower(type)}>
-      <MCard hover onClick={handleClick}>
-        <h3 className="title">{title}</h3>
-        {["DROP", "QUIZ"].includes(type) && (
-          <p
-            className="content"
-            dangerouslySetInnerHTML={{ __html: md.render(content) }}
-          ></p>
-        )}
-      </MCard>
+      <Link to={{ pathname, search: target ? `?target=${target}` : "" }}>
+        <MCard hover>
+          <h3 className="title">{title}</h3>
+          {["DROP", "QUIZ"].includes(type) && (
+            <p
+              className="content"
+              dangerouslySetInnerHTML={{ __html: md.render(content) }}
+            ></p>
+          )}
+        </MCard>
+      </Link>
 
       {(!isEmpty(tags) || isNewPost) && (
         <div className="info-list">

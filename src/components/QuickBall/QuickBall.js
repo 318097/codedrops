@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./QuickBall.scss";
 import data from "../../DATA.json";
 
@@ -33,15 +33,9 @@ const QuickBall = ({ history, toggleQuickBall }) => {
     if (
       ref &&
       !ref.contains(target) &&
-      target !== document.getElementById("quick-ball-icon")
+      !document.getElementById("quick-ball-icon").contains(target)
     )
       toggleQuickBall();
-  };
-
-  const handleClick = (productPath) => {
-    if (!productPath) return;
-    history.push(productPath);
-    toggleQuickBall();
   };
 
   return (
@@ -55,24 +49,27 @@ const QuickBall = ({ history, toggleQuickBall }) => {
       <div className="container">
         {menu.map(({ name, subMenu = [], productPath }) => (
           <div key={name} className="menu-container">
-            <h4
-              onClick={() => handleClick(productPath)}
+            <Link
+              onClick={() => (productPath ? toggleQuickBall() : null)}
+              to={productPath}
               className={`name${productPath ? " pointer" : ""}`}
             >
               {name}
-            </h4>
+            </Link>
+
             {!!subMenu.length &&
               subMenu.map(({ name, tagline, productPath }, index) => {
                 return (
-                  <div
+                  <Link
+                    onClick={() => toggleQuickBall()}
                     key={name}
                     className="sub-menu-container"
-                    onClick={() => handleClick(productPath)}
+                    to={productPath}
                   >
                     <span className="index">{index + 1}.</span>
                     <h4 className="name">{name}</h4>
                     {tagline && <p className="tagline">{tagline}</p>}
-                  </div>
+                  </Link>
                 );
               })}
           </div>
