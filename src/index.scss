@@ -62,7 +62,7 @@ html body {
     margin: 0;
     &:not(.no-hover):hover {
       border-radius: 50%;
-      background: $strokeOne;
+      background: $strokeTwo;
     }
     @media (max-width: 500px) {
       padding: 6px;

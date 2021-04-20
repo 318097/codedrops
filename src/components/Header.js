@@ -31,7 +31,7 @@ const StyledHeader = styled.header`
   /* background: url("../assets/background/grey.png"); */
   .user-info {
     margin: 0 4px;
-    background: ${colors.strokeOne};
+    background: ${colors.strokeTwo};
     padding: 0px 12px 0 2px;
     border-radius: 2px;
     .anticon {
