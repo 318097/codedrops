@@ -41,7 +41,7 @@ const StyledHeader = styled.header`
   @media screen and (max-width: 600px) {
     .logo {
       position: relative;
-      flex-shrink: 0;
+      flex: 0 0 120px;
       top: 4px;
       svg {
         width: 80%;
