@@ -59,11 +59,16 @@ html body {
     font-size: 14px;
     border-radius: 0;
     transition: 0.4s;
+    margin: 0;
     &:not(.no-hover):hover {
       border-radius: 50%;
-      background: $strokeTwo;
+      background: $strokeOne;
+    }
+    @media (max-width: 500px) {
+      padding: 6px;
     }
   }
+
   a,
   a:hover {
     color: $bar;

@@ -11,7 +11,7 @@ import {
   LoginOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import colors, { Icon } from "@codedrops/react-ui";
+import colors from "@codedrops/react-ui";
 import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
@@ -52,7 +52,7 @@ const StyledHeader = styled.header`
     }
     .filters {
       .search-input {
-        width: 100px !important;
+        width: 120px !important;
       }
       .show-count {
         display: none;
@@ -86,16 +86,10 @@ const Header = ({
         <Link to="/posts">
           <HomeOutlined className="ant-icon" />
         </Link>
-        <div className="quick-ball">
-          <Icon
-            id="quick-ball-icon"
-            className="ant-icon"
-            type="menu"
-            hover
-            onClick={() => toggleQuickBall(!quickBallStatus)}
-          />
-          {quickBallStatus && <QuickBall toggleQuickBall={toggleQuickBall} />}
-        </div>
+        <QuickBall
+          toggleQuickBall={toggleQuickBall}
+          quickBallStatus={quickBallStatus}
+        />
         {session ? (
           <>
             <Link to="/bookmarks">
