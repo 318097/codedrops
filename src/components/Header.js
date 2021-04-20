@@ -41,10 +41,14 @@ const StyledHeader = styled.header`
   @media screen and (max-width: 600px) {
     .logo {
       position: relative;
+      flex-shrink: 0;
       top: 4px;
       svg {
         width: 80%;
       }
+    }
+    .user-info {
+      display: none !important;
     }
     .filters {
       .search-input {

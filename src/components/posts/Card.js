@@ -129,11 +129,7 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
       {(!isEmpty(tags) || isNewPost) && (
         <div className="info-list">
           <div className="fcc">
-            {isNewPost && (
-              <Tag color="orange" className="new-post">
-                NEW
-              </Tag>
-            )}
+            {isNewPost && <Tag color="orange">NEW</Tag>}
             <Tag color="green">{`#${liveId}`}</Tag>
           </div>
 

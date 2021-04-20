@@ -14,6 +14,7 @@
 - [ ] SEO
 - [ ] Adsense
 - [ ] Share post directly
+- [ ] Create linktr.ee
 
 ### Fixes
 
