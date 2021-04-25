@@ -13,7 +13,7 @@
 - [ ] SSR
 - [ ] SEO
 - [ ] Adsense
-- [ ] Share post directly
+- [x] Share post directly
 - [ ] Create linktr.ee
 
 ### Fixes
