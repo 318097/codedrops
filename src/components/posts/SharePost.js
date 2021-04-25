@@ -8,11 +8,11 @@ const getSharerURL = (type, url = window.location.href, text) => {
   switch (type) {
     case "FACEBOOK":
       return `https://www.facebook.com/sharer/sharer.php?u=${encodedPageURL}${
-        text && `&quote=${text}`
+        text ? `&quote=${text}` : ""
       }`;
     case "TWITTER":
       return `https://twitter.com/intent/tweet?url=${encodedPageURL}${
-        text && `&text=${text}`
+        text ? `&text=${text}` : ""
       }`;
     case "LINKEDIN":
       return `https://www.linkedin.com/sharing/share-offsite/?url=${encodedPageURL}`;

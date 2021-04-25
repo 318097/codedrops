@@ -128,11 +128,6 @@ const HelmetData = ({ title }) => (
     <title>{`${title} - Code Drops`}</title>
     <meta name="title" content={title} />
     <meta property="og:title" content={title} key="ogtitle" />
-    {/* <meta name="description" content={title}/> */}
-    <meta name="twitter:card" content="summary" key="twcard" />
-    <meta name="twitter:creator" content={"codedrops_tech"} key="twhandle" />
-
-    {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
     <meta
       property="og:image"
       content={
@@ -140,7 +135,9 @@ const HelmetData = ({ title }) => (
       }
       key="ogimage"
     />
-    <meta property="og:site_name" content={"codedrops.tech"} key="ogsitename" />
+    {/* <meta name="twitter:card" content="summary" key="twcard" /> */}
+    {/* <meta name="description" content={title}/> */}
+    {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
   </Helmet>
 );
 

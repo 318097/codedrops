@@ -5,6 +5,26 @@ import { Button } from "@codedrops/react-ui";
 import "./Products.scss";
 import data from "../../DATA.json";
 import PageNotFound from "../PageNotFound";
+import { Helmet } from "react-helmet";
+
+const HelmetData = ({ title }) => (
+  <Helmet>
+    <meta charSet="utf-8" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta property="og:title" content={title} key="ogtitle" />
+    <meta
+      property="og:image"
+      content={
+        "https://raw.githubusercontent.com/318097/code-drops/master/assets/codedrops.v2.png"
+      }
+      key="ogimage"
+    />
+    {/* <meta name="description" content={title}/> */}
+    {/* <meta name="twitter:card" content="summary" key="twcard" /> */}
+    {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
+  </Helmet>
+);
 
 const Products = ({ history, match }) => {
   const { id } = match.params;
@@ -22,6 +42,7 @@ const Products = ({ history, match }) => {
 
   return (
     <section id="products">
+      <HelmetData title={name} description={tagline} />
       <div className="content">
         {!!logo && <img className="logo" alt="logo" src={logo} />}
         <h3 className="name" dangerouslySetInnerHTML={{ __html: name }} />
