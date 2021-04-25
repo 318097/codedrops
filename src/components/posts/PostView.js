@@ -12,6 +12,7 @@ import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { get } from "lodash";
 import queryString from "query-string";
 import { message } from "antd";
+import SharePost from "./SharePost";
 
 const CardWrapper = styled.div`
   position: relative;
@@ -121,6 +122,28 @@ const CardWrapper = styled.div`
   }
 `;
 
+const HelmetData = ({ title }) => (
+  <Helmet>
+    <meta charSet="utf-8" />
+    <title>{`${title} - Code Drops`}</title>
+    <meta name="title" content={title} />
+    <meta property="og:title" content={title} key="ogtitle" />
+    {/* <meta name="description" content={title}/> */}
+    <meta name="twitter:card" content="summary" key="twcard" />
+    <meta name="twitter:creator" content={"codedrops_tech"} key="twhandle" />
+
+    {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
+    <meta
+      property="og:image"
+      content={
+        "https://raw.githubusercontent.com/318097/code-drops/master/assets/codedrops.v2.png"
+      }
+      key="ogimage"
+    />
+    <meta property="og:site_name" content={"codedrops.tech"} key="ogsitename" />
+  </Helmet>
+);
+
 const PostView = ({
   history,
   match,
@@ -172,27 +195,7 @@ const PostView = ({
   const route = parsed.target || "posts";
   return (
     <section id="view-post">
-      <Helmet>
-        <title>{`Code Drops - ${title}`}</title>
-        <meta charSet="utf-8" />
-        <meta name="title" content={title} />
-        <meta property="og:title" content={title} key="ogtitle" />
-        {/* <meta name="description" content={title}/> */}
-        <meta name="twitter:card" content="summary" key="twcard" />
-        <meta
-          name="twitter:creator"
-          content={"codedrops_tech"}
-          key="twhandle"
-        />
-
-        {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
-        {/* <meta property="og:image" content={previewImage} key="ogimage" /> */}
-        <meta
-          property="og:site_name"
-          content={"codedrops.tech"}
-          key="ogsitename"
-        />
-      </Helmet>
+      <HelmetData title={title.replaceAll("`", "")} />
       <CardWrapper className="card-wrapper">
         <Card hover={false} bottomLine>
           <h3
@@ -267,6 +270,7 @@ const PostView = ({
           className="bookmark-icon ant-icon"
           onClick={handleBookmarkClick}
         />
+        <SharePost />
       </CardWrapper>
       <div className="splitter">~~~</div>
       <RelatedPosts postId={_id} tags={tags} />
