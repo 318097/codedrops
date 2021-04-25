@@ -41,10 +41,10 @@ const menuList = [
     id: "facebook",
     icon: "facebook",
   },
-  {
-    id: "linkedin",
-    icon: "linkedin",
-  },
+  // {
+  //   id: "linkedin",
+  //   icon: "linkedin",
+  // },
   {
     id: "twitter",
     icon: "twitter",
