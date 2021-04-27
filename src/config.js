@@ -6,13 +6,20 @@ const {
   REACT_APP_COLLECTION_ID,
 } = process.env;
 
-const isProd = NODE_ENV === "production";
-// const isProd = true;
+const NETLIFY_EXPRESS =
+  "https://bubblegum-serverless.netlify.app/.netlify/functions/api";
+
+const isProd = true || NODE_ENV === "production";
+const useNetlifyURL = true;
 
 const URL =
   REACT_APP_SRC === "FIREBASE" ? REACT_APP_FIREBASE_URL : REACT_APP_SERVER_URL;
 
-const SERVER_URL = isProd ? URL : "http://localhost:7000/api";
+const SERVER_URL = useNetlifyURL
+  ? NETLIFY_EXPRESS
+  : isProd
+  ? URL
+  : "http://localhost:7000/api";
 
 const config = {
   SERVER_URL,
