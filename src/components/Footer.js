@@ -44,12 +44,12 @@ const menuList = [
     icon: "twitter",
     color: colors.iron,
   },
-  // {
-  //   id: "linkedin",
-  //   url: "https://www.linkedin.com/company/codedrops-tech/",
-  //   icon: "linkedin",
-  // color: colors.iron,
-  // },
+  {
+    id: "linkedin",
+    url: "https://www.linkedin.com/company/codedrops-tech/",
+    icon: "linkedin",
+    color: colors.iron,
+  },
 ];
 
 const Footer = () => (
