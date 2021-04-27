@@ -10,7 +10,7 @@ const {
 const NETLIFY_EXPRESS =
   "https://bubblegum-serverless.netlify.app/.netlify/functions/api";
 
-const isProd = true || NODE_ENV === "production";
+const isProd = NODE_ENV === "production";
 const useNetlifyURL = true;
 
 const URL =

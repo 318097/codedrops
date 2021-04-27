@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/browser";
 
-export default (exception) => {
+export const captureException = (exception) => {
   Sentry.captureException(exception);
 };

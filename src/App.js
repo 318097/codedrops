@@ -12,10 +12,9 @@ import PostView from "./components/posts/PostView";
 import PageNotFound from "./components/PageNotFound";
 import Products from "./components/Products";
 import Feedback from "./components/Feedback";
-import { captureException } from "./utils";
+import { captureException, getToken, hasToken } from "./utils";
 
 import { fetchTags } from "./store/posts/actions";
-import { getToken, hasToken } from "./authService";
 import { setSession, toggleQuickBall } from "./store/app/actions";
 
 import "./App.scss";

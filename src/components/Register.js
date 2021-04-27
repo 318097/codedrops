@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Input, Button, message } from "antd";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { setSessionInStorage } from "../authService";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
-import { captureException } from "../utils";
+import { captureException, setSessionInStorage } from "../utils";
 
 const initialState = {
   name: "",
