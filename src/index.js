@@ -8,10 +8,10 @@ import store from "./store";
 import "antd/dist/antd.css";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
+import config from "./config";
 
 Sentry.init({
-  dsn:
-    "https://6c143505357047b588352a68fee11c96@o556408.ingest.sentry.io/5687263",
+  dsn: config.SENTRY_URL,
   integrations: [new Integrations.BrowserTracing()],
 
   // Set tracesSampleRate to 1.0 to capture 100%
