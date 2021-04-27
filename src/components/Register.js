@@ -5,6 +5,7 @@ import axios from "axios";
 import { setSessionInStorage } from "../authService";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
+import { captureException } from "../utils";
 
 const initialState = {
   name: "",
@@ -29,6 +30,7 @@ const Register = ({ history }) => {
     } catch (err) {
       const { response: { data: errorMessage = "Error." } = {} } = err;
       message.error(errorMessage);
+      captureException(err);
     } finally {
       setLoading(false);
     }

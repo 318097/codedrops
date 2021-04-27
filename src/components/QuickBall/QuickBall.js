@@ -57,7 +57,7 @@ const QuickBall = ({ toggleQuickBall, quickBallStatus }) => {
         onClick={toggleQuickBall}
       /> */}
           <div className="container">
-            {menu.map(({ name, subMenu = [], productPath }) => (
+            {menu.map(({ name, subMenu = [], productPath = "" }) => (
               <div key={name} className="menu-container">
                 <Link
                   onClick={() => (productPath ? toggleQuickBall() : null)}

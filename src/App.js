@@ -12,6 +12,7 @@ import PostView from "./components/posts/PostView";
 import PageNotFound from "./components/PageNotFound";
 import Products from "./components/Products";
 import Feedback from "./components/Feedback";
+import { captureException } from "./utils";
 
 import { fetchTags } from "./store/posts/actions";
 import { getToken, hasToken } from "./authService";
@@ -55,6 +56,7 @@ const App = ({
           setSession({ loggedIn: true, info: "ON_LOAD", ...data });
         } catch (err) {
           console.log("Error:", err);
+          captureException(err);
         } finally {
           setTimeout(() => setLoading(false), 100);
         }

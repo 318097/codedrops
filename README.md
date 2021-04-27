@@ -15,6 +15,7 @@
 - [ ] Adsense
 - [x] Share post directly
 - [ ] Create linktr.ee
+- [x] Sentry
 
 ### Fixes
 

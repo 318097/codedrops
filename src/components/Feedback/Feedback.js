@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Input, Button, message as antMessage } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
+import { captureException } from "../../utils";
 
 const { TextArea } = Input;
 
@@ -31,6 +32,7 @@ const Feedback = ({ session, history }) => {
       history.push("/");
     } catch (err) {
       console.log(err);
+      captureException(err);
     } finally {
       setLoading(false);
     }

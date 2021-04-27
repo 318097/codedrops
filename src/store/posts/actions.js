@@ -1,5 +1,6 @@
 import axios from "axios";
 import { get, find, includes } from "lodash";
+import { captureException } from "../../utils";
 import { setAppLoading } from "../app/actions";
 import config from "../../config";
 import {
@@ -52,6 +53,7 @@ export const fetchPosts = () => async (dispatch, getState) => {
     });
   } catch (err) {
     console.log(err);
+    captureException(err);
   } finally {
     dispatch(setAppLoading(false));
   }
@@ -99,6 +101,7 @@ export const getPostById = (postId) => async (dispatch, getState) => {
 
     dispatch({ type: GET_POST_BY_ID, payload: post });
   } catch (err) {
+    captureException(err);
   } finally {
     dispatch(setAppLoading(false));
   }
@@ -114,7 +117,9 @@ export const fetchRelatedPosts = ({ postId, tags }) => async (dispatch) => {
     });
 
     dispatch({ type: GET_RELATED_POSTS, payload: posts });
-  } catch (err) {}
+  } catch (err) {
+    captureException(err);
+  }
 };
 
 export const fetchBookmarks = () => async (dispatch) => {
@@ -127,7 +132,9 @@ export const fetchBookmarks = () => async (dispatch) => {
     });
 
     dispatch({ type: GET_BOOKMARKS, payload: bookmarks });
-  } catch (err) {}
+  } catch (err) {
+    captureException(err);
+  }
 };
 
 export const toggleBookmark = ({ _id, status }) => async (
@@ -150,6 +157,7 @@ export const toggleBookmark = ({ _id, status }) => async (
       payload: { ...selectedPost, isBookmarked: status },
     });
   } catch (err) {
+    captureException(err);
   } finally {
     dispatch(setAppLoading(false));
   }
