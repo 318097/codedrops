@@ -8,7 +8,7 @@ const {
 } = process.env;
 
 const NETLIFY_EXPRESS =
-  "https://bubblegum-serverless.netlify.app/.netlify/functions/api";
+  "https://bubblegum-lambda.netlify.app/.netlify/functions/api";
 
 const isProd = NODE_ENV === "production";
 const useNetlifyURL = true;
