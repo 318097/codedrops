@@ -176,8 +176,8 @@ const PostView = ({
   if (!post) return null;
 
   const {
-    title,
-    content,
+    title = "",
+    content = "",
     tags = [],
     _id,
     type,
