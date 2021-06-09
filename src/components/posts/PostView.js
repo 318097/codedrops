@@ -2,7 +2,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
+import Helmet from "../Helmet";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById, toggleBookmark } from "../../store/posts/actions";
 import colors, { Card, Tag, Button } from "@codedrops/react-ui";
@@ -121,25 +121,6 @@ const CardWrapper = styled.div`
   }
 `;
 
-const HelmetData = ({ title }) => (
-  <Helmet>
-    <meta charSet="utf-8" />
-    <title>{`${title} - Code Drops`}</title>
-    <meta name="title" content={title} />
-    <meta property="og:title" content={title} key="ogtitle" />
-    <meta
-      property="og:image"
-      content={
-        "https://raw.githubusercontent.com/318097/code-drops/master/assets/codedrops.v2.png"
-      }
-      key="ogimage"
-    />
-    {/* <meta name="twitter:card" content="summary" key="twcard" /> */}
-    {/* <meta name="description" content={title}/> */}
-    {/* <meta property="og:url" content={currentURL} key="ogurl" /> */}
-  </Helmet>
-);
-
 const PostView = ({
   history,
   match,
@@ -191,7 +172,12 @@ const PostView = ({
   const route = parsed.target || "posts";
   return (
     <section id="view-post">
-      <HelmetData title={title.replaceAll("`", "")} />
+      <Helmet
+        data={{
+          title: title ? title.replaceAll("`", "") : "",
+          pageTitleSuffix: " - Code Drops",
+        }}
+      />
       <CardWrapper className="card-wrapper">
         <Card hover={false} bottomLine>
           <h3
