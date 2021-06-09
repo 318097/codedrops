@@ -2,7 +2,7 @@ import {
   SET_SESSION,
   SEND_APP_NOTIFICATION,
   SET_APP_LOADING,
-  SET_QUICK_BALL_STATUS,
+  SET_DROPDOWN_STATUS,
 } from "./constants";
 
 export const setSession = (session) => ({
@@ -23,7 +23,7 @@ export const sendAppNotification = ({
   payload: { type, message },
 });
 
-export const toggleQuickBall = (status) => ({
-  type: SET_QUICK_BALL_STATUS,
+export const toggleDropdown = (status) => ({
+  type: SET_DROPDOWN_STATUS,
   payload: status,
 });

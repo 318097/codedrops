@@ -16,8 +16,26 @@ import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
+import data from "../DATA.json";
 
-import QuickBall from "./QuickBall";
+import MenuDropdown from "./MenuDropdown";
+
+const menu = [
+  {
+    name: "Products",
+    subMenu: data.products
+      .filter((product) => product.visible)
+      .map((product) => ({
+        ...product,
+        url: product.productPath,
+        subText: product.tagline,
+      })),
+  },
+  {
+    name: "Feedback",
+    url: "/feedback",
+  },
+];
 
 const StyledHeader = styled.header`
   display: flex;
@@ -66,8 +84,8 @@ const Header = ({
   location,
   session,
   setSession,
-  toggleQuickBall,
-  quickBallStatus,
+  toggleDropdown,
+  dropdownVisibility,
 }) => {
   const logout = () => {
     localStorage.clear();
@@ -86,9 +104,10 @@ const Header = ({
         <Link to="/posts">
           <HomeOutlined className="ant-icon" />
         </Link>
-        <QuickBall
-          toggleQuickBall={toggleQuickBall}
-          quickBallStatus={quickBallStatus}
+        <MenuDropdown
+          toggleDropdown={toggleDropdown}
+          dropdownVisibility={dropdownVisibility}
+          menu={menu}
         />
         {session ? (
           <>

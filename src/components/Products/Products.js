@@ -35,7 +35,10 @@ const Products = ({ history, match }) => {
     matchedProduct || {};
 
   const ctaAction = () => {
-    window.open(`${links.product.url}`, "__blank");
+    let queryParams = "";
+    // if (id === "atom") queryParams = `?token=${token}`;
+
+    window.open(`${links.product.url}${queryParams}`, "__blank");
   };
 
   if (!visible) return <PageNotFound />;

@@ -2,14 +2,14 @@ import {
   SET_APP_LOADING,
   SET_SESSION,
   SEND_APP_NOTIFICATION,
-  SET_QUICK_BALL_STATUS,
+  SET_DROPDOWN_STATUS,
 } from "./constants";
 
 const initialState = {
   appLoading: false,
   appNotification: null,
   session: null,
-  quickBallStatus: false,
+  dropdownVisibility: false,
 };
 
 const appReducer = (state = initialState, action) => {
@@ -29,10 +29,10 @@ const appReducer = (state = initialState, action) => {
         ...state,
         appNotification: action.payload,
       };
-    case SET_QUICK_BALL_STATUS:
+    case SET_DROPDOWN_STATUS:
       return {
         ...state,
-        quickBallStatus: !state.quickBallStatus,
+        dropdownVisibility: !state.dropdownVisibility,
       };
     default:
       return state;

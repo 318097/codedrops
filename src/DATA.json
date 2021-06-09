@@ -97,6 +97,21 @@
       ]
     },
     {
+      "id": "e-feed",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "E Feed",
+      "tagline": "Read emails in the form of a feed",
+      "gallery": [],
+      "productPath": "/products/e-feed",
+      "status": "WIP",
+      "tags": [
+        "email-feed",
+        "productivity",
+        "email"
+      ]
+    },
+    {
       "id": "dot",
       "visibleOnPortfolio": false,
       "visible": false,
@@ -136,9 +151,9 @@
     {
       "id": "atom",
       "visibleOnPortfolio": true,
-      "visible": false,
+      "visible": true,
       "name": "Atom",
-      "tagline": "Manage expenses, todos, goals & timeline",
+      "tagline": "Manage expenses, todos, goals, progress &  personal timeline",
       "status": "WIP",
       "links": {
         "product": {

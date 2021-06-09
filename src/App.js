@@ -15,7 +15,7 @@ import Feedback from "./components/Feedback";
 import { captureException, getToken, hasToken } from "./utils";
 
 import { fetchTags } from "./store/posts/actions";
-import { setSession, toggleQuickBall } from "./store/app/actions";
+import { setSession, toggleDropdown } from "./store/app/actions";
 
 import "./App.scss";
 import config from "./config";
@@ -32,8 +32,8 @@ const App = ({
   appLoading,
   session,
   setSession,
-  toggleQuickBall,
-  quickBallStatus,
+  toggleDropdown,
+  dropdownVisibility,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -73,8 +73,8 @@ const App = ({
         <BrowserRouter>
           <Header
             session={session}
-            toggleQuickBall={toggleQuickBall}
-            quickBallStatus={quickBallStatus}
+            toggleDropdown={toggleDropdown}
+            dropdownVisibility={dropdownVisibility}
           />
           <div
             className="content"
@@ -112,18 +112,18 @@ const App = ({
 
 const mapStateToProps = ({
   posts,
-  app: { appLoading, session, quickBallStatus },
+  app: { appLoading, session, dropdownVisibility },
 }) => ({
   tagList: posts.tags,
   appLoading,
   session,
-  quickBallStatus,
+  dropdownVisibility,
 });
 
 const mapDispatchToProps = {
   fetchTags,
   setSession,
-  toggleQuickBall,
+  toggleDropdown,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
