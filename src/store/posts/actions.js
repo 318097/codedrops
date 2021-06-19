@@ -33,14 +33,13 @@ export const fetchTags = () => async (dispatch) => {
 export const fetchPosts = () => async (dispatch, getState) => {
   try {
     dispatch(setAppLoading(true));
-    const url = config.IS_SERVER ? `/posts` : `/getPosts`;
     const {
       posts: { filters, posts },
     } = getState();
     const updatedPosts = filters && filters.page > 1 ? [...posts] : [];
     const {
       data: { posts: data, meta },
-    } = await axios.get(`${url}?collectionId=${config.COLLECTION_ID}`, {
+    } = await axios.get(`/posts?collectionId=${config.COLLECTION_ID}`, {
       params: filters,
     });
     updatedPosts.push(...data);
@@ -59,16 +58,15 @@ export const fetchPosts = () => async (dispatch, getState) => {
   }
 };
 
-export const setFilter = (filterUpdate, resetPage = true) => async (
-  dispatch,
-  getState
-) => {
-  const { filters } = getState();
-  const updatedFiters = { ...filters, ...filterUpdate };
-  if (resetPage) updatedFiters["page"] = 1;
-  await dispatch({ type: UPDATE_FILTER, payload: updatedFiters });
-  dispatch(fetchPosts());
-};
+export const setFilter =
+  (filterUpdate, resetPage = true) =>
+  async (dispatch, getState) => {
+    const { filters } = getState();
+    const updatedFiters = { ...filters, ...filterUpdate };
+    if (resetPage) updatedFiters["page"] = 1;
+    await dispatch({ type: UPDATE_FILTER, payload: updatedFiters });
+    dispatch(fetchPosts());
+  };
 
 export const getPostById = (postId) => async (dispatch, getState) => {
   try {
@@ -85,9 +83,8 @@ export const getPostById = (postId) => async (dispatch, getState) => {
     );
 
     if (!post) {
-      const url = config.IS_SERVER ? `/posts/${postId}` : `/getPostById`;
       const { data } = await axios.get(
-        `${url}?collectionId=${config.COLLECTION_ID}`
+        `/posts/${postId}?collectionId=${config.COLLECTION_ID}`
       );
       post = get(data, "post", {});
     }
@@ -107,27 +104,27 @@ export const getPostById = (postId) => async (dispatch, getState) => {
   }
 };
 
-export const fetchRelatedPosts = ({ postId, tags }) => async (dispatch) => {
-  try {
-    const url = config.IS_SERVER ? `/posts/random` : `/getRandomPosts`;
-    const {
-      data: { posts },
-    } = await axios.get(`${url}`, {
-      params: { collectionId: config.COLLECTION_ID, tags, postId },
-    });
+export const fetchRelatedPosts =
+  ({ postId, tags }) =>
+  async (dispatch) => {
+    try {
+      const {
+        data: { posts },
+      } = await axios.get(`/posts/random`, {
+        params: { collectionId: config.COLLECTION_ID, tags, postId },
+      });
 
-    dispatch({ type: GET_RELATED_POSTS, payload: posts });
-  } catch (err) {
-    captureException(err);
-  }
-};
+      dispatch({ type: GET_RELATED_POSTS, payload: posts });
+    } catch (err) {
+      captureException(err);
+    }
+  };
 
 export const fetchBookmarks = () => async (dispatch) => {
   try {
-    const url = config.IS_SERVER ? `/posts/bookmarks` : `/bookmarks`;
     const {
       data: { bookmarks },
-    } = await axios.get(`${url}`, {
+    } = await axios.get(`/posts/bookmarks`, {
       params: { collectionId: config.COLLECTION_ID },
     });
 
@@ -137,28 +134,26 @@ export const fetchBookmarks = () => async (dispatch) => {
   }
 };
 
-export const toggleBookmark = ({ _id, status }) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    dispatch(setAppLoading(true));
-    const {
-      posts: { selectedPost },
-    } = getState();
+export const toggleBookmark =
+  ({ _id, status }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch(setAppLoading(true));
+      const {
+        posts: { selectedPost },
+      } = getState();
 
-    const url = config.IS_SERVER ? `/posts/${_id}/bookmark` : `/bookmarks`;
-    await axios.put(`${url}`, {
-      status,
-    });
+      await axios.put(`/posts/${_id}/bookmark`, {
+        status,
+      });
 
-    dispatch({
-      type: GET_POST_BY_ID,
-      payload: { ...selectedPost, isBookmarked: status },
-    });
-  } catch (err) {
-    captureException(err);
-  } finally {
-    dispatch(setAppLoading(false));
-  }
-};
+      dispatch({
+        type: GET_POST_BY_ID,
+        payload: { ...selectedPost, isBookmarked: status },
+      });
+    } catch (err) {
+      captureException(err);
+    } finally {
+      dispatch(setAppLoading(false));
+    }
+  };
