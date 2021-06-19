@@ -1,25 +1,27 @@
 const {
   NODE_ENV,
-  REACT_APP_SRC,
-  REACT_APP_SERVER_URL,
   REACT_APP_COLLECTION_ID,
   REACT_APP_SENTRY_URL,
+  REACT_APP_SERVER_TYPE,
 } = process.env;
 
-const IS_PROD = NODE_ENV === "production";
+const isProd = NODE_ENV === "production";
 
-const CONNECT_TO_LAMBDA = false;
-const NETLIFY_LAMBDA =
-  "https://bubblegum-lambda.netlify.app/.netlify/functions/api";
+const getServerURL = ({ isProd = false, serverType = "lambda" } = {}) => {
+  const connectToLambda = serverType === "lambda";
+  const LAMBDA_PROD =
+    "https://bubblegum-lambda.netlify.app/.netlify/functions/api";
+  const HEROKU_PROD = "https://bubblegum-server.herokuapp.com/api";
+  const LOCAL_SERVER = "http://localhost:7000/api";
 
-const PROD_URL = CONNECT_TO_LAMBDA ? NETLIFY_LAMBDA : REACT_APP_SERVER_URL;
+  if (isProd) return connectToLambda ? LAMBDA_PROD : HEROKU_PROD;
 
-const SERVER_URL = IS_PROD ? PROD_URL : "http://localhost:7000/api";
+  return LOCAL_SERVER;
+};
 
 const config = {
-  SERVER_URL,
+  SERVER_URL: getServerURL({ isProd, serverType: REACT_APP_SERVER_TYPE }),
   COLLECTION_ID: REACT_APP_COLLECTION_ID || "dHEqTd3knQGHTDMqwz8QP9",
-  IS_SERVER: REACT_APP_SRC !== "FIREBASE",
   POST_COUNT: 25,
   SENTRY_URL: REACT_APP_SENTRY_URL,
 };
