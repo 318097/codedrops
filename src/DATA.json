@@ -101,7 +101,8 @@
       "visibleOnPortfolio": true,
       "visible": false,
       "name": "E Feed",
-      "tagline": "Read emails in the form of a feed",
+      "taglineOld": "Read emails in the form of a feed",
+      "tagline": "A faster & simpler way to go through emails",
       "gallery": [],
       "productPath": "/products/e-feed",
       "status": "WIP",
@@ -138,7 +139,7 @@
         },
         "preview": {
           "label": "Preview",
-          "url": "https://codedrops-react-ui.netlify.app/"
+          "url": "https://react-ui-lib.netlify.app/"
         },
         "github": {
           "url": "https://github.com/318097/react-ui"
