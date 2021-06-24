@@ -22,11 +22,15 @@ const HelmetData = ({ data }) => {
       <meta charSet="utf-8" />
       <title>{`${title}${pageTitleSuffix ? pageTitleSuffix : ""}`}</title>
       <meta name="title" content={title} />
+      {description && <meta name="description" content={description} />}
       <meta property="og:title" content={title} key="ogtitle" />
       <meta property="og:image" content={image} key="ogimage" />
-      {description && <meta name="description" content={description} />}
-      <meta name="twitter:card" content={content} key="twcard" />
+      <meta property="og:type" content={"article"} key="ogtype" />
       <meta property="og:url" content={currentURL} key="ogurl" />
+      {/* Render small sized card */}
+      <meta name="twitter:card" content={"summary"} key="twcard" />
+      <meta name="twitter:site" content={"@codedrops_tech"} key="twsite" />
+      <meta name="twitter:creator" content={"@318097"} key="twcreator" />
     </HelmetElement>
   );
 };

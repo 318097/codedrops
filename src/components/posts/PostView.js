@@ -175,7 +175,7 @@ const PostView = ({
       <Helmet
         data={{
           title: title ? title.replaceAll("`", "") : "",
-          pageTitleSuffix: " - Code Drops",
+          pageTitleSuffix: " | Code Drops",
         }}
       />
       <CardWrapper className="card-wrapper">
