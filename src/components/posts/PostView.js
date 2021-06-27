@@ -22,7 +22,7 @@ const CardWrapper = styled.div`
   .card {
     border: 1px solid ${colors.bg};
     box-shadow: ${colors.bg} 3px 3px 3px;
-    padding: 10px 0 2px;
+    padding: 20px 0 2px;
     height: 100%;
     width: 100%;
     display: flex;

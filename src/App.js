@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
+import { Loading } from "@codedrops/react-ui";
 import { connect } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -69,7 +70,7 @@ const App = ({
   return (
     <div className="app" id="react-ui">
       <div className="content-wrapper">
-        {appLoading && <div className="spinner" />}
+        {appLoading && <Loading />}
         <BrowserRouter>
           <Header
             session={session}

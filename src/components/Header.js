@@ -11,7 +11,7 @@ import {
   LoginOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import colors from "@codedrops/react-ui";
+import colors, { ProfileDropdown } from "@codedrops/react-ui";
 import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
@@ -86,11 +86,17 @@ const Header = ({
   setSession,
   toggleDropdown,
   dropdownVisibility,
+  history,
 }) => {
   const logout = () => {
     localStorage.clear();
     setSession(null);
     axios.defaults.headers.common["authorization"] = null;
+  };
+
+  const handleItemClick = ({ value }) => {
+    if (value === "logout") return logout();
+    else if (value === "bookmark") return history.push("/bookmarks");
   };
 
   return (
@@ -111,14 +117,22 @@ const Header = ({
         />
         {session ? (
           <>
-            <Link to="/bookmarks">
+            {/* <Link to="/bookmarks">
               <BookOutlined className="ant-icon" />
-            </Link>
-            <div className="user-info fcc">
+            </Link> */}
+            <ProfileDropdown
+              size={20}
+              className="ml"
+              name={get(session, "name", "")}
+              email={get(session, "email", "")}
+              options={[{ label: "Bookmarks", value: "bookmark" }]}
+              onItemClick={handleItemClick}
+            />
+            {/* <div className="user-info fcc">
               <UserOutlined className="ant-icon no-hover" />
               <span>{get(session, "name", "")}</span>
             </div>
-            <LogoutOutlined onClick={logout} className="ant-icon" />
+            <LogoutOutlined onClick={logout} className="ant-icon" /> */}
           </>
         ) : (
           <Link to="/login">
