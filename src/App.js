@@ -10,10 +10,10 @@ import Posts from "./components/posts/Posts";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import PostView from "./components/posts/PostView";
-import PageNotFound from "./components/PageNotFound";
+import PageNotFound from "./lib/PageNotFound";
 import Products from "./components/Products";
 import Feedback from "./components/Feedback";
-import { captureException, getToken, hasToken } from "./utils";
+import { captureException, getToken, hasToken } from "./lib";
 
 import { fetchTags } from "./store/posts/actions";
 import { setSession } from "./store/app/actions";

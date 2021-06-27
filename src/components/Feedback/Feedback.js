@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Input, Button, message as antMessage } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
-import { captureException } from "../../utils";
+import { captureException } from "../../lib";
 
 const { TextArea } = Input;
 
@@ -16,8 +16,10 @@ const Feedback = ({ session, history }) => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(initialState);
 
-  const handleInput = (key) => ({ target: { value } }) =>
-    setForm((data) => ({ ...data, [key]: value }));
+  const handleInput =
+    (key) =>
+    ({ target: { value } }) =>
+      setForm((data) => ({ ...data, [key]: value }));
 
   const submitResponse = async () => {
     try {

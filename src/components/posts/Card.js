@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
-import { md } from "../../utils";
+import { md } from "../../lib";
 import { toLower, isEmpty, toUpper } from "lodash";
 
 const lastVisited = localStorage.getItem("last-access");

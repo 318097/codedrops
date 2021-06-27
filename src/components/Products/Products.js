@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import { Button } from "@codedrops/react-ui";
 import "./Products.scss";
 import data from "../../DATA.json";
-import PageNotFound from "../PageNotFound";
-import Helmet from "../Helmet";
+import PageNotFound from "../../lib/PageNotFound";
+import Helmet from "../../lib/Helmet";
 
 const Products = ({ history, match }) => {
   const { id } = match.params;

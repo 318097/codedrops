@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
-import { captureException, setSessionInStorage } from "../utils";
+import { captureException, setSessionInStorage } from "../lib";
 
 const initialState = {
   name: "",
@@ -17,8 +17,10 @@ const Register = ({ history }) => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(initialState);
 
-  const handleInput = (key) => ({ target: { value } }) =>
-    setForm((data) => ({ ...data, [key]: value }));
+  const handleInput =
+    (key) =>
+    ({ target: { value } }) =>
+      setForm((data) => ({ ...data, [key]: value }));
 
   const handleRegister = async () => {
     setLoading(true);

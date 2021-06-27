@@ -8,7 +8,7 @@ import Card from "./Card";
 import "./Posts.scss";
 import config from "../../config";
 import { get } from "lodash";
-import Helmet from "../Helmet";
+import Helmet from "../../lib/Helmet";
 
 const PageWrapper = styled.div`
   .page-splitter {

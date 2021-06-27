@@ -1,6 +1,6 @@
 import axios from "axios";
 import { get, find, includes } from "lodash";
-import { captureException } from "../../utils";
+import { captureException } from "../../lib";
 import { setAppLoading } from "../app/actions";
 import config from "../../config";
 import {

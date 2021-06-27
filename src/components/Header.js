@@ -9,7 +9,7 @@ import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
-import MenuDropdown from "./MenuDropdown";
+import MenuDropdown from "../lib/MenuDropdown";
 
 const StyledHeader = styled.header`
   display: flex;

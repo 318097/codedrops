@@ -4,7 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
-import { captureException, setSessionInStorage } from "../utils";
+import { captureException, setSessionInStorage } from "../lib";
 
 const initialState = {
   password: "",
@@ -19,8 +19,10 @@ const Login = ({ history, setSession, session }) => {
     if (session && session.loggedIn) history.push("/");
   }, []);
 
-  const handleInput = (key) => ({ target: { value } }) =>
-    setForm((data) => ({ ...data, [key]: value }));
+  const handleInput =
+    (key) =>
+    ({ target: { value } }) =>
+      setForm((data) => ({ ...data, [key]: value }));
 
   const handleLogin = async () => {
     setLoading(true);
