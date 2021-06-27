@@ -4,38 +4,12 @@ import { withRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 import Filters from "./posts/Filters";
 import Logo from "../assets/logo-v3";
-import {
-  UserOutlined,
-  BookOutlined,
-  LogoutOutlined,
-  LoginOutlined,
-  HomeOutlined,
-} from "@ant-design/icons";
-import colors, { ProfileDropdown } from "@codedrops/react-ui";
+import colors, { ProfileDropdown, Icon } from "@codedrops/react-ui";
 import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
-import data from "../DATA.json";
-
 import MenuDropdown from "./MenuDropdown";
-
-const menu = [
-  {
-    name: "Products",
-    subMenu: data.products
-      .filter((product) => product.visible)
-      .map((product) => ({
-        ...product,
-        url: product.productPath,
-        subText: product.tagline,
-      })),
-  },
-  {
-    name: "Feedback",
-    url: "/feedback",
-  },
-];
 
 const StyledHeader = styled.header`
   display: flex;
@@ -46,16 +20,6 @@ const StyledHeader = styled.header`
   align-items: center;
   padding: 8px 0;
   background: ${colors.bg};
-  /* background: url("../assets/background/grey.png"); */
-  .user-info {
-    margin: 0 4px;
-    background: ${colors.strokeTwo};
-    padding: 0px 12px 0 2px;
-    border-radius: 2px;
-    .anticon {
-      padding: 5px 8px 5px 4px;
-    }
-  }
   @media screen and (max-width: 600px) {
     .logo {
       position: relative;
@@ -64,9 +28,6 @@ const StyledHeader = styled.header`
       svg {
         width: 80%;
       }
-    }
-    .user-info {
-      display: none !important;
     }
     .filters {
       .search-input {
@@ -80,14 +41,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({
-  location,
-  session,
-  setSession,
-  toggleDropdown,
-  dropdownVisibility,
-  history,
-}) => {
+const Header = ({ location, session, setSession, history }) => {
   const logout = () => {
     localStorage.clear();
     setSession(null);
@@ -106,37 +60,22 @@ const Header = ({
       </Link>
       {location.pathname === "/posts" && <Filters />}
 
-      <div className="fcc">
+      <div className="fcc" style={{ gap: "4px" }}>
         <Link to="/posts">
-          <HomeOutlined className="ant-icon" />
+          <Icon type="home" />
         </Link>
-        <MenuDropdown
-          toggleDropdown={toggleDropdown}
-          dropdownVisibility={dropdownVisibility}
-          menu={menu}
-        />
+        <MenuDropdown />
         {session ? (
-          <>
-            {/* <Link to="/bookmarks">
-              <BookOutlined className="ant-icon" />
-            </Link> */}
-            <ProfileDropdown
-              size={20}
-              className="ml"
-              name={get(session, "name", "")}
-              email={get(session, "email", "")}
-              options={[{ label: "Bookmarks", value: "bookmark" }]}
-              onItemClick={handleItemClick}
-            />
-            {/* <div className="user-info fcc">
-              <UserOutlined className="ant-icon no-hover" />
-              <span>{get(session, "name", "")}</span>
-            </div>
-            <LogoutOutlined onClick={logout} className="ant-icon" /> */}
-          </>
+          <ProfileDropdown
+            size={20}
+            name={get(session, "name", "")}
+            email={get(session, "email", "")}
+            options={[{ label: "Bookmarks", value: "bookmark" }]}
+            onItemClick={handleItemClick}
+          />
         ) : (
           <Link to="/login">
-            <LoginOutlined className="ant-icon" />
+            <Icon type="login" />
           </Link>
         )}
       </div>

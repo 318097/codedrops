@@ -11,11 +11,11 @@
 - [ ] Create documentation page for Github marker, DOT
 - [ ] Connect to Atom
 - [ ] Show Tags & Count
-- [ ] Track posts which have been read by a user
 - [ ] SSR
 - [ ] SEO
 - [ ] Adsense
 - [ ] Create linktr.ee
+- [ ] PWA
 
 ### Fixes
 

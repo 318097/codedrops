@@ -1,62 +1,43 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import "./MenuDropdown.scss";
-import { Icon } from "@codedrops/react-ui";
+import { Icon, Dropdown } from "@codedrops/react-ui";
+import data from "../../DATA.json";
 
-const MenuDropdown = ({ toggleDropdown, dropdownVisibility, menu }) => {
-  const containerRef = useRef();
+const menu = [
+  {
+    name: "Products",
+    subMenu: data.products
+      .filter((product) => product.visible)
+      .map((product) => ({
+        ...product,
+        url: product.productPath,
+        subText: product.tagline,
+      })),
+  },
+  {
+    name: "Feedback",
+    url: "/feedback",
+  },
+];
 
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick, { capture: true });
-    return () =>
-      document.removeEventListener("click", handleOutsideClick, {
-        capture: true,
-      });
-  }, []);
-
-  const handleOutsideClick = (e) => {
-    const ref = containerRef.current;
-    const { target } = e;
-
-    if (
-      ref &&
-      !ref.contains(target) &&
-      !document.getElementById("drop-icon").contains(target)
-    )
-      toggleDropdown();
-  };
-
+const MenuDropdown = () => {
   return (
-    <div className="menu-dropdown">
-      <Icon
-        id="drop-icon"
-        className="ant-icon"
-        type="menu"
-        hover
-        onClick={toggleDropdown}
-      />
-      {dropdownVisibility && (
-        <div className="menu-dropdown-container" ref={containerRef}>
+    <Dropdown
+      renderButtonComponent={<Icon type="menu" />}
+      renderDropdownComponent={
+        <div className="menu-dropdown-container">
           {menu.map(({ name, subMenu = [], url = "" }) => (
             <div key={name} className="menu-container">
-              <Link
-                onClick={() => (url ? toggleDropdown() : null)}
-                to={url}
-                className={`item-name${url ? " link" : ""}`}
-              >
+              <Link to={url} className={`item-name${url ? " link" : ""}`}>
                 {name}
               </Link>
 
               {!!subMenu.length &&
                 subMenu.map(({ name, subText, url }, index) => {
                   return (
-                    <Link
-                      onClick={toggleDropdown}
-                      key={name}
-                      className="sub-menu-item-wrapper"
-                      to={url}
-                    >
+                    <Link key={name} className="sub-menu-item-wrapper" to={url}>
                       <span className="index">{index + 1}.</span>
                       <h4 className="item-name">{name}</h4>
                       {subText && <p className="sub-text">{subText}</p>}
@@ -66,8 +47,8 @@ const MenuDropdown = ({ toggleDropdown, dropdownVisibility, menu }) => {
             </div>
           ))}
         </div>
-      )}
-    </div>
+      }
+    />
   );
 };
 

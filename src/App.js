@@ -16,7 +16,7 @@ import Feedback from "./components/Feedback";
 import { captureException, getToken, hasToken } from "./utils";
 
 import { fetchTags } from "./store/posts/actions";
-import { setSession, toggleDropdown } from "./store/app/actions";
+import { setSession } from "./store/app/actions";
 
 import "./App.scss";
 import config from "./config";
@@ -27,15 +27,7 @@ axios.defaults.baseURL = config.SERVER_URL;
 axios.defaults.headers.common["authorization"] = getToken();
 axios.defaults.headers.common["external-source"] = "CODEDROPS";
 
-const App = ({
-  fetchTags,
-  tagList,
-  appLoading,
-  session,
-  setSession,
-  toggleDropdown,
-  dropdownVisibility,
-}) => {
+const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,11 +64,7 @@ const App = ({
       <div className="content-wrapper">
         {appLoading && <Loading />}
         <BrowserRouter>
-          <Header
-            session={session}
-            toggleDropdown={toggleDropdown}
-            dropdownVisibility={dropdownVisibility}
-          />
+          <Header session={session} />
           <div
             className="content"
             style={{ position: "relative", zIndex: "1" }}
@@ -111,20 +99,15 @@ const App = ({
   );
 };
 
-const mapStateToProps = ({
-  posts,
-  app: { appLoading, session, dropdownVisibility },
-}) => ({
+const mapStateToProps = ({ posts, app: { appLoading, session } }) => ({
   tagList: posts.tags,
   appLoading,
   session,
-  dropdownVisibility,
 });
 
 const mapDispatchToProps = {
   fetchTags,
   setSession,
-  toggleDropdown,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

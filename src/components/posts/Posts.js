@@ -8,6 +8,7 @@ import Card from "./Card";
 import "./Posts.scss";
 import config from "../../config";
 import { get } from "lodash";
+import Helmet from "../Helmet";
 
 const PageWrapper = styled.div`
   .page-splitter {
@@ -62,6 +63,11 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 
   return (
     <section id="posts">
+      <Helmet
+        data={{
+          title: "Code Drops",
+        }}
+      />
       {appLoading && filters.page === 1 ? null : (
         <Fragment>
           {noteChunks.map((chunk, index) => (

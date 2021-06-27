@@ -1,67 +1,57 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 
-.menu-dropdown {
-  position: relative;
-  .menu-dropdown-container {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 360px;
-    height: 238px;
-    background: $bg;
-    border-radius: 4px;
-    border: 1px solid lightgrey;
-    cursor: pointer;
-    overflow-y: auto;
-    overflow-x: hidden;
-    .menu-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      .item-name {
-        font-family: Cascadia-Bold;
+.menu-dropdown-container {
+  width: 360px;
+  height: 238px;
+  cursor: pointer;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @media (max-width: 450px) {
+    // position: static;
+    width: 260px;
+  }
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .item-name {
+      font-family: Cascadia-Bold;
+      font-size: 1.2rem;
+      padding: 8px;
+      background: $strokeOne;
+      margin: 0;
+      &.link:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .sub-menu-item-wrapper {
+      padding-left: 24px;
+      background: $featherDark;
+      border-bottom: 1px solid $strokeOne;
+      position: relative;
+      &:hover {
+        background: $bg;
+      }
+      .index {
+        position: absolute;
+        left: 8px;
+        top: 4px;
         font-size: 1.2rem;
-        padding: 8px;
-        background: $strokeOne;
-        margin: 0;
-        &.link:hover {
+      }
+      .item-name {
+        background: none;
+        padding: 4px 0 0 0;
+        &:hover {
           text-decoration: underline;
         }
       }
-
-      .sub-menu-item-wrapper {
-        padding-left: 24px;
-        background: $featherDark;
-        border-bottom: 1px solid $strokeOne;
-        position: relative;
-        &:hover {
-          background: $bg;
-        }
-        .index {
-          position: absolute;
-          left: 8px;
-          top: 4px;
-          font-size: 1.2rem;
-        }
-        .item-name {
-          background: none;
-          padding: 4px 0 0 0;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-        .sub-text {
-          font-size: 1.1rem;
-          padding-right: 4px;
-          line-height: 1.3rem;
-        }
+      .sub-text {
+        font-size: 1.1rem;
+        padding-right: 4px;
+        line-height: 1.3rem;
       }
-    }
-  }
-  @media (max-width: 450px) {
-    position: static;
-    .menu-dropdown-container {
-      width: 100%;
     }
   }
 }

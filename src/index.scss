@@ -53,21 +53,21 @@ html body {
   h3 {
     font-family: Cascadia-Bold;
   }
-  .ant-icon {
-    cursor: pointer;
-    padding: 8px;
-    font-size: 14px;
-    border-radius: 0;
-    transition: 0.4s;
-    margin: 0;
-    &:not(.no-hover):hover {
-      border-radius: 50%;
-      background: $strokeTwo;
-    }
-    @media (max-width: 500px) {
-      padding: 6px;
-    }
-  }
+  // .ant-icon {
+  //   cursor: pointer;
+  //   padding: 8px;
+  //   font-size: 14px;
+  //   border-radius: 0;
+  //   transition: 0.4s;
+  //   margin: 0;
+  //   &:not(.no-hover):hover {
+  //     border-radius: 50%;
+  //     background: $strokeTwo;
+  //   }
+  //   @media (max-width: 500px) {
+  //     padding: 6px;
+  //   }
+  // }
 
   a,
   a:hover {
