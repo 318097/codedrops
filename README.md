@@ -8,8 +8,8 @@
 - [x] Feedback
 - [x] Share post directly
 - [x] Sentry
+- [x] Connect to Atom
 - [ ] Create documentation page for Github marker, DOT
-- [ ] Connect to Atom
 - [ ] Show Tags & Count
 - [ ] SSR
 - [ ] SEO

@@ -1,9 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./MenuDropdown.scss";
 import { Icon, Dropdown } from "@codedrops/react-ui";
 import data from "../../DATA.json";
+import { get } from "lodash";
+import { getToken } from "../auth";
 
 const menu = [
   {
@@ -14,6 +15,7 @@ const menu = [
         ...product,
         url: product.productPath,
         subText: product.tagline,
+        productPath: get(product, "links.product.url"),
       })),
   },
   {
@@ -22,7 +24,15 @@ const menu = [
   },
 ];
 
-const MenuDropdown = () => {
+const MenuDropdown = ({ history }) => {
+  const handleClick = ({ url, productPath }) => {
+    if (url) history.push(url);
+    else if (productPath) {
+      const token = getToken() || "";
+      window.open(`${productPath}?token=${token}&utm_source=codedrops`);
+    }
+  };
+
   return (
     <Dropdown
       renderButtonComponent={<Icon type="menu" />}
@@ -30,18 +40,25 @@ const MenuDropdown = () => {
         <div className="menu-dropdown-container">
           {menu.map(({ name, subMenu = [], url = "" }) => (
             <div key={name} className="menu-container">
-              <Link to={url} className={`item-name${url ? " link" : ""}`}>
+              <div
+                onClick={() => handleClick({ url })}
+                className={`item-name${url ? " link" : ""}`}
+              >
                 {name}
-              </Link>
+              </div>
 
               {!!subMenu.length &&
-                subMenu.map(({ name, subText, url }, index) => {
+                subMenu.map(({ name, subText, url, productPath }, index) => {
                   return (
-                    <Link key={name} className="sub-menu-item-wrapper" to={url}>
+                    <div
+                      key={name}
+                      className="sub-menu-item-wrapper"
+                      onClick={() => handleClick({ url, productPath })}
+                    >
                       <span className="index">{index + 1}.</span>
                       <h4 className="item-name">{name}</h4>
                       {subText && <p className="sub-text">{subText}</p>}
-                    </Link>
+                    </div>
                   );
                 })}
             </div>
@@ -52,4 +69,4 @@ const MenuDropdown = () => {
   );
 };
 
-export default connect(null, null)(withRouter(MenuDropdown));
+export default withRouter(MenuDropdown);
