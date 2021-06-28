@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Switch, BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Loading } from "@codedrops/react-ui";
 import { connect } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Bookmarks from "./components/posts/Bookmarks";
-import Posts from "./components/posts/Posts";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import PostView from "./components/posts/PostView";
-import PageNotFound from "./lib/PageNotFound";
-import Products from "./components/Products";
-import Feedback from "./components/Feedback";
 import { captureException, getToken, hasToken } from "./lib";
+import Routes from "./routes";
 
 import { fetchTags } from "./store/posts/actions";
 import { setSession } from "./store/app/actions";
@@ -69,17 +62,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
             className="content"
             style={{ position: "relative", zIndex: "1" }}
           >
-            <Switch>
-              <Route exact path="/" render={() => <Redirect to="/posts" />} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/bookmarks" component={Bookmarks} />
-              <Route exact path="/posts" component={Posts} />
-              <Route exact path="/feedback" component={Feedback} />
-              <Route exact path="/posts/:id" component={PostView} />
-              <Route exact path="/products/:id" component={Products} />
-              <Route component={PageNotFound} />
-            </Switch>
+            <Routes />
           </div>
         </BrowserRouter>
       </div>
