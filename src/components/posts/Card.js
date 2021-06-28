@@ -116,7 +116,10 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
     <CardWrapper style={customStyle} className={toLower(type)}>
       <Link to={{ pathname, search: target ? `?target=${target}` : "" }}>
         <MCard hover>
-          <h3 className="title">{title}</h3>
+          <h3
+            className="title"
+            dangerouslySetInnerHTML={{ __html: md.renderInline(title) }}
+          />
           {["DROP", "QUIZ"].includes(type) && (
             <p
               className="content"

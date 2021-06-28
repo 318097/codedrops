@@ -72,7 +72,7 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
       </Select> */}
       {meta && (
         <div className="show-count">
-          Showing {postCount} of {meta.count} posts.
+          Showing {postCount}/{meta.count} posts
         </div>
       )}
     </div>
