@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter } from "react-router-dom";
 import { Loading } from "@codedrops/react-ui";
 import { connect } from "react-redux";
 import Header from "./components/Header";
@@ -56,15 +55,11 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
     <div className="app" id="react-ui">
       <div className="content-wrapper">
         {appLoading && <Loading />}
-        <BrowserRouter>
-          <Header session={session} />
-          <div
-            className="content"
-            style={{ position: "relative", zIndex: "1" }}
-          >
-            <Routes />
-          </div>
-        </BrowserRouter>
+
+        <Header session={session} />
+        <div className="content" style={{ position: "relative", zIndex: "1" }}>
+          <Routes />
+        </div>
       </div>
       <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
       {/* <Icon className="code-icon" type="tag" /> */}

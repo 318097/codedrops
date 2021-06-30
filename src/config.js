@@ -22,7 +22,7 @@ const getServerURL = ({ isProd = false, serverType = "lambda" } = {}) => {
 const config = {
   SERVER_URL: getServerURL({ isProd, serverType: REACT_APP_SERVER_TYPE }),
   COLLECTION_ID: REACT_APP_COLLECTION_ID || "dHEqTd3knQGHTDMqwz8QP9",
-  POST_COUNT: 25,
+  POST_COUNT: 20,
   SENTRY_URL: REACT_APP_SENTRY_URL,
 };
 

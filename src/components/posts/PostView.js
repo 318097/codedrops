@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import Helmet from "../../lib/Helmet";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById, toggleBookmark } from "../../store/posts/actions";
-import colors, { Card, Tag, Button } from "@codedrops/react-ui";
+import colors, { Card, Tag, Button, Icon } from "@codedrops/react-ui";
 import { md, showPopup } from "../../lib";
-import { BookOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import { BookOutlined } from "@ant-design/icons";
 import { get } from "lodash";
 import queryString from "query-string";
 import { message } from "antd";
@@ -110,13 +110,13 @@ const CardWrapper = styled.div`
   .back-icon {
     position: absolute;
     top: 2px;
-    left: 2px;
+    left: 10px;
     z-index: 1;
   }
   .bookmark-icon {
     position: absolute;
     top: 2px;
-    right: 2px;
+    right: 10px;
     z-index: 1;
   }
 `;
@@ -245,7 +245,7 @@ const PostView = ({
           </div>
         </Card>
         <Link to={`/${route}`}>
-          <ArrowLeftOutlined className="back-icon ant-icon" />
+          <Icon className="back-icon" hover type="arrow" size={12} />
         </Link>
         <BookOutlined
           style={{ color: isBookmarked ? "green" : "black" }}

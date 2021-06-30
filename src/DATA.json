@@ -152,7 +152,7 @@
     {
       "id": "atom",
       "visibleOnPortfolio": true,
-      "visible": true,
+      "visible": false,
       "name": "Atom",
       "tagline": "Manage expenses, todos, goals, progress &  personal timeline",
       "status": "WIP",

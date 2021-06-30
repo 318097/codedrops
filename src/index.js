@@ -8,6 +8,7 @@ import store from "./store";
 import "antd/dist/antd.css";
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
+import { BrowserRouter } from "react-router-dom";
 import config from "./config";
 
 Sentry.init({
@@ -24,7 +25,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Sentry.ErrorBoundary fallback={"An error has occurred"}>
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </Sentry.ErrorBoundary>
   </React.StrictMode>,

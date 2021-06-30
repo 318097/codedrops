@@ -9,10 +9,15 @@
 - [x] Share post directly
 - [x] Sentry
 - [x] Connect to Atom
-- [ ] Create documentation page for Github marker, DOT
+- [x] Enable service worker
+- [ ] Documentation page for Github marker, DOT
+  - Landing page at file-ops.codedrops or file-ops.netlify
+  - Use Templates
 - [ ] Show Tags & Count
+- [ ] Fetch tags from query
 - [ ] SSR
 - [ ] SEO
+- [ ] Mixpanel
 - [ ] Adsense
 - [ ] Create linktr.ee
 - [ ] PWA
@@ -21,3 +26,5 @@
 
 - [x] Fix Quick ball on close, position
 - [ ] Fix favicon
+- [ ] Fix cannot submit feedback
+- [ ] Fix layout
