@@ -27,12 +27,10 @@ const Wrapper = styled.div`
   padding: 4px 8px;
   border-radius: 2px;
   text-transform: uppercase;
+  gap: 4px;
   a {
     cursor: pointer;
     position: relative;
-    .icon {
-      margin: 0;
-    }
   }
 `;
 
@@ -59,7 +57,7 @@ const SharePost = () => {
         const url = getSharerURL(id.toUpperCase());
         return (
           <a key={id} target="_blank" rel="noopener noreferrer" href={url}>
-            <Icon hover fill={colors.iron} type={icon} />
+            <Icon fill={colors.iron} type={icon} />
           </a>
         );
       })}

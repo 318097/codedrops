@@ -7,7 +7,6 @@ import RelatedPosts from "./RelatedPosts";
 import { getPostById, toggleBookmark } from "../../store/posts/actions";
 import colors, { Card, Tag, Button, Icon } from "@codedrops/react-ui";
 import { md, showPopup } from "../../lib";
-import { BookOutlined } from "@ant-design/icons";
 import { get } from "lodash";
 import queryString from "query-string";
 import { message } from "antd";
@@ -247,8 +246,11 @@ const PostView = ({
         <Link to={`/${route}`}>
           <Icon className="back-icon" hover type="arrow" size={12} />
         </Link>
-        <BookOutlined
-          style={{ color: isBookmarked ? "green" : "black" }}
+        <Icon
+          type="bookmark"
+          size={12}
+          hover
+          iconType={isBookmarked ? "solid" : "outline"}
           className="bookmark-icon ant-icon"
           onClick={handleBookmarkClick}
         />

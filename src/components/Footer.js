@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   padding: 4px 0;
   animation: delay 1s 6s forwards;
   opacity: 0;
+  gap: 8px;
   a {
     cursor: pointer;
     position: relative;
@@ -56,7 +57,7 @@ const Footer = () => (
   <Wrapper>
     {menuList.map(({ id, url, icon, color }) => (
       <a key={id} target="_blank" rel="noopener noreferrer" href={url}>
-        <Icon hover type={icon} fill={color} />
+        <Icon type={icon} fill={color} />
       </a>
     ))}
   </Wrapper>
