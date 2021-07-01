@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button, message as antMessage } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -15,6 +15,14 @@ const initialState = {
 const Feedback = ({ session, history }) => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState(initialState);
+  const loggedInUser = session && session.loggedIn;
+
+  useEffect(() => {
+    if (loggedInUser) {
+      const { name, email } = session || {};
+      setForm({ name, email });
+    }
+  }, [loggedInUser]);
 
   const handleInput =
     (key) =>
@@ -40,26 +48,23 @@ const Feedback = ({ session, history }) => {
     }
   };
 
-  const loggedInUser = session && session.loggedIn;
   return (
     <section id="feedback">
       <h3>Feedback</h3>
-      {!loggedInUser && (
-        <Fragment>
-          <Input
-            className="mb"
-            value={form.name}
-            onChange={handleInput("name")}
-            placeholder="Name"
-          />
-          <Input
-            className="mb"
-            value={form.email}
-            onChange={handleInput("email")}
-            placeholder="Email"
-          />
-        </Fragment>
-      )}
+      <Input
+        className="mb"
+        value={form.name}
+        onChange={handleInput("name")}
+        placeholder="Name"
+        disabled={loggedInUser}
+      />
+      <Input
+        className="mb"
+        value={form.email}
+        onChange={handleInput("email")}
+        placeholder="Email"
+        disabled={loggedInUser}
+      />
       <TextArea
         placeholder="Feedback..."
         onChange={handleInput("message")}
