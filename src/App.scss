@@ -4,21 +4,21 @@
   display: flex;
   align-items: center;
   overflow-y: auto;
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    max-width: 1024px;
-    width: 96%;
-    padding: 0 2%;
-    flex: auto;
+  .section-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: overlay;
   }
 }
 
 section {
-  padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  margin: 0 auto;
+  width: 96%;
+  max-width: 1024px;
+  padding: 0 2%;
   &#login,
   &#register,
   &#feedback {

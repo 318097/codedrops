@@ -53,17 +53,13 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
 
   return (
     <div className="app" id="react-ui">
-      <div className="content-wrapper">
-        {appLoading && <Loading />}
-
-        <Header session={session} />
-        <div className="content" style={{ position: "relative", zIndex: "1" }}>
-          <Routes />
-        </div>
+      <Header session={session} />
+      <div className="section-wrapper">
+        <Routes />
       </div>
-      <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} />
+      {appLoading && <Loading />}
+      {/* <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} /> */}
       {/* <Icon className="code-icon" type="tag" /> */}
-
       <a
         href="https://www.buymeacoffee.com/codedropstech"
         id="buy-me-a-coffee"

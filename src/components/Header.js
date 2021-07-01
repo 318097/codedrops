@@ -11,31 +11,41 @@ import { connect } from "react-redux";
 import axios from "axios";
 import MenuDropdown from "../lib/MenuDropdown";
 
-const StyledHeader = styled.header`
+const StyledHeader = styled.div`
   display: flex;
-  position: sticky;
-  z-index: 10;
-  top: 0;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   padding: 8px 0;
   background: ${colors.bg};
-  @media screen and (max-width: 600px) {
-    .logo {
-      position: relative;
-      flex: 0 0 120px;
-      top: 4px;
-      svg {
-        width: 80%;
+  width: 100%;
+  margin-bottom: 10px;
+  header {
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    padding: 0 2%;
+    @media screen and (max-width: 600px) {
+      .logo {
+        position: relative;
+        flex: 0 0 120px;
+        top: 4px;
+        svg {
+          width: 80%;
+        }
       }
-    }
-    .filters {
-      .search-input {
-        width: 120px !important;
-      }
-      .show-count {
-        display: none;
-        font-size: 1.4rem;
+      .filters {
+        .search-input {
+          width: 120px !important;
+        }
+        .show-count {
+          display: none;
+          font-size: 1.4rem;
+        }
       }
     }
   }
@@ -55,30 +65,32 @@ const Header = ({ location, session, setSession, history }) => {
 
   return (
     <StyledHeader>
-      <Link className="logo" to={"/posts"}>
-        <Logo />
-      </Link>
-      {location.pathname === "/posts" && <Filters />}
-
-      <div className="fcc" style={{ gap: "4px" }}>
-        <Link to="/posts">
-          <Icon type="home" />
+      <header>
+        <Link className="logo" to={"/posts"}>
+          <Logo />
         </Link>
-        <MenuDropdown />
-        {session ? (
-          <ProfileDropdown
-            size={20}
-            name={get(session, "name", "")}
-            email={get(session, "email", "")}
-            options={[{ label: "Bookmarks", value: "bookmark" }]}
-            onItemClick={handleItemClick}
-          />
-        ) : (
-          <Link to="/login">
-            <Icon type="login" />
+        {location.pathname === "/posts" && <Filters />}
+
+        <div className="fcc" style={{ gap: "4px" }}>
+          <Link to="/posts">
+            <Icon type="home" />
           </Link>
-        )}
-      </div>
+          <MenuDropdown />
+          {session ? (
+            <ProfileDropdown
+              size={20}
+              name={get(session, "name", "")}
+              email={get(session, "email", "")}
+              options={[{ label: "Bookmarks", value: "bookmark" }]}
+              onItemClick={handleItemClick}
+            />
+          ) : (
+            <Link to="/login">
+              <Icon type="login" />
+            </Link>
+          )}
+        </div>
+      </header>
     </StyledHeader>
   );
 };

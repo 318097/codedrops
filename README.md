@@ -27,4 +27,4 @@
 - [x] Fix Quick ball on close, position
 - [ ] Fix favicon
 - [ ] Fix cannot submit feedback
-- [ ] Fix layout
+- [x] Fix layout
