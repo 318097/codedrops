@@ -24,8 +24,8 @@
 
 ### Fixes
 
-- [ ] Scroll to post on back
 - [x] Fix Quick ball on close, position
-- [ ] Fix favicon
 - [x] Fix cannot submit feedback
 - [x] Fix layout
+- [ ] Scroll to post on `back click`
+- [ ] Fix favicon

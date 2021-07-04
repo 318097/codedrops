@@ -29,6 +29,12 @@ const StyledHeader = styled.div`
     align-items: center;
     width: 96%;
     padding: 0 2%;
+    .profile-dropdown .profile-avatar {
+      border-color: ${colors.steel};
+      &:hover {
+        border-color: ${colors.strokeThree};
+      }
+    }
     @media screen and (max-width: 600px) {
       .logo {
         position: relative;
@@ -78,7 +84,7 @@ const Header = ({ location, session, setSession, history }) => {
           <MenuDropdown />
           {session ? (
             <ProfileDropdown
-              size={20}
+              size={18}
               name={get(session, "name", "")}
               email={get(session, "email", "")}
               options={[{ label: "Bookmarks", value: "bookmark" }]}
