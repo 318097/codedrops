@@ -84,7 +84,7 @@ const Header = ({ location, session, setSession, history }) => {
           <MenuDropdown />
           {session ? (
             <ProfileDropdown
-              size={16}
+              profileAvatarProps={{ size: 18 }}
               name={get(session, "name", "")}
               email={get(session, "email", "")}
               options={[{ label: "Bookmarks", value: "bookmark" }]}
