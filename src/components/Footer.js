@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import colors, { Icon } from "@codedrops/react-ui";
+import tracking from "../lib/mixpanel";
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,25 +29,25 @@ const Wrapper = styled.div`
 
 const menuList = [
   {
-    id: "facebook",
+    id: "Facebook",
     url: "https://www.facebook.com/codedrops.tech/",
     icon: "facebook",
     color: colors.iron,
   },
   {
-    id: "instagram",
+    id: "Instagram",
     url: "https://www.instagram.com/codedrops.tech/",
     icon: "instagram",
     color: colors.iron,
   },
   {
-    id: "twitter",
+    id: "Twitter",
     url: "https://twitter.com/codedrops_tech",
     icon: "twitter",
     color: colors.iron,
   },
   {
-    id: "linkedin",
+    id: "Linkedin",
     url: "https://www.linkedin.com/company/codedrops-tech/",
     icon: "linkedin",
     color: colors.iron,
@@ -56,7 +57,18 @@ const menuList = [
 const Footer = () => (
   <Wrapper>
     {menuList.map(({ id, url, icon, color }) => (
-      <a key={id} target="_blank" rel="noopener noreferrer" href={url}>
+      <a
+        key={id}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={url}
+        onClick={() =>
+          tracking.track("ACTION_CLICK", {
+            action: "Footer Social Icons",
+            value: id,
+          })
+        }
+      >
         <Icon type={icon} fill={color} />
       </a>
     ))}

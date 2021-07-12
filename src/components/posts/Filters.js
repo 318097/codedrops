@@ -8,7 +8,14 @@ import { setFilter } from "../../store/posts/actions";
 const { Search } = Input;
 const { Option } = Select;
 
-const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
+const Filters = ({
+  setFilter,
+  filters,
+  meta,
+  tagList = [],
+  postCount,
+  actionClick,
+}) => {
   // useEffect(() => {
   //   if (!location.search) {
   //     setFilters({
@@ -53,7 +60,10 @@ const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
         className="field-width search-input mr"
         placeholder="Search..."
         defaultValue={search}
-        onSearch={(value) => setFilter({ search: value })}
+        onSearch={(value) => {
+          setFilter({ search: value });
+          if (value) actionClick("Filter Search", value);
+        }}
         style={{ width: "160px" }}
       />
       {/* <Select

@@ -5,6 +5,7 @@ import axios from "axios";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import { captureException, setSessionInStorage } from "../lib";
+import tracking from "../lib/mixpanel";
 
 const initialState = {
   name: "",
@@ -27,6 +28,8 @@ const Register = ({ history }) => {
     try {
       const { data } = await axios.post("/auth/register", form);
       history.push("/login");
+      tracking.register(data);
+      tracking.track("REGISTER");
       message.success("Success");
     } catch (err) {
       const { response: { data: errorMessage = "Error." } = {} } = err;

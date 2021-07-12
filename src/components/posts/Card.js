@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import colors, { Card as MCard, Tag, Icon } from "@codedrops/react-ui";
 import { md } from "../../lib";
 import { toLower, isEmpty, toUpper } from "lodash";
+import tracking from "../../lib/mixpanel";
 
 const lastVisited = localStorage.getItem("last-access");
 
@@ -104,6 +105,7 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
 
   const handleTagClick = (event, value) => {
     // history.push(`/posts?tags=${value}`);
+    // tracking.track("CLICK_TAG", { slug, title });
   };
 
   if (!post) return <Fragment />;
@@ -115,7 +117,10 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
   return (
     <CardWrapper style={customStyle} className={toLower(type)}>
       <Link to={{ pathname, search: target ? `?target=${target}` : "" }}>
-        <MCard hover>
+        <MCard
+          hover
+          onClick={() => tracking.track("CLICK_POST", { slug, title })}
+        >
           <h3
             className="title"
             dangerouslySetInnerHTML={{ __html: md.renderInline(title) }}

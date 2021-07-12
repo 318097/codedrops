@@ -5,6 +5,7 @@ import axios from "axios";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import { captureException, setSessionInStorage } from "../lib";
+import tracking from "../lib/mixpanel";
 
 const initialState = {
   password: "",
@@ -36,6 +37,8 @@ const Login = ({ history, setSession, session }) => {
         ...data,
       });
       axios.defaults.headers.common["authorization"] = data.token;
+      tracking.setIdentity(data);
+      tracking.track("LOGIN");
       history.push("/");
     } catch (err) {
       const { response: { data: errorMessage = "Error." } = {} } = err;

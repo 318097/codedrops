@@ -6,8 +6,9 @@ import "./Products.scss";
 import data from "../../DATA.json";
 import PageNotFound from "../../lib/PageNotFound";
 import Helmet from "../../lib/Helmet";
+import tracking from "../../lib/mixpanel";
 
-const Products = ({ history, match }) => {
+const Products = ({ match }) => {
   const { id } = match.params;
 
   const matchedProduct = data.products.find((product) => product.id === id);
@@ -20,9 +21,15 @@ const Products = ({ history, match }) => {
     // if (id === "atom") queryParams = `?token=${token}`;
 
     window.open(`${links.product.url}${queryParams}`, "__blank");
+    actionClick(product.label, name);
   };
 
+  const actionClick = (action, value) =>
+    tracking.track("ACTION_CLICK", { action, value });
+
   if (!visible) return <PageNotFound />;
+
+  const { demo, ph, product } = links;
 
   return (
     <section id="products">
@@ -36,22 +43,30 @@ const Products = ({ history, match }) => {
           dangerouslySetInnerHTML={{ __html: description }}
         />
 
-        <div className="flex center" style={{ marginBottom: "24px" }}>
-          {!!links.demo && (
-            <a className="link" href={links.demo.url} target="__blank">
-              {links.demo.label}
+        <div className="flex center mb-16">
+          {!!demo && (
+            <a
+              className="link"
+              href={demo.url}
+              target="__blank"
+              onClick={() => actionClick(demo.label, name)}
+            >
+              {demo.label}
             </a>
           )}
-          {!!links.ph && (
-            <a className="link" href={links.ph.url} target="__blank">
-              {links.ph.label}
+          {!!ph && (
+            <a
+              className="link"
+              href={ph.url}
+              target="__blank"
+              onClick={() => actionClick(ph.label, name)}
+            >
+              {ph.label}
             </a>
           )}
         </div>
 
-        {!!links.product && (
-          <Button onClick={ctaAction}>{links.product.label}</Button>
-        )}
+        {!!product && <Button onClick={ctaAction}>{product.label}</Button>}
         {/* <img src={image} alt={name} /> */}
       </div>
     </section>

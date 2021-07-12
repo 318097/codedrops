@@ -18,19 +18,16 @@ const menu = [
         productPath: get(product, "links.product.url"),
       })),
   },
-  {
-    name: "Feedback",
-    url: "/feedback",
-  },
 ];
 
-const MenuDropdown = ({ history }) => {
-  const handleClick = ({ url, productPath }) => {
+const MenuDropdown = ({ history, actionClick }) => {
+  const handleClick = ({ url, productPath, name }) => {
     if (url) history.push(url);
     else if (productPath) {
       const token = getToken() || "";
       window.open(`${productPath}?token=${token}&utm_source=codedrops`);
     }
+    actionClick("Products", name);
   };
 
   return (
@@ -41,7 +38,7 @@ const MenuDropdown = ({ history }) => {
           {menu.map(({ name, subMenu = [], url = "" }) => (
             <div key={name} className="menu-container">
               <div
-                onClick={() => handleClick({ url })}
+                onClick={() => handleClick({ url, name })}
                 className={`item-name${url ? " link" : ""}`}
               >
                 {name}
@@ -53,7 +50,7 @@ const MenuDropdown = ({ history }) => {
                     <div
                       key={name}
                       className="sub-menu-item-wrapper"
-                      onClick={() => handleClick({ url, productPath })}
+                      onClick={() => handleClick({ url, productPath, name })}
                     >
                       <span className="index">{index + 1}.</span>
                       <h4 className="item-name">{name}</h4>

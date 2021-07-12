@@ -10,6 +10,7 @@ import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
 import MenuDropdown from "../lib/MenuDropdown";
+import tracking from "../lib/mixpanel";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -59,40 +60,60 @@ const StyledHeader = styled.div`
 
 const Header = ({ location, session, setSession, history }) => {
   const logout = () => {
+    tracking.track("LOGOUT");
+    tracking.reset();
     localStorage.clear();
     setSession(null);
     axios.defaults.headers.common["authorization"] = null;
   };
 
-  const handleItemClick = ({ value }) => {
+  const handleItemClick = ({ label, value }) => {
     if (value === "logout") return logout();
-    else if (value === "bookmark") return history.push("/bookmarks");
+    else {
+      actionClick(label);
+      return history.push(`/${value}`);
+    }
   };
+
+  const actionClick = (action, value) =>
+    tracking.track("ACTION_CLICK", { action, value });
 
   return (
     <StyledHeader>
       <header>
-        <Link className="logo" to={"/posts"}>
+        <Link
+          className="logo"
+          to={"/posts"}
+          onClick={() => actionClick("Logo")}
+        >
           <Logo />
         </Link>
-        {location.pathname === "/posts" && <Filters />}
+        {location.pathname === "/posts" && (
+          <Filters actionClick={actionClick} />
+        )}
 
         <div className="fcc" style={{ gap: "4px" }}>
           <Link to="/posts">
-            <Icon type="home" />
+            <Icon type="home" onClick={() => actionClick("Home")} />
           </Link>
-          <MenuDropdown />
+          <MenuDropdown actionClick={actionClick} />
           {session ? (
             <ProfileDropdown
               profileAvatarProps={{ size: 18 }}
               name={get(session, "name", "")}
               email={get(session, "email", "")}
-              options={[{ label: "Bookmarks", value: "bookmark" }]}
+              options={[
+                { label: "Bookmarks", value: "bookmark" },
+                {
+                  label: "Feedback",
+                  value: "feedback",
+                },
+              ]}
               onItemClick={handleItemClick}
             />
           ) : (
             <Link to="/login">
-              <Icon type="login" />
+              <Icon type="login" onClick={() => actionClick("Login")} />
             </Link>
           )}
         </div>

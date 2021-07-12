@@ -3,6 +3,7 @@ import { Input, Button, message as antMessage } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
 import { captureException } from "../../lib";
+import tracking from "../../lib/mixpanel";
 
 const { TextArea } = Input;
 
@@ -39,6 +40,7 @@ const Feedback = ({ session, history }) => {
       await axios.post("/feedback", form);
       antMessage.success("Submitted");
       setForm(initialState);
+      tracking.track("FEEDBACK");
       history.push("/");
     } catch (err) {
       console.log(err);

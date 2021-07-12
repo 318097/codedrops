@@ -9,6 +9,7 @@ import "./Posts.scss";
 import config from "../../config";
 import { get } from "lodash";
 import Helmet from "../../lib/Helmet";
+import tracking from "../../lib/mixpanel";
 
 const PageWrapper = styled.div`
   .page-splitter {
@@ -48,6 +49,11 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
     if (!posts.length) fetchPosts();
   }, []);
 
+  const handleLoad = () => {
+    setFilter({ page: page + 1 }, false);
+    tracking.track("LOAD_POSTS");
+  };
+
   const { page = 1 } = filters;
 
   const noteChunks = Array(Math.ceil(posts.length / config.POST_COUNT))
@@ -86,9 +92,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
           ))}
           {showLoadButton && (
             <div className="actions-row">
-              <Button onClick={() => setFilter({ page: page + 1 }, false)}>
-                Load
-              </Button>
+              <Button onClick={handleLoad}>Load</Button>
             </div>
           )}
         </Fragment>

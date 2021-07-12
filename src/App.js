@@ -9,11 +9,12 @@ import Routes from "./routes";
 
 import { fetchTags } from "./store/posts/actions";
 import { setSession } from "./store/app/actions";
+import tracking from "./lib/mixpanel";
 
 import "./App.scss";
 import config from "./config";
 import BMC from "./assets/bmc.png";
-import WavesOpacity from "./assets/wavesOpacity.svg";
+// import WavesOpacity from "./assets/wavesOpacity.svg";
 
 axios.defaults.baseURL = config.SERVER_URL;
 axios.defaults.headers.common["authorization"] = getToken();
@@ -23,6 +24,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    tracking.track("INIT");
     const lastVisited = localStorage.getItem("last-access");
     const now = new Date().getTime();
     if (lastVisited + 86400 < now || !lastVisited)
@@ -65,6 +67,9 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
         id="buy-me-a-coffee"
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          tracking.track("ACTION_CLICK", { action: "Buy me a coffee" })
+        }
       >
         <img src={BMC} alt="Buy Me A Coffee" />
       </a>
