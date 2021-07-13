@@ -16,6 +16,7 @@ const config = {
   POST_COUNT: 20,
   SENTRY_URL,
   MIXPANEL_TRACKING_ID,
+  NODE_ENV,
 };
 
 export default config;

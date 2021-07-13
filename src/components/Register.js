@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Input, Button, message } from "antd";
+import { Input, Button } from "antd";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { setSession } from "../store/app/actions";
-import { connect } from "react-redux";
-import { captureException, setSessionInStorage } from "../lib";
+// import { setSession } from "../store/app/actions";
+// import { connect } from "react-redux";
+import { handleError, notify } from "../lib";
 import tracking from "../lib/mixpanel";
 
 const initialState = {
@@ -30,11 +30,9 @@ const Register = ({ history }) => {
       history.push("/login");
       tracking.register(data);
       tracking.track("REGISTER");
-      message.success("Success");
-    } catch (err) {
-      const { response: { data: errorMessage = "Error." } = {} } = err;
-      message.error(errorMessage);
-      captureException(err);
+      notify("Success");
+    } catch (error) {
+      handleError(error);
     } finally {
       setLoading(false);
     }

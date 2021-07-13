@@ -12,6 +12,7 @@ import { BrowserRouter } from "react-router-dom";
 import config from "./config";
 
 Sentry.init({
+  environment: config.NODE_ENV,
   dsn: config.SENTRY_URL,
   integrations: [new Integrations.BrowserTracing()],
 

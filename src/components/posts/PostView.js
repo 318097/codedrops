@@ -6,10 +6,9 @@ import Helmet from "../../lib/Helmet";
 import RelatedPosts from "./RelatedPosts";
 import { getPostById, toggleBookmark } from "../../store/posts/actions";
 import colors, { Card, Tag, Button, Icon } from "@codedrops/react-ui";
-import { md, showPopup } from "../../lib";
+import { md, notify } from "../../lib";
 import { get } from "lodash";
 import queryString from "query-string";
-import { message } from "antd";
 import SharePost from "./SharePost";
 
 const CardWrapper = styled.div`
@@ -142,15 +141,12 @@ const PostView = ({
   };
 
   const handleBookmarkClick = async () => {
-    if (!session || !session.loggedIn)
-      return showPopup({ title: "Login to bookmark posts" });
+    if (!session || !session.loggedIn) return notify("Login to bookmark posts");
 
     const status = !get(post, "isBookmarked");
     await toggleBookmark({ _id: post._id, status });
 
-    if (status) {
-      message.success("Bookmarked!!");
-    }
+    if (status) notify("Bookmarked!!");
   };
 
   if (!post) return null;

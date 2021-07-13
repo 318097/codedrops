@@ -4,7 +4,7 @@ import { Loading } from "@codedrops/react-ui";
 import { connect } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { captureException, getToken, hasToken } from "./lib";
+import { handleError, getToken, hasToken } from "./lib";
 import Routes from "./routes";
 
 import { fetchTags } from "./store/posts/actions";
@@ -40,9 +40,8 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
             token,
           });
           setSession({ loggedIn: true, info: "ON_LOAD", ...data });
-        } catch (err) {
-          console.log("Error:", err);
-          captureException(err);
+        } catch (error) {
+          handleError(error);
         } finally {
           setTimeout(() => setLoading(false), 100);
         }

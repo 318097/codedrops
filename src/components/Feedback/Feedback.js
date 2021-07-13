@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, message as antMessage } from "antd";
+import { Input, Button } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
-import { captureException } from "../../lib";
+import { handleError, notify } from "../../lib";
 import tracking from "../../lib/mixpanel";
 
 const { TextArea } = Input;
@@ -35,16 +35,15 @@ const Feedback = ({ session, history }) => {
       setLoading(true);
       const { name, email, message } = form;
       if (!name || !email || !message)
-        return antMessage.error("All fields are required");
+        return notify("All fields are required", "error");
 
       await axios.post("/feedback", form);
-      antMessage.success("Submitted");
+      notify("Submitted");
       setForm(initialState);
       tracking.track("SUBMITTED_FEEDBACK");
       history.push("/");
-    } catch (err) {
-      console.log(err);
-      captureException(err);
+    } catch (error) {
+      handleError(error);
     } finally {
       setLoading(false);
     }

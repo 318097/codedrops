@@ -1,4 +1,4 @@
-import { captureException } from "./sentry";
+import handleError from "./errorHandler";
 import { md } from "./markdown";
 import {
   hasToken,
@@ -6,14 +6,14 @@ import {
   setSessionInStorage,
   getSessionFromStorage,
 } from "./auth";
-import { showPopup } from "./popup";
+import notify from "./notify";
 
 export {
-  captureException,
+  handleError,
   md,
   hasToken,
   getToken,
   setSessionInStorage,
   getSessionFromStorage,
-  showPopup,
+  notify,
 };

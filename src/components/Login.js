@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, message } from "antd";
+import { Input, Button } from "antd";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
-import { captureException, setSessionInStorage } from "../lib";
+import { handleError, setSessionInStorage } from "../lib";
 import tracking from "../lib/mixpanel";
 
 const initialState = {
@@ -40,10 +40,8 @@ const Login = ({ history, setSession, session }) => {
       tracking.setIdentity(data);
       tracking.track("LOGIN");
       history.push("/");
-    } catch (err) {
-      const { response: { data: errorMessage = "Error." } = {} } = err;
-      message.error(errorMessage);
-      captureException(err);
+    } catch (error) {
+      handleError(error);
     } finally {
       setLoading(false);
     }
