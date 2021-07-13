@@ -24,7 +24,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    tracking.track("INIT");
+    tracking.track("INIT", { path: window.location.pathname });
     const lastVisited = localStorage.getItem("last-access");
     const now = new Date().getTime();
     if (lastVisited + 86400 < now || !lastVisited)
@@ -67,9 +67,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
         id="buy-me-a-coffee"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() =>
-          tracking.track("ACTION_CLICK", { action: "Buy me a coffee" })
-        }
+        onClick={() => tracking.track("BUY_ME_A_COFFEE")}
       >
         <img src={BMC} alt="Buy Me A Coffee" />
       </a>

@@ -21,11 +21,8 @@ const Products = ({ match }) => {
     // if (id === "atom") queryParams = `?token=${token}`;
 
     window.open(`${links.product.url}${queryParams}`, "__blank");
-    actionClick(product.label, name);
+    tracking.track("OPENED_PRODUCT", { name });
   };
-
-  const actionClick = (action, value) =>
-    tracking.track("ACTION_CLICK", { action, value });
 
   if (!visible) return <PageNotFound />;
 
@@ -45,22 +42,12 @@ const Products = ({ match }) => {
 
         <div className="flex center mb-16">
           {!!demo && (
-            <a
-              className="link"
-              href={demo.url}
-              target="__blank"
-              onClick={() => actionClick(demo.label, name)}
-            >
+            <a className="link" href={demo.url} target="__blank">
               {demo.label}
             </a>
           )}
           {!!ph && (
-            <a
-              className="link"
-              href={ph.url}
-              target="__blank"
-              onClick={() => actionClick(ph.label, name)}
-            >
+            <a className="link" href={ph.url} target="__blank">
               {ph.label}
             </a>
           )}

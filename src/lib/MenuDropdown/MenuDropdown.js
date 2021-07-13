@@ -5,6 +5,7 @@ import { Icon, Dropdown } from "@codedrops/react-ui";
 import data from "../../DATA.json";
 import { get } from "lodash";
 import { getToken } from "../auth";
+import tracking from "../mixpanel";
 
 const menu = [
   {
@@ -20,19 +21,26 @@ const menu = [
   },
 ];
 
-const MenuDropdown = ({ history, actionClick }) => {
+const MenuDropdown = ({ history }) => {
   const handleClick = ({ url, productPath, name }) => {
+    tracking.track("VIEWED_PRODUCT_PAGE", { name });
     if (url) history.push(url);
     else if (productPath) {
       const token = getToken() || "";
       window.open(`${productPath}?token=${token}&utm_source=codedrops`);
     }
-    actionClick("Products", name);
   };
 
   return (
     <Dropdown
-      renderButtonComponent={<Icon type="menu" />}
+      renderButtonComponent={
+        <Icon
+          type="menu"
+          onClick={() =>
+            tracking.track("CLICK_ACTION", { target: "menu icon" })
+          }
+        />
+      }
       renderDropdownComponent={
         <div className="menu-dropdown-container">
           {menu.map(({ name, subMenu = [], url = "" }) => (

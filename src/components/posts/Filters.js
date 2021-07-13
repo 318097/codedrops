@@ -4,18 +4,12 @@ import { pick, get } from "lodash";
 import { connect } from "react-redux";
 // import { withRouter } from "react-router-dom";
 import { setFilter } from "../../store/posts/actions";
+import tracking from "../../lib/mixpanel";
 
 const { Search } = Input;
 const { Option } = Select;
 
-const Filters = ({
-  setFilter,
-  filters,
-  meta,
-  tagList = [],
-  postCount,
-  actionClick,
-}) => {
+const Filters = ({ setFilter, filters, meta, tagList = [], postCount }) => {
   // useEffect(() => {
   //   if (!location.search) {
   //     setFilters({
@@ -62,7 +56,7 @@ const Filters = ({
         defaultValue={search}
         onSearch={(value) => {
           setFilter({ search: value });
-          if (value) actionClick("Filter Search", value);
+          if (value) tracking.track("SEARCH", { keyword: value });
         }}
         style={{ width: "160px" }}
       />

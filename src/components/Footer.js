@@ -63,9 +63,8 @@ const Footer = () => (
         rel="noopener noreferrer"
         href={url}
         onClick={() =>
-          tracking.track("ACTION_CLICK", {
-            action: "Footer Social Icons",
-            value: id,
+          tracking.track("CLICKED_SOCIAL_ICON", {
+            platform: id,
           })
         }
       >

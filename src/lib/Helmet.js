@@ -4,7 +4,7 @@ import { Helmet as HelmetElement } from "react-helmet";
 const DEFAULT_IMAGE =
   "https://raw.githubusercontent.com/318097/code-drops/master/assets/codedrops.v2.png";
 
-const HelmetData = ({ data }) => {
+const Helmet = ({ data }) => {
   const {
     title = "",
     description = "",
@@ -13,9 +13,9 @@ const HelmetData = ({ data }) => {
   } = data || {};
 
   const currentURL = window.location.href;
-  const content = `${title}
-  ${description}
-  `;
+  // const content = `${title}
+  // ${description}
+  // `;
 
   return (
     <HelmetElement>
@@ -35,4 +35,4 @@ const HelmetData = ({ data }) => {
   );
 };
 
-export default HelmetData;
+export default Helmet;

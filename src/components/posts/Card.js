@@ -119,7 +119,7 @@ const Card = ({ history, post, customStyle, tagColors = {}, target }) => {
       <Link to={{ pathname, search: target ? `?target=${target}` : "" }}>
         <MCard
           hover
-          onClick={() => tracking.track("CLICK_POST", { slug, title })}
+          onClick={() => tracking.track("VIEW_POST", { slug, title })}
         >
           <h3
             className="title"

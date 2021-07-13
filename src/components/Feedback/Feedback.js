@@ -40,7 +40,7 @@ const Feedback = ({ session, history }) => {
       await axios.post("/feedback", form);
       antMessage.success("Submitted");
       setForm(initialState);
-      tracking.track("FEEDBACK");
+      tracking.track("SUBMITTED_FEEDBACK");
       history.push("/");
     } catch (err) {
       console.log(err);

@@ -67,16 +67,13 @@ const Header = ({ location, session, setSession, history }) => {
     axios.defaults.headers.common["authorization"] = null;
   };
 
-  const handleItemClick = ({ label, value }) => {
+  const handleItemClick = ({ value }) => {
     if (value === "logout") return logout();
     else {
-      actionClick(label);
+      tracking.track("CLICK_ACTION", { target: value });
       return history.push(`/${value}`);
     }
   };
-
-  const actionClick = (action, value) =>
-    tracking.track("ACTION_CLICK", { action, value });
 
   return (
     <StyledHeader>
@@ -84,26 +81,29 @@ const Header = ({ location, session, setSession, history }) => {
         <Link
           className="logo"
           to={"/posts"}
-          onClick={() => actionClick("Logo")}
+          onClick={() => tracking.track("CLICK_ACTION", { target: "logo" })}
         >
           <Logo />
         </Link>
-        {location.pathname === "/posts" && (
-          <Filters actionClick={actionClick} />
-        )}
+        {location.pathname === "/posts" && <Filters />}
 
         <div className="fcc" style={{ gap: "4px" }}>
           <Link to="/posts">
-            <Icon type="home" onClick={() => actionClick("Home")} />
+            <Icon
+              type="home"
+              onClick={() =>
+                tracking.track("CLICK_ACTION", { target: "home icon" })
+              }
+            />
           </Link>
-          <MenuDropdown actionClick={actionClick} />
+          <MenuDropdown />
           {session ? (
             <ProfileDropdown
               profileAvatarProps={{ size: 18 }}
               name={get(session, "name", "")}
               email={get(session, "email", "")}
               options={[
-                { label: "Bookmarks", value: "bookmark" },
+                { label: "Bookmarks", value: "bookmarks" },
                 {
                   label: "Feedback",
                   value: "feedback",
@@ -113,7 +113,12 @@ const Header = ({ location, session, setSession, history }) => {
             />
           ) : (
             <Link to="/login">
-              <Icon type="login" onClick={() => actionClick("Login")} />
+              <Icon
+                type="login"
+                onClick={() =>
+                  tracking.track("CLICK_ACTION", { target: "login icon" })
+                }
+              />
             </Link>
           )}
         </div>

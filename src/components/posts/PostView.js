@@ -173,7 +173,7 @@ const PostView = ({
     <section id="view-post">
       <Helmet
         data={{
-          title: (title || "").replaceAll("`", "'"),
+          title: title || "",
           pageTitleSuffix: " | Code Drops",
         }}
       />

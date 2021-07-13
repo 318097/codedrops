@@ -51,7 +51,7 @@ const Posts = ({ posts, fetchPosts, setFilter, meta, filters, appLoading }) => {
 
   const handleLoad = () => {
     setFilter({ page: page + 1 }, false);
-    tracking.track("LOAD_POSTS");
+    tracking.track("CLICK_ACTION", { target: "load more posts" });
   };
 
   const { page = 1 } = filters;
