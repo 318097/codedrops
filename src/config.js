@@ -17,6 +17,7 @@ const config = {
   SENTRY_URL,
   MIXPANEL_TRACKING_ID,
   NODE_ENV,
+  IS_PROD: isProd,
 };
 
 export default config;

@@ -22,7 +22,7 @@ const events = {
 const tracker = new EventTracker({
   events,
   trackingId: config.MIXPANEL_TRACKING_ID,
-  isDev: !config.isProd,
+  isDev: !config.IS_PROD,
 });
 
 export default tracker;
