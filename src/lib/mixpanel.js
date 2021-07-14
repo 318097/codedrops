@@ -1,4 +1,4 @@
-import { TrackingService } from "@codedrops/lib";
+import { EventTracker } from "@codedrops/lib";
 import config from "../config";
 
 const events = {
@@ -19,9 +19,10 @@ const events = {
   SUBMITTED_FEEDBACK: { name: "Submitted feedback" },
 };
 
-const tracker = new TrackingService({
+const tracker = new EventTracker({
   events,
   trackingId: config.MIXPANEL_TRACKING_ID,
+  isDev: !config.isProd,
 });
 
 export default tracker;

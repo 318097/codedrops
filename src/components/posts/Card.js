@@ -77,19 +77,6 @@ const CardWrapper = styled.div`
       }
     }
   }
-  /* &:not(.post) {
-    .card::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 30%;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      position: absolute;
-      background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.1));
-    }
-  } */
 `;
 
 const Card = ({ history, post, customStyle, tagColors = {}, target }) => {

@@ -60,7 +60,6 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
       </div>
       {appLoading && <Loading />}
       {/* <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} /> */}
-      {/* <Icon className="code-icon" type="tag" /> */}
       <a
         href="https://www.buymeacoffee.com/codedropstech"
         id="buy-me-a-coffee"

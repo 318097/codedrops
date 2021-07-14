@@ -38,6 +38,7 @@ const Login = ({ history, setSession, session }) => {
       });
       axios.defaults.headers.common["authorization"] = data.token;
       tracking.setIdentity(data);
+      tracking.setUser(data);
       tracking.track("LOGIN");
       history.push("/");
     } catch (error) {

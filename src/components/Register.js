@@ -28,7 +28,8 @@ const Register = ({ history }) => {
     try {
       const { data } = await axios.post("/auth/register", form);
       history.push("/login");
-      tracking.register(data);
+      tracking.alias(data);
+      // tracking.setUser(data);
       tracking.track("REGISTER");
       notify("Success");
     } catch (error) {
