@@ -1,29 +1,55 @@
 {
   "products": [
     {
-      "id": "github-marker",
+      "id": "e-feed",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "E Feed",
+      "taglineOld": "Read emails in the form of a feed",
+      "tagline": "A faster & simpler way to go through emails",
+      "gallery": [],
+      "productPath": "/products/e-feed",
+      "status": "WIP",
+      "tags": [
+        "email-feed",
+        "productivity",
+        "email"
+      ]
+    },
+    {
+      "id": "dot",
+      "visibleOnPortfolio": false,
+      "visible": false,
+      "name": "DOT",
+      "tagline": "",
+      "productPath": "/products/dot",
+      "description": "",
+      "logo": "",
+      "gallery": [],
+      "poster": "",
+      "status": "WIP"
+    },
+    {
+      "id": "octon",
       "visibleOnPortfolio": true,
       "visible": true,
-      "name": "Github Marker",
-      "tagline": "A chrome extension to Favorite, Bookmark & Mark link as Read in Github",
-      "description": "There are a lot of links provided on Github pages. Some might need to be marked as read, some might be amazing & some you would love to read it later. Github Marker does exactly that.<br/>The extension provides 3 options attached to every link found on Github related pages/URLs:<br/>1. Mark as Read/Unread <br/>2. Favorite/Un-Favorite a link<br/>3. Bookmark/Unbookmark a link",
-      "gallery": [],
-      "productPath": "/products/github-marker",
-      "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
-      "poster": "",
+      "name": "Octon",
+      "tagline": "Manage expenses, todos, goals, progress & personal timeline",
       "status": "LIVE",
       "links": {
         "product": {
-          "label": "Download",
-          "url": "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en"
-        },
-        "ph": {
-          "label": "Product Hunt",
-          "url": "https://www.producthunt.com/posts/github-marker"
+          "label": "App",
+          "url": "http://octon.netlify.com/"
         },
         "github": {
-          "url": "https://github.com/318097/github-marker"
+          "url": "https://github.com/318097/octon"
         }
+      },
+      "customMessages": [
+        "DM if interested in collaboration"
+      ],
+      "about": {
+        "launchedOn": "2021-07-18"
       }
     },
     {
@@ -54,6 +80,40 @@
         },
         "github": {
           "url": "https://github.com/318097/note-box"
+        }
+      }
+    },
+    {
+      "id": "codedrops",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "Codedrops",
+      "tagline": "Micro-blogging on Web Development",
+      "status": "LIVE",
+      "links": {
+        "product": {
+          "label": "Visit",
+          "url": "https://www.codedrops.tech/"
+        },
+        "github": {
+          "url": "https://github.com/318097/code-drops"
+        }
+      },
+      "social": {
+        "facebook": {
+          "label": "Facebook",
+          "fontAwesome": "fab fa-facebook",
+          "url": "https://www.facebook.com/codedrops.tech/"
+        },
+        "instagram": {
+          "label": "Instagram",
+          "fontAwesome": "fab fa-instagram",
+          "url": "https://www.instagram.com/codedrops.tech/"
+        },
+        "twitter": {
+          "label": "Twitter",
+          "fontAwesome": "fab fa-twitter",
+          "url": "https://twitter.com/codedrops_tech"
         }
       }
     },
@@ -97,33 +157,30 @@
       ]
     },
     {
-      "id": "e-feed",
+      "id": "github-marker",
       "visibleOnPortfolio": true,
-      "visible": false,
-      "name": "E Feed",
-      "taglineOld": "Read emails in the form of a feed",
-      "tagline": "A faster & simpler way to go through emails",
+      "visible": true,
+      "name": "Github Marker",
+      "tagline": "A chrome extension to Favorite, Bookmark & Mark link as Read in Github",
+      "description": "There are a lot of links provided on Github pages. Some might need to be marked as read, some might be amazing & some you would love to read it later. Github Marker does exactly that.<br/>The extension provides 3 options attached to every link found on Github related pages/URLs:<br/>1. Mark as Read/Unread <br/>2. Favorite/Un-Favorite a link<br/>3. Bookmark/Unbookmark a link",
       "gallery": [],
-      "productPath": "/products/e-feed",
-      "status": "WIP",
-      "tags": [
-        "email-feed",
-        "productivity",
-        "email"
-      ]
-    },
-    {
-      "id": "dot",
-      "visibleOnPortfolio": false,
-      "visible": false,
-      "name": "DOT",
-      "tagline": "",
-      "productPath": "/products/dot",
-      "description": "",
-      "logo": "",
-      "gallery": [],
+      "productPath": "/products/github-marker",
+      "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
       "poster": "",
-      "status": "WIP"
+      "status": "LIVE",
+      "links": {
+        "product": {
+          "label": "Download",
+          "url": "https://chrome.google.com/webstore/detail/github-marker/imjdbnnpnohgcdbpgnidgolnamoghpoo?hl=en"
+        },
+        "ph": {
+          "label": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/github-marker"
+        },
+        "github": {
+          "url": "https://github.com/318097/github-marker"
+        }
+      }
     },
     {
       "id": "react-ui",
@@ -148,60 +205,6 @@
       "customMessages": [
         "DM if interested in collaboration"
       ]
-    },
-    {
-      "id": "octon",
-      "visibleOnPortfolio": true,
-      "visible": true,
-      "name": "Octon",
-      "tagline": "Manage expenses, todos, goals, progress & personal timeline",
-      "status": "LIVE",
-      "links": {
-        "product": {
-          "label": "App",
-          "url": "http://octon.netlify.com/"
-        },
-        "github": {
-          "url": "https://github.com/318097/octon"
-        }
-      },
-      "customMessages": [
-        "DM if interested in collaboration"
-      ]
-    },
-    {
-      "id": "codedrops",
-      "visibleOnPortfolio": true,
-      "visible": false,
-      "name": "Codedrops",
-      "tagline": "Micro-blogging on Web Development",
-      "status": "LIVE",
-      "links": {
-        "product": {
-          "label": "Visit",
-          "url": "https://www.codedrops.tech/"
-        },
-        "github": {
-          "url": "https://github.com/318097/code-drops"
-        }
-      },
-      "social": {
-        "facebook": {
-          "label": "Facebook",
-          "fontAwesome": "fab fa-facebook",
-          "url": "https://www.facebook.com/codedrops.tech/"
-        },
-        "instagram": {
-          "label": "Instagram",
-          "fontAwesome": "fab fa-instagram",
-          "url": "https://www.instagram.com/codedrops.tech/"
-        },
-        "twitter": {
-          "label": "Twitter",
-          "fontAwesome": "fab fa-twitter",
-          "url": "https://twitter.com/codedrops_tech"
-        }
-      }
     },
     {
       "id": "notes-app",
