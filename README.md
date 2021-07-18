@@ -8,7 +8,7 @@
 - [x] Feedback
 - [x] Share post directly
 - [x] Sentry
-- [x] Connect to Atom
+- [x] Connect to Octon
 - [x] Enable service worker
 - [ ] Documentation page for Github marker, DOT
   - Landing page at file-ops.codedrops or file-ops.netlify
@@ -17,7 +17,7 @@
 - [ ] Fetch tags from query
 - [ ] SSR
 - [ ] SEO
-- [ ] Mixpanel
+- [x] Mixpanel
 - [ ] Adsense
 - [ ] Create linktr.ee
 - [ ] PWA

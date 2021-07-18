@@ -150,19 +150,19 @@
       ]
     },
     {
-      "id": "atom",
+      "id": "octon",
       "visibleOnPortfolio": true,
-      "visible": false,
-      "name": "Atom",
-      "tagline": "Manage expenses, todos, goals, progress &  personal timeline",
-      "status": "WIP",
+      "visible": true,
+      "name": "Octon",
+      "tagline": "Manage expenses, todos, goals, progress & personal timeline",
+      "status": "LIVE",
       "links": {
         "product": {
           "label": "App",
-          "url": "http://at0m.netlify.com/"
+          "url": "http://octon.netlify.com/"
         },
         "github": {
-          "url": "https://github.com/318097/atom"
+          "url": "https://github.com/318097/octon"
         }
       },
       "customMessages": [

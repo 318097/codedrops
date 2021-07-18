@@ -18,7 +18,7 @@ const Products = ({ match }) => {
 
   const ctaAction = () => {
     let queryParams = "";
-    // if (id === "atom") queryParams = `?token=${token}`;
+    // if (id === "octon") queryParams = `?token=${token}`;
 
     window.open(`${links.product.url}${queryParams}`, "__blank");
     tracking.track("OPENED_PRODUCT", { name });
