@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "e-feed",
-      "visibleOnPortfolio": true,
+      "visibleOnPortfolio": false,
       "visible": false,
       "name": "E Feed",
       "taglineOld": "Read emails in the form of a feed",
@@ -53,71 +53,6 @@
       }
     },
     {
-      "id": "note-box",
-      "visibleOnPortfolio": true,
-      "visible": true,
-      "name": "Note Box",
-      "taglineV0": "A Chrome extension to store notes for every domain",
-      "tagline": "A chrome extension to add notes/todos based on URL",
-      "description": "A Chrome Extension that provides an environment for every domain/URL. Revisit the notes when back to that URL or access it from `Homepage`. <br/> No Login/Signup. <br/>All the notes are stored in the browser memory.",
-      "gallery": [],
-      "productPath": "/products/note-box",
-      "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
-      "poster": "",
-      "status": "LIVE",
-      "links": {
-        "demo": {
-          "label": "Demo",
-          "url": "https://youtu.be/fX3IKhiEz1s"
-        },
-        "product": {
-          "label": "Download",
-          "url": "https://chrome.google.com/webstore/detail/note-box/mbbajjgefpenmkkhcnmmnoodlbcbfnmp"
-        },
-        "ph": {
-          "label": "Product Hunt",
-          "url": "https://www.producthunt.com/posts/note-box"
-        },
-        "github": {
-          "url": "https://github.com/318097/note-box"
-        }
-      }
-    },
-    {
-      "id": "codedrops",
-      "visibleOnPortfolio": true,
-      "visible": false,
-      "name": "Codedrops",
-      "tagline": "Micro-blogging on Web Development",
-      "status": "LIVE",
-      "links": {
-        "product": {
-          "label": "Visit",
-          "url": "https://www.codedrops.tech/"
-        },
-        "github": {
-          "url": "https://github.com/318097/code-drops"
-        }
-      },
-      "social": {
-        "facebook": {
-          "label": "Facebook",
-          "fontAwesome": "fab fa-facebook",
-          "url": "https://www.facebook.com/codedrops.tech/"
-        },
-        "instagram": {
-          "label": "Instagram",
-          "fontAwesome": "fab fa-instagram",
-          "url": "https://www.instagram.com/codedrops.tech/"
-        },
-        "twitter": {
-          "label": "Twitter",
-          "fontAwesome": "fab fa-twitter",
-          "url": "https://twitter.com/codedrops_tech"
-        }
-      }
-    },
-    {
       "id": "file-ops",
       "visibleOnPortfolio": true,
       "visible": true,
@@ -155,6 +90,71 @@
         "alias",
         "file-shortcuts"
       ]
+    },
+    {
+      "id": "codedrops",
+      "visibleOnPortfolio": true,
+      "visible": false,
+      "name": "Codedrops",
+      "tagline": "Micro-blogging on Web Development",
+      "status": "LIVE",
+      "links": {
+        "product": {
+          "label": "Visit",
+          "url": "https://www.codedrops.tech/"
+        },
+        "github": {
+          "url": "https://github.com/318097/code-drops"
+        }
+      },
+      "social": {
+        "facebook": {
+          "label": "Facebook",
+          "fontAwesome": "fab fa-facebook",
+          "url": "https://www.facebook.com/codedrops.tech/"
+        },
+        "instagram": {
+          "label": "Instagram",
+          "fontAwesome": "fab fa-instagram",
+          "url": "https://www.instagram.com/codedrops.tech/"
+        },
+        "twitter": {
+          "label": "Twitter",
+          "fontAwesome": "fab fa-twitter",
+          "url": "https://twitter.com/codedrops_tech"
+        }
+      }
+    },
+    {
+      "id": "note-box",
+      "visibleOnPortfolio": true,
+      "visible": true,
+      "name": "Note Box",
+      "taglineV0": "A Chrome extension to store notes for every domain",
+      "tagline": "A chrome extension to add notes/todos based on URL",
+      "description": "A Chrome Extension that provides an environment for every domain/URL. Revisit the notes when back to that URL or access it from `Homepage`. <br/> No Login/Signup. <br/>All the notes are stored in the browser memory.",
+      "gallery": [],
+      "productPath": "/products/note-box",
+      "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
+      "poster": "",
+      "status": "LIVE",
+      "links": {
+        "demo": {
+          "label": "Demo",
+          "url": "https://youtu.be/fX3IKhiEz1s"
+        },
+        "product": {
+          "label": "Download",
+          "url": "https://chrome.google.com/webstore/detail/note-box/mbbajjgefpenmkkhcnmmnoodlbcbfnmp"
+        },
+        "ph": {
+          "label": "Product Hunt",
+          "url": "https://www.producthunt.com/posts/note-box"
+        },
+        "github": {
+          "url": "https://github.com/318097/note-box"
+        }
+      }
     },
     {
       "id": "github-marker",
