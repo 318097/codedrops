@@ -9,7 +9,7 @@ import { get } from "lodash";
 import { setSession } from "../store/app/actions";
 import { connect } from "react-redux";
 import axios from "axios";
-import MenuDropdown from "../lib/MenuDropdown";
+// import MenuDropdown from "../lib/MenuDropdown";
 import tracking from "../lib/mixpanel";
 
 const StyledHeader = styled.div`
@@ -96,7 +96,7 @@ const Header = ({ location, session, setSession, history }) => {
               }
             />
           </Link>
-          <MenuDropdown />
+          {/* <MenuDropdown /> */}
           {session ? (
             <ProfileDropdown
               profileAvatarProps={{ size: 18 }}
