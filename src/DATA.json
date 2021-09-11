@@ -1,40 +1,45 @@
 {
   "products": [
     {
-      "id": "e-feed",
-      "visibleOnPortfolio": false,
-      "visible": false,
+      "id": "E_FEED",
       "name": "E Feed",
-      "taglineOld": "Read emails in the form of a feed",
       "tagline": "A faster & simpler way to go through emails",
-      "gallery": [],
-      "productPath": "/products/e-feed",
+      "description": "",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": false
+      },
+      "path": "/products/e-feed",
       "status": "WIP",
       "tags": [
         "email-feed",
         "productivity",
         "email"
-      ]
+      ],
+      "tagline_0": "Read emails in the form of a feed"
     },
     {
-      "id": "dot",
-      "visibleOnPortfolio": false,
-      "visible": false,
-      "name": "DOT",
+      "id": "FIREBOARD",
+      "name": "Fireboard",
       "tagline": "",
-      "productPath": "/products/dot",
       "description": "",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": false
+      },
+      "path": "/products/fireboard",
+      "status": "WIP",
       "logo": "",
-      "gallery": [],
-      "poster": "",
-      "status": "WIP"
+      "poster": ""
     },
     {
-      "id": "octon",
-      "visibleOnPortfolio": true,
-      "visible": true,
+      "id": "OCTON",
       "name": "Octon",
       "tagline": "Manage expenses, todos, goals, progress & personal timeline",
+      "visibility": {
+        "codedrops": true,
+        "portfolio": true
+      },
       "status": "LIVE",
       "links": {
         "product": {
@@ -48,22 +53,23 @@
       "customMessages": [
         "DM if interested in collaboration"
       ],
-      "about": {
+      "stats": {
         "launchedOn": "2021-07-18"
       }
     },
     {
-      "id": "file-ops",
-      "visibleOnPortfolio": true,
-      "visible": true,
+      "id": "FILE_OPS",
       "name": "File Ops",
       "tagline": "A VS Code extension to easily tag/alias files & quick switch between files",
       "description": "Sometimes there are files which have the same names. ex. index.js. File Ops helps in `tagging` or `aliasing` files. These files can be Viewed & Opened from the tree view or using commands. Another feature is to be able to quickly switch between example.js and example.css.",
-      "gallery": [],
-      "productPath": "/products/file-ops",
+      "visibility": {
+        "codedrops": true,
+        "portfolio": true
+      },
+      "path": "/products/file-ops",
+      "status": "LIVE",
       "logo": "https://raw.githubusercontent.com/318097/file-ops/master/icons/icon128.png",
       "poster": "https://res.cloudinary.com/codedropstech/image/upload/v1617810191/products/file-ops/Screenshot_2021-04-07_at_9.12.33_PM_fmchbl.png",
-      "status": "LIVE",
       "links": {
         "demo": {
           "label": "Demo",
@@ -92,11 +98,13 @@
       ]
     },
     {
-      "id": "codedrops",
-      "visibleOnPortfolio": true,
-      "visible": false,
+      "id": "CODE_DROPS",
       "name": "Codedrops",
       "tagline": "Micro-blogging on Web Development",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": true
+      },
       "status": "LIVE",
       "links": {
         "product": {
@@ -126,18 +134,17 @@
       }
     },
     {
-      "id": "note-box",
-      "visibleOnPortfolio": true,
-      "visible": true,
+      "id": "NOTE_BOX",
       "name": "Note Box",
-      "taglineV0": "A Chrome extension to store notes for every domain",
       "tagline": "A chrome extension to add notes/todos based on URL",
       "description": "A Chrome Extension that provides an environment for every domain/URL. Revisit the notes when back to that URL or access it from `Homepage`. <br/> No Login/Signup. <br/>All the notes are stored in the browser memory.",
-      "gallery": [],
-      "productPath": "/products/note-box",
-      "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
-      "poster": "",
+      "visibility": {
+        "codedrops": true,
+        "portfolio": true
+      },
+      "path": "/products/note-box",
       "status": "LIVE",
+      "logo": "https://raw.githubusercontent.com/318097/note-box/master/app/icons/icon32.png",
       "links": {
         "demo": {
           "label": "Demo",
@@ -154,20 +161,21 @@
         "github": {
           "url": "https://github.com/318097/note-box"
         }
-      }
+      },
+      "tagline_0": "A Chrome extension to store notes for every domain"
     },
     {
-      "id": "github-marker",
-      "visibleOnPortfolio": true,
-      "visible": true,
+      "id": "GITHUB_MARKER",
       "name": "Github Marker",
       "tagline": "A chrome extension to Favorite, Bookmark & Mark link as Read in Github",
       "description": "There are a lot of links provided on Github pages. Some might need to be marked as read, some might be amazing & some you would love to read it later. Github Marker does exactly that.<br/>The extension provides 3 options attached to every link found on Github related pages/URLs:<br/>1. Mark as Read/Unread <br/>2. Favorite/Un-Favorite a link<br/>3. Bookmark/Unbookmark a link",
-      "gallery": [],
-      "productPath": "/products/github-marker",
-      "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
-      "poster": "",
+      "visibility": {
+        "codedrops": true,
+        "portfolio": true
+      },
       "status": "LIVE",
+      "path": "/products/github-marker",
+      "logo": "https://raw.githubusercontent.com/318097/github-marker/master/app/icons/v2/icon32.png",
       "links": {
         "product": {
           "label": "Download",
@@ -183,11 +191,13 @@
       }
     },
     {
-      "id": "react-ui",
-      "visibleOnPortfolio": true,
-      "visible": false,
+      "id": "REACT_UI",
       "name": "React UI",
       "tagline": "Custom UI components library for React.js",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": true
+      },
       "status": "WIP",
       "links": {
         "product": {
@@ -207,11 +217,13 @@
       ]
     },
     {
-      "id": "notes-app",
-      "visibleOnPortfolio": true,
-      "visible": false,
+      "id": "NOTES_APP",
       "name": "Notes App",
       "tagline": "A customizable app for tracking & maintaing notes",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": true
+      },
       "status": "WIP",
       "links": {
         "product": {
@@ -227,9 +239,11 @@
       ]
     },
     {
-      "id": "snake",
-      "visibleOnPortfolio": true,
-      "visible": false,
+      "id": "SNAKE",
+      "visibility": {
+        "codedrops": false,
+        "portfolio": true
+      },
       "name": "Snake",
       "tagline": "Single & Multi player Snake game",
       "status": "LIVE",
@@ -243,7 +257,7 @@
         }
       },
       "customMessages": [
-        "My first ever React app"
+        "My first react app"
       ]
     }
   ]

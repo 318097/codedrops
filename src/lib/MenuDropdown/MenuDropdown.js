@@ -11,23 +11,23 @@ const menu = [
   {
     name: "Products",
     subMenu: data.products
-      .filter((product) => product.visible)
+      .filter((product) => product.visibility?.codedrops)
       .map((product) => ({
         ...product,
-        url: product.productPath,
+        url: product.path,
         subText: product.tagline,
-        productPath: get(product, "links.product.url"),
+        productURL: get(product, "links.product.url"),
       })),
   },
 ];
 
 const MenuDropdown = ({ history }) => {
-  const handleClick = ({ url, productPath, name }) => {
+  const handleClick = ({ url, productURL, name }) => {
     tracking.track("VIEWED_PRODUCT_PAGE", { name });
     if (url) history.push(url);
-    else if (productPath) {
+    else if (productURL) {
       const token = getToken() || "";
-      window.open(`${productPath}?token=${token}&utm_source=codedrops`);
+      window.open(`${productURL}?token=${token}&utm_source=codedrops`);
     }
   };
 
@@ -53,12 +53,12 @@ const MenuDropdown = ({ history }) => {
               </div>
 
               {!!subMenu.length &&
-                subMenu.map(({ name, subText, url, productPath }, index) => {
+                subMenu.map(({ name, subText, url, productURL }, index) => {
                   return (
                     <div
                       key={name}
                       className="sub-menu-item-wrapper"
-                      onClick={() => handleClick({ url, productPath, name })}
+                      onClick={() => handleClick({ url, productURL, name })}
                     >
                       <span className="index">{index + 1}.</span>
                       <h4 className="item-name">{name}</h4>

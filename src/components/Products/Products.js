@@ -9,11 +9,11 @@ import Helmet from "../../lib/Helmet";
 import tracking from "../../lib/mixpanel";
 
 const Products = ({ match }) => {
-  const { id } = match.params;
+  const { url } = match;
 
-  const matchedProduct = data.products.find((product) => product.id === id);
+  const matchedProduct = data.products.find((product) => product.path === url);
 
-  const { name, tagline, description, links, image, visible, logo, poster } =
+  const { name, tagline, description, links, image, visibility, logo, poster } =
     matchedProduct || {};
 
   const ctaAction = () => {
@@ -24,7 +24,7 @@ const Products = ({ match }) => {
     tracking.track("OPENED_PRODUCT", { name });
   };
 
-  if (!visible) return <PageNotFound />;
+  if (!visibility.codedrops) return <PageNotFound />;
 
   const { demo, ph, product } = links;
 
