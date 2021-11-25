@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet as HelmetElement } from "react-helmet";
 
 const DEFAULT_IMAGE =
-  "https://raw.githubusercontent.com/318097/code-drops/master/assets/codedrops.v2.png";
+  "https://raw.githubusercontent.com/318097/codedrops/master/assets/codedrops.v2.png";
 
 const Helmet = ({ data }) => {
   const {
