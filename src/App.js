@@ -61,7 +61,7 @@ const App = ({ fetchTags, tagList, appLoading, session, setSession }) => {
       {appLoading && <Loading />}
       {/* <img alt="Bg" src={WavesOpacity} style={{ position: "absolute" }} /> */}
       <a
-        href="https://www.buymeacoffee.com/codedropstech"
+        href="https://www.buymeacoffee.com/mehullakhanpal"
         id="buy-me-a-coffee"
         target="_blank"
         rel="noopener noreferrer"
