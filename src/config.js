@@ -12,7 +12,7 @@ const isProd = NODE_ENV === "production";
 
 const config = {
   SERVER_URL: getServerURL({ isProd, serverType: REACT_APP_SERVER_TYPE }),
-  COLLECTION_ID: REACT_APP_COLLECTION_ID || "dHEqTd3knQGHTDMqwz8QP9",
+  COLLECTION_ID: REACT_APP_COLLECTION_ID || "61bc9ac5a31cc4ff1dea687d",
   POST_COUNT: 20,
   SENTRY_URL,
   MIXPANEL_TRACKING_ID,
